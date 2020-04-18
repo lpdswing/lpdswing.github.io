@@ -87,6 +87,6 @@ theme: hexo-theme-matery
 deploy:
   type: git
   repository:
-        github: https://github.com/lpdswing/lpdswing.github.io.git
-        coding: git@e.coding.net:lpdswing/lpdswing.git
+        github: https://7f4827fc7a4f66b5346f00c8ae9900a2cdb128b4@github.com/lpdswing/lpdswing.github.io.git
+        coding: https://KSUeCOTwnI:53547b0a0a679a967c112b9f8ae4383cccdc4c93@e.coding.net/lpdswing/hexo_blog.git
   branch: master
