@@ -8,7 +8,7 @@ subtitle: 技术分享领跑者
 description: 技术分享领跑者
 keywords:
 author: lpdswing
-language: zh-Hans
+language: zh-CN
 timezone:
 
 # URL
@@ -39,10 +39,16 @@ post_asset_folder: false
 relative_link: false
 future: true
 highlight:
-  enable: true
+  enable: false
   line_number: true
   auto_detect: false
   tab_replace:
+
+prism_plugin:
+  mode: 'preprocess'    # realtime/preprocess
+  theme: 'tomorrow'
+  line_number: false    # default false
+  custom_css:
 
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
@@ -50,7 +56,7 @@ highlight:
 # order_by: Posts order. (Order by date descending by default)
 index_generator:
   path: ''
-  per_page: 10
+  per_page: 12
   order_by: -date
 
 # Category & Tag
@@ -74,7 +80,7 @@ pagination_dir: page
 ## Plugins: https://hexo.io/plugins/
 plugins: hexo-generate-feed
 ## Themes: https://hexo.io/themes/
-theme: next
+theme: hexo-theme-matery
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
@@ -82,5 +88,5 @@ deploy:
   type: git
   repository:
         github: https://github.com/lpdswing/lpdswing.github.io.git
-        coding: git@git.coding.net:lpdswing/lpdswing.git
+        coding: git@e.coding.net:lpdswing/lpdswing.git
   branch: master
