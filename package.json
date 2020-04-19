@@ -2,11 +2,22 @@
   "name": "hexo-site",
   "version": "0.0.0",
   "private": true,
+  "yuqueConfig": {
+    "baseUrl": "https://www.yuque.com/api/v2",
+    "login": "语雀个人路径",
+    "repo": "知识库名称",
+    "mdNameFormat": "title",
+    "postPath": "source/_posts",
+    "onlyPublished": false
+  },
   "scripts": {
     "build": "hexo generate",
     "clean": "hexo clean",
+    "server": "hexo server",
+    "sync": "yuque-hexo sync",
+    "clean:yuque": "yuque-hexo clean",
     "deploy": "hexo deploy",
-    "server": "hexo server"
+    "start": "yuque-hexo clean && yuque-hexo sync && hexo clean && hexo generate"
   },
   "hexo": {
     "version": "4.2.0"
