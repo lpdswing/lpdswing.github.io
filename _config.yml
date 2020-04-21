@@ -46,11 +46,11 @@ relative_link: false
 future: true
 highlight:
   enable: false
-  line_number: true
-  auto_detect: false
-  tab_replace: ''
-  wrap: true
-  hljs: false
+  #line_number: true
+  #auto_detect: false
+  #tab_replace: ''
+  #wrap: true
+  #hljs: false
 
 prism_plugin:
   mode: 'preprocess'    # realtime/preprocess
@@ -101,9 +101,9 @@ ignore:
 ## Themes: https://hexo.io/themes/
 theme: hexo-theme-matery
 
-search:
-  path: search.xml
-  field: post
+#search:
+ # path: search.xml
+  #field: post
 
 permalink_pinyin:
   enable: true
