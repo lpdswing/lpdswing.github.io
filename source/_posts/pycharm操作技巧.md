@@ -1,6 +1,6 @@
 ---
 title: pycharm操作技巧
-date: 2018-04-20 00:42:43
+date: 2017-04-20 00:42:43
 tags: 
 	- python
 	- 编辑器

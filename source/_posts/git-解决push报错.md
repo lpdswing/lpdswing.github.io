@@ -1,6 +1,6 @@
 ---
 title: git 解决push报错
-date: 2018-04-22 18:04:30
+date: 2017-04-22 18:04:30
 tags: 
 	- git
 categories: Git
