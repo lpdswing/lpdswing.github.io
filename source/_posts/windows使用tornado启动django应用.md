@@ -1,21 +1,53 @@
 ---
 title: windows使用tornado启动django应用
-urlname: uqdp45
-date: 2020-04-27 13:20:31 +0800
+urlname: xiyh9t
+date: 2020-05-10 19:42:05 +0800
 tags: []
 categories: []
 ---
 
 ---
-title:  windows使用tornado启动django应用
-date: 2020-04-27 13:10:15
-tags:  Python
-categories:  Python
+
+
+
+title: tornad启动django
+
+date: 2019-04-24 16:10:15
+
+tags:
+
+
+- django
+
+categories:
+- python
+- 服务
+
+keywords:
+
+description:
+
+top_img:
+
+comments：
+
+cover:
+
+toc:
+
+toc_number:
+
+copyright:
+
+mathjax:
+
+katex:
+
 ---
 
-由于 windows 不支持 gunicorn,uwsgi 等高性能的 server,使用 Apache + mod_uwsgi 我觉得有点麻烦,就想用 tornado 来作为 django 的 http server.
+由于 windows 不支持 gunicorn,uwsgi 等高性能的 server,使用 Apache + mod_uwsgi 我觉得有点麻烦,就想用 tornado 来作为 django 的 http server..
 
-- **tornado 是单线程的，同时 WSGI 应用又是同步的，如果我们使用 Tornado 启动 WSGI 应用，理论上每次只能处理一个请求都是，任何一个请求有阻塞，都会导致 tornado 的整个 IOLOOP 阻塞。如下所示，我们同时发出两个 GET 请求向[http://127.0.0.1:5000/](http://127.0.0.1:5000/)**
+**tornado 是单线程的，同时 WSGI 应用又是同步的，如果我们使用 Tornado 启动 WSGI 应用，理论上每次只能处理一个请求都是，任何一个请求有阻塞，都会导致 tornado 的整个 IOLOOP 阻塞。如下所示，我们同时发出两个 GET 请求向[http://127.0.0.1:5000/](http://127.0.0.1:5000/)**
 
 **会发现第一个发出的请求会在大约 5s 之后返回，而另一个请求会在 10s 左右返回，我们可以判断，这两个请求是顺序执行的。**
 
@@ -40,11 +72,11 @@ if __name__ == '__main__':
     http_server = HTTPServer(WSGIContainer(app))
     http_server.listen(5000)
     IOLoop.instance().start()
-
 ```
 
-- **我们知道，tornado 实现异步运行同步函数，我们只能使用线程来运行，如下所示：**
-  > 几乎同时返回结果,并发执行了
+**我们知道，tornado 实现异步运行同步函数，我们只能使用线程来运行，如下所示：**
+
+> 几乎同时返回结果,并发执行了
 
 ```python
 import tornado.web
@@ -74,7 +106,7 @@ if __name__ == "__main__":
     tornado.ioloop.IOLoop.current().start()
 ```
 
-- \***\*对于这种（使用 tornado 运行 Flask 的情况）情况，我们如何做呢，查看  **WSGIContainer 的代码我们发现\*\*
+**对于这种（使用 tornado 运行 Flask 的情况）情况，我们如何做呢，查看  WSGIContainer 的代码我们发现**
 
 ```python
 class WSGIContainer(object):
@@ -125,6 +157,7 @@ class WSGIContainer(object):
 ```
 
 只需重新方法将这部分代码变成异步即可,代码如下:
+
 loop.run_in_executor 的第一个参数可以为一个 ThreadPoolExecutor 对象
 
 ```python
@@ -218,7 +251,8 @@ if __name__ == '__main__':
 > 测试执行结果,几乎同时返回了 OK,不是顺序执行了
 
 **注意：**
-**　　 1 、这种方法实际上并没有提高性能，说到底还是使用多线程来运行的，所以推荐如果使用 tornado 还是和 tornado 的 web 框架联合起来写出真正的异步代码，这样才会达到 tornado 异步 IO 的高性能目的。我们的目的仅仅是让 tornado 替代 django 开发服务器的低性能而已.**
+
+1 、这种方法实际上并没有提高性能，说到底还是使用多线程来运行的，所以推荐如果使用 tornado 还是和 tornado 的 web 框架联合起来写出真正的异步代码，这样才会达到 tornado 异步 IO 的高性能目的。我们的目的仅仅是让 tornado 替代 django 开发服务器的低性能而已.\*\*
 
 - 让 tornado 取代 django 的开发服务
 
@@ -333,10 +367,12 @@ def main():
 
 if __name__ == '__main__':
     main()
-
 ```
 
 文章参考:
+
 [https://www.cnblogs.com/lycsdhr/p/11123545.html](https://www.cnblogs.com/lycsdhr/p/11123545.html)
+
 [https://www.cnblogs.com/ExMan/p/9506012.html](https://www.cnblogs.com/ExMan/p/9506012.html)
+
 [https://www.cnblogs.com/baolong/p/6769237.html](https://www.cnblogs.com/baolong/p/6769237.html)

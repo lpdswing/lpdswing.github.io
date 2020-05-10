@@ -1,13 +1,53 @@
 ---
 title: Hexo：语雀云端写作 Coding 持续集成实现自动部署
-urlname: klz3vb
-date: 2020-04-19 11:42:50 +0800
+urlname: zy4wle
+date: 2020-05-10 19:28:00 +0800
 tags: []
 categories: []
 ---
 
-ps：参考文章：[https://www.yuque.com/u46795/blog/dlloc7](https://www.yuque.com/u46795/blog/dlloc7) 
+---
+
+
+title: 语雀云端写作 Coding 持续集成实现自动部署
+
+date: 2020/4/8 20:46:25
+
+tags:
+
+- 自动构建
+
+categories:
+- hexo
+
+keywords:
+
+description:
+
+top_img:
+
+comments：
+
+cover:
+
+toc:
+
+toc_number:
+
+copyright:
+
+mathjax:
+
+katex:
+
+---
+
+# Hexo：语雀云端写作 Coding 持续集成实现自动部署
+
+ps：参考文章：[https://www.yuque.com/u46795/blog/dlloc7](https://www.yuque.com/u46795/blog/dlloc7)
+
 上文所用的是 GitHub action，不过我们用的是 coding 平台，好处是国内访问速度快，部署简单。
+
 首先要有一个 hexo 博客，此处略过，下面来介绍一下在部署过程中遇到的一些坑。
 
 ## 原理
@@ -21,7 +61,9 @@ ps：参考文章：[https://www.yuque.com/u46795/blog/dlloc7](https://www.yuque
 - 持续集成
 
 参考文章：[http://www.mamicode.com/info-detail-2922484.html](http://www.mamicode.com/info-detail-2922484.html)
+
 他的 pipeline 有些坑，node 不支持，附上我的配置：
+
 下面这个是直接粘过来的，方便理解
 
 - 令牌用户名是：`root`
@@ -58,7 +100,6 @@ pipeline {
     }
   }
 }
-
 ```
 
 **坑 1** ：yuque-hexo 会把我们本来的\_post 文件夹直接删掉覆盖，导致本来有的文章被删除，所以这里再配置 yuque 的时候文章目录使用的是\_yuque,一会会介绍到，yuque-hexo 的配置。曲线救国，我们再自动构建的时候移动文章到 post 文件夹，然后再构建静态文章。
@@ -87,7 +128,6 @@ def main_handler(event, context):
     response = requests.post( url, headers=headers, json = payload,auth=('令牌用户名','令牌密码'))
 
     return response.text
-
 ```
 
 - 测试腾讯云函数成功就可以下一步了
@@ -143,11 +183,15 @@ def main_handler(event, context):
 ```
 
 - 坑 1
+
   - login 参数这个填的不是 url 地址，是 url 后缀类似用户名的字符串
+
 - 坑 2
+
   - 如果你本来有文章的话，"postPath": "source/\_yuque",用我这个配置，不要用\_post，否则再 yuque-hexo sync 的时候会把这个文件夹删除重建，原来写的文章也就没了，所以使用另一种办法，再 coding 自动构建的时候介绍了。
 
 ## 把 hexo 的源码 push 到 coding
 
 在语雀发布一篇文章，发现文章同步过去了，大功告成！
+
 ps： coding 有时候会有构建失败的问题，目前还不清楚是啥原因，修改一下文章再发布一次搞定。
