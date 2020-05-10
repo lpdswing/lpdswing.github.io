@@ -1,0 +1,8 @@
+class:
+    class_name: 友情链接
+    link_list:
+      1:
+        name: 过客净心
+        link: https://lpdswing.com
+        avatar: https://cdn.jsdelivr.net/gh/Yafine/Yafine-imgs/images/avatar.jpg
+        descr: 我不是大佬， 但正在成为大佬但路上

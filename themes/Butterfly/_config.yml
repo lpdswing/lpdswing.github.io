@@ -48,8 +48,8 @@ copy:
 #   icon: link || the description
 # ---------------
 social:
-  fa fa-github: https://github.com/jerryc127 || Github
-  fa fa-envelope: mailto:xxxxxxx@gmail.com || Email
+  fa fa-github: https://github.com/lpdswing || Github
+  fa fa-envelope: lpdswing@163.com || Email
   fa fa-rss: /atom.xml || RSS
 
 ####    search    ####
@@ -111,7 +111,7 @@ avatar:
   effect: false # 頭像會一直轉圈
 
 # the banner image of index
-index_img:
+index_img: https://cdn.jsdelivr.net/gh/Yafine/cdn@3.2.9/cover/0027.webp
 
 # if the banner of page not setting,it will show the top_img
 default_top_img: https://i.loli.net/2020/05/01/IuWi8QbHvzjlOPw.jpg
@@ -144,7 +144,9 @@ cover:
   position: both
   # 當沒有設置cover時，默認的封面顯示
   default_cover:
-    - https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg
+    - https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png
+
+
 
 # if the photo link cannot connect,it will show that
 lodding_bg:
@@ -154,7 +156,7 @@ lodding_bg:
 
 # A simple 404 page
 error_404:
-  enable: false
+  enable: true
   subtitle: 'Page Not Found'
   background:
 
@@ -170,7 +172,7 @@ post_meta:
 
 # Please see doc for more details: https://docs.jerryc.me/config.html#字數統計
 wordcount:
-  enable: false
+  enable: true
   post_wordcount: true
   min2read: true
   total_wordcount: true
@@ -185,7 +187,7 @@ auto_open_sidebar:
 
 post_copyright:
   enable: true
-  decode: false
+  decode: true
   license: CC BY-NC-SA 4.0
   license_url: https://creativecommons.org/licenses/by-nc-sa/4.0/
 
@@ -241,12 +243,12 @@ laibili:
   uid:
 
 gitalk:
-  enable: false
-  client_id:
-  client_secret:
-  repo:
-  owner:
-  admin:
+  enable: true
+  client_id: 280881e58e5f41e83c41
+  client_secret: 5f4418b28b39b7f5c0cc3d1d7849d123690b8e6d
+  repo: hexo-gtalk
+  owner: lpdswing
+  admin: lpdswing
   language: zh-CN # en , zh-CN , zh-TW
   perPage: 10 # Pagination size, with maximum 100.
   distractionFreeMode: false # Facebook-like distraction free mode.
@@ -463,7 +465,7 @@ fireworks:
 
 # 點擊出現愛心
 click_heart:
-  enable: false
+  enable: true
 
 # 點擊出現文字，文字可自行修改
 ClickShowText:
@@ -539,13 +541,13 @@ preloader: false
 aside:
   enable: true
   mobile: true # 手機頁面（ 顯示寬度 < 768px ）是否顯示aside內容
-  position: right # left or right
+  position: left # left or right
   card_author:
     enable: true
     description:
   card_announcement:
     enable: true
-    content: This is my Blog
+    content: 欢迎来到我的小站，喜欢请收藏～～
   card_recent_post:
     enable: true
     limit: 5 # if set 0 will show all
@@ -590,11 +592,11 @@ translate:
   #延遲時間,若不在前, 要設定延遲翻譯時間, 如100表示100ms,默認為0
   translateDelay: 0
   #博客網址
-  cookieDomain: 'https://xxx/'
+  cookieDomain: 'https://lpdswing.com/'
   #當文字是簡體時，按鈕顯示的文字
   msgToTraditionalChinese: '繁'
   #當文字是繁體時，按鈕顯示的文字
-  msgToSimplifiedChinese: '簡'
+  msgToSimplifiedChinese: '简'
 
 #閲讀模式
 readmode:
