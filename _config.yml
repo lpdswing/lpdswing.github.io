@@ -122,6 +122,6 @@ theme: Butterfly
 deploy:
   type: git
   repository:
-        github: https://9b4d7726953238111e39b50092a812288e196a1a@github.com/lpdswing/lpdswing.github.io.git
         coding: https://KSUeCOTwnI:53547b0a0a679a967c112b9f8ae4383cccdc4c93@e.coding.net/lpdswing/lpdswing.git
+        github: https://59ccbb1359a81f49f238a609c6416c01fb947968@github.com/lpdswing/lpdswing.github.io.git
   branch: master
