@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "hexo": "^4.2.0",
+    "hexo-deployer-git": "^2.1.0",
     "hexo-filter-github-emojis": "^2.1.0",
     "hexo-generator-archive": "^1.0.0",
     "hexo-generator-category": "^1.0.0",
@@ -38,6 +39,6 @@
     "hexo-renderer-stylus": "^1.1.0",
     "hexo-server": "^1.0.0",
     "hexo-wordcount": "^6.0.1",
-    "yuque-hexo": "^1.6.4"
+    "yuque-hexo": "^1.6.5"
   }
 }

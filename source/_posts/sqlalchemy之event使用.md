@@ -1,17 +1,11 @@
-
 ---
-
 title: sqlalchemy之event使用
-
 urlname: mifw46
-
 date: 2020-04-24 10:50:10 +0800
-
 tags: []
-
 categories: []
-
 ---
+
 ---
 
 title: sqlalchemy之event使用
@@ -28,7 +22,7 @@ categories:  Python
 ---
 
 - 参考文档
-> [https://docs.sqlalchemy.org/en/13/orm/events.html?highlight=events#mapper-events](https://docs.sqlalchemy.org/en/13/orm/events.html?highlight=events#mapper-events)
+  > [https://docs.sqlalchemy.org/en/13/orm/events.html?highlight=events#mapper-events](https://docs.sqlalchemy.org/en/13/orm/events.html?highlight=events#mapper-events)
 
 ```python
 from sqlalchemy.event import listents_for
@@ -48,4 +42,3 @@ def after_del_user(mapper,connection,target):
     print(target.id)  # target就是user对象
     # ....,写逻辑代码
 ```
-
