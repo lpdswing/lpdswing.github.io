@@ -2,7 +2,13 @@ class:
     class_name: 友情链接
     link_list:
       1:
-        name: 过客净心
+        name: lpdswing
         link: https://lpdswing.com
         avatar: https://cdn.jsdelivr.net/gh/Yafine/Yafine-imgs/images/avatar.jpg
         descr: 我不是大佬， 但正在成为大佬但路上
+
+      2:
+        name: Kylin
+        link: https://www.kylin.show/
+        avatar: https://www.kylin.show/img/avatar.jpg
+        descr: 学习不易，努力努力~

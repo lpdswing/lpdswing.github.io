@@ -123,5 +123,5 @@ deploy:
   type: git
   repository:
         coding: https://KSUeCOTwnI:53547b0a0a679a967c112b9f8ae4383cccdc4c93@e.coding.net/lpdswing/lpdswing.git
-        github: https://59ccbb1359a81f49f238a609c6416c01fb947968@github.com/lpdswing/lpdswing.github.io.git
+        github: https://a829263afbba1f60a94cd8ccad12020a7a55a36c@github.com/lpdswing/lpdswing.github.io.git
   branch: master
