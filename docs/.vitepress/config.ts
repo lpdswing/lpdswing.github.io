@@ -25,6 +25,19 @@ const blogTheme = getThemeConfig({
   },
   // 开启离线的全文搜索支持（如构建报错可注释下面的配置再次尝试）
   search: 'pagefind',
+  comment: {
+    repo: 'lpdswing/lpdswing.github.io',
+    repoId: 'MDEwOlJlcG9zaXRvcnkxMjc0MDAxNDg=',
+    category: 'Announcements',
+    categoryId: 'DIC_kwDOB5f41M4CWkfm'
+  },
+  authorList: [
+    {
+      nickname: 'lpdswing',
+      url: 'https://lpdswing.github.io/about.html',
+      des: '用你的双手改变世界。'
+    }
+  ],
   popover: {
     title: '公告',
     body: [
@@ -43,7 +56,7 @@ const blogTheme = getThemeConfig({
         link: 'https://lpdswing.github.io/'
       }
     ],
-    duration: -1
+    duration: -1,
   }
 })
 
