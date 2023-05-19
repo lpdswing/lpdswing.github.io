@@ -1,4 +1,4 @@
-import{_ as s,o as a,c as n,O as l}from"./chunks/framework.72ba6402.js";const h=JSON.parse('{"title":"vitepress博客主题参数配置","description":"列举了一些常用参数。","frontmatter":{"title":"vitepress博客主题参数配置","description":"列举了一些常用参数。","comment":true,"tags":["vitepress"],"categories":["知识库"],"sticky":999},"headers":[],"relativePath":"technology/other/vitepress.md","filePath":"technology/other/vitepress.md","lastUpdated":1684403883000}'),e={name:"technology/other/vitepress.md"},p=l(`<h1 id="主题配置" tabindex="-1">主题配置 <a class="header-anchor" href="#主题配置" aria-label="Permalink to &quot;主题配置&quot;">​</a></h1><h2 id="home" tabindex="-1">Home <a class="header-anchor" href="#home" aria-label="Permalink to &quot;Home&quot;">​</a></h2><div class="language-"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki material-theme-palenight"><code><span class="line"><span style="color:#A6ACCD;">---</span></span>
+import{_ as s,o as a,c as n,O as l}from"./chunks/framework.72ba6402.js";const h=JSON.parse('{"title":"vitepress博客主题参数配置","description":"列举了一些常用参数。","frontmatter":{"title":"vitepress博客主题参数配置","description":"列举了一些常用参数。","comment":true,"tags":["vitepress"],"categories":["知识库"],"sticky":999},"headers":[],"relativePath":"technology/other/vitepress.md","filePath":"technology/other/vitepress.md","lastUpdated":1684467644000}'),e={name:"technology/other/vitepress.md"},p=l(`<h1 id="主题配置" tabindex="-1">主题配置 <a class="header-anchor" href="#主题配置" aria-label="Permalink to &quot;主题配置&quot;">​</a></h1><h2 id="home" tabindex="-1">Home <a class="header-anchor" href="#home" aria-label="Permalink to &quot;Home&quot;">​</a></h2><div class="language-"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki material-theme-palenight"><code><span class="line"><span style="color:#A6ACCD;">---</span></span>
 <span class="line"><span style="color:#A6ACCD;">layout: home</span></span>
 <span class="line"><span style="color:#A6ACCD;"># 首页部分元素定制</span></span>
 <span class="line"><span style="color:#A6ACCD;">blog:</span></span>
@@ -34,15 +34,12 @@ import{_ as s,o as a,c as n,O as l}from"./chunks/framework.72ba6402.js";const h=
 <span class="line"><span style="color:#A6ACCD;"># 用于设置文章左侧展示的 推荐文章 顺序（越小越靠前），或者在推荐列表中隐藏掉不展示</span></span>
 <span class="line"><span style="color:#A6ACCD;">recommend: 1</span></span>
 <span class="line"><span style="color:#A6ACCD;">---</span></span></code></pre></div><h3 id="默认常用配置" tabindex="-1">默认常用配置 <a class="header-anchor" href="#默认常用配置" aria-label="Permalink to &quot;默认常用配置&quot;">​</a></h3><p>写文章时可直接复制此配置</p><div class="language-"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki material-theme-palenight"><code><span class="line"><span style="color:#A6ACCD;">---</span></span>
-<span class="line"><span style="color:#A6ACCD;">title: 文章标题（默认取一级标题）</span></span>
-<span class="line"><span style="color:#A6ACCD;">description: 类似副标题或者摘要（默认文章的前100字）</span></span>
+<span class="line"><span style="color:#A6ACCD;">title: </span></span>
 <span class="line"><span style="color:#A6ACCD;">comment: true  </span></span>
-<span class="line"><span style="color:#A6ACCD;">tag: </span></span>
-<span class="line"><span style="color:#A6ACCD;"> - go</span></span>
 <span class="line"><span style="color:#A6ACCD;">tags:</span></span>
 <span class="line"><span style="color:#A6ACCD;"> - go</span></span>
 <span class="line"><span style="color:#A6ACCD;">categories:</span></span>
-<span class="line"><span style="color:#A6ACCD;"> - 知识库</span></span>
+<span class="line"><span style="color:#A6ACCD;"> - 面试</span></span>
 <span class="line"><span style="color:#A6ACCD;"># 设置首页的精选文章，值越大越靠前</span></span>
 <span class="line"><span style="color:#A6ACCD;">sticky: 1  </span></span>
 <span class="line"><span style="color:#A6ACCD;">---</span></span></code></pre></div>`,9),o=[p];function t(c,i,r,C,A,y){return a(),n("div",null,o)}const D=s(e,[["render",t]]);export{h as __pageData,D as default};
