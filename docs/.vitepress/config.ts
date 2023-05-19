@@ -3,6 +3,7 @@ import { getThemeConfig, defineConfig } from '@sugarat/theme/node'
 const blogTheme = getThemeConfig({
   // 文章默认作者
   author: 'lpdswing',
+  tabs: true,
   // 友链
   friend: [
     {

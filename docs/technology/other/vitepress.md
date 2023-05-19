@@ -60,16 +60,14 @@ recommend: 1
 写文章时可直接复制此配置
 ```
 ---
-title: 文章标题（默认取一级标题）
-description: 类似副标题或者摘要（默认文章的前100字）
+title: 
 comment: true  
-tag: 
- - go
 tags:
  - go
 categories:
- - 知识库
+ - 面试
 # 设置首页的精选文章，值越大越靠前
 sticky: 1  
 ---
 ```
+
