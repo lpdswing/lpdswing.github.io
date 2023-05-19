@@ -1,4 +1,6 @@
 import { getThemeConfig, defineConfig } from '@sugarat/theme/node'
+import { nav } from './config/nav'
+import { head } from './config/head'
 
 const blogTheme = getThemeConfig({
   // 文章默认作者
@@ -64,8 +66,9 @@ const blogTheme = getThemeConfig({
 export default defineConfig({
   extends: blogTheme,
   lang: 'zh-cn',
-  title: "lpdswing",
+  title: "lpdswing的博客",
   description: 'lpdswing的个人blog，记录学习过程。',
+  head: head,
   vite: {
     optimizeDeps: {
       include: ['element-plus'],
@@ -93,54 +96,6 @@ export default defineConfig({
         link: 'https://gitee.com/lpdswing'
       },
     ],
-    nav: [
-      {
-        text: '知识库',
-        items: [
-          { text: '技术教程', link: '/technology/learn/' },
-          { text: '源码学习', link: '/technology/source/' },
-          { text: '杂谈', link: '/technology/other/' },
-        ]
-      },
-      {
-        text: '学习小册',
-        items: [
-          { text: '架构', link: '/booklet/design/' },
-          { text: 'Mysql45讲', link: '/booklet/mysql45/' },
-          { text: '高并发系统设计', link: '/booklet/highConcurrency/' },
-          { text: '分布式系统', link: '/booklet/distributed/' },
-          { text: 'Kubernetes从上手到实践', link: '/booklet/k8s/' },
-        ]
-      },
-      {
-        text: '语言',
-        items: [
-          { text: 'Python', link: '/lang/python/' },
-          { text: 'Go', link: '/lang/go/' },
-          { text: 'Rust', link: '/lang/rust/' },
-          { text: 'TypeScript', link: '/lang/ts/' },
-        ]
-      },
-      {
-        text: '面试',
-        items: [
-          { text: 'LeetCode', link: '/interview/leetcode/' },
-          { text: '算法技巧', link: '/interview/algorithm/' },
-        ]
-      },
-      {
-        text: '个人项目',
-        items: [
-          {
-            text: 'GPTFusion',
-            link: 'https://github.com/lpdswing/GPTFusion'
-          }
-        ]
-      },
-      {
-        text: '关于我',
-        link: '/about'
-      },
-    ],
+    nav: nav,
   }
 })
