@@ -270,7 +270,7 @@ systemctl daemon-reload && systemctl restart containerd
   cgroupDriver: systemd
   ```
   
-  ![image-20230609145745282](/Users/lpdswing/Library/Application Support/typora-user-images/image-20230609145745282.png)
+  ![](https://cdn.jsdelivr.net/gh/lpdswing/oss@main/202306091457082.png)
 
 ​		`kubeadm init` 执行起见生成了一些文件，而这些文件我们先前在 kubelet server 的 `Drop-in` 的配置中配置过。
 
@@ -302,7 +302,7 @@ kubeadm join 10.211.55.3:6443 --token abcdef.0123456789abcdef \
 
 - 验证
 
-  ![image-20230609150039514](/Users/lpdswing/Library/Application Support/typora-user-images/image-20230609150039514.png)
+  ![](https://cdn.jsdelivr.net/gh/lpdswing/oss@main/202306091500027.png)
 
 ​		K8S 默认会监听一些端口，但并不是 `8080` 端口，由此可知，我们的 `kubectl`配置有误。
 
@@ -337,7 +337,7 @@ kubeadm join 10.211.55.3:6443 --token abcdef.0123456789abcdef \
 kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
 ```
 
-![image-20230609152153990](/Users/lpdswing/Library/Application Support/typora-user-images/image-20230609152153990.png)
+![](https://cdn.jsdelivr.net/gh/lpdswing/oss@main/202306091521977.png)
 
 查看一下现有集群Pod状态。
 
