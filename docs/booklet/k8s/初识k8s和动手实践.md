@@ -198,85 +198,87 @@ systemctl daemon-reload && systemctl restart containerd
 
 ### 启动
 
-- 安装crictl(目前apt安装已经带了，不需要手动安装了)
+#### 安装crictl(目前apt安装已经带了，不需要手动安装了)
 
-  - `crictl` 是 `kubelet` CRI (Container Runtime Interface) 的 CLI
-  - `critest` 是 `kubelet` CRI 的测试工具集。
+- `crictl` 是 `kubelet` CRI (Container Runtime Interface) 的 CLI
+- `critest` 是 `kubelet` CRI 的测试工具集。
 
-  ```shell
-  # install crictl
-  VERSION="v1.26.0"
-  wget https://github.com/kubernetes-sigs/cri-tools/releases/download/$VERSION/crictl-$VERSION-linux-amd64.tar.gz
-  sudo tar zxvf crictl-$VERSION-linux-amd64.tar.gz -C /usr/local/bin
-  rm -f crictl-$VERSION-linux-amd64.tar.gz
-  # install critest
-  VERSION="v1.26.0"
-  wget https://github.com/kubernetes-sigs/cri-tools/releases/download/$VERSION/critest-$VERSION-linux-amd64.tar.gz
-  sudo tar zxvf critest-$VERSION-linux-amd64.tar.gz -C /usr/local/bin
-  rm -f critest-$VERSION-linux-amd64.tar.gz
-  ```
+```shell
+# install crictl
+VERSION="v1.26.0"
+wget https://github.com/kubernetes-sigs/cri-tools/releases/download/$VERSION/crictl-$VERSION-linux-amd64.tar.gz
+sudo tar zxvf crictl-$VERSION-linux-amd64.tar.gz -C /usr/local/bin
+rm -f crictl-$VERSION-linux-amd64.tar.gz
+# install critest
+VERSION="v1.26.0"
+wget https://github.com/kubernetes-sigs/cri-tools/releases/download/$VERSION/critest-$VERSION-linux-amd64.tar.gz
+sudo tar zxvf critest-$VERSION-linux-amd64.tar.gz -C /usr/local/bin
+rm -f critest-$VERSION-linux-amd64.tar.gz
+```
 
-- 安装socat
+#### 安装socat
 
-  - `socat` 是一款很强大的命令行工具，可以建立两个双向字节流并在其中传输数据。它其中的一个功能是可以实现端口转发。
-  - ubuntu下使用`sudo apt-get install -y socat`进行安装。
+- `socat` 是一款很强大的命令行工具，可以建立两个双向字节流并在其中传输数据。它其中的一个功能是可以实现端口转发。
+- ubuntu下使用`sudo apt-get install -y socat`进行安装。
 
-- 初始化集群
+#### 初始化集群
 
-  ```bash
-  kubeadm config print init-defaults > kubeadm.yaml
-  # 配置文件如下
-  apiVersion: kubeadm.k8s.io/v1beta3
-  bootstrapTokens:
-  - groups:
-    - system:bootstrappers:kubeadm:default-node-token
-    token: abcdef.0123456789abcdef
-    ttl: 24h0m0s
-    usages:
-    - signing
-    - authentication
-  kind: InitConfiguration
-  localAPIEndpoint:
-    advertiseAddress: 10.211.55.3
-    bindPort: 6443
-  nodeRegistration:
-    criSocket: unix:///var/run/containerd/containerd.sock
-    imagePullPolicy: IfNotPresent
-    name: k8s-master
-    taints: null
-  ---
-  apiServer:
-    timeoutForControlPlane: 4m0s
-  apiVersion: kubeadm.k8s.io/v1beta3
-  certificatesDir: /etc/kubernetes/pki
-  clusterName: kubernetes
-  controllerManager: {}
-  dns: {}
-  etcd:
-    local:
-      dataDir: /var/lib/etcd
-  imageRepository: registry.k8s.io
-  kind: ClusterConfiguration
-  kubernetesVersion: 1.27.2
-  networking:
-    dnsDomain: cluster.local
-    serviceSubnet: 10.96.0.0/12
-    podSubnet: 10.1.0.0/16  # 增加指定pod的网段
-  scheduler: {}
-  ---
-  # 指定cgroup
-  apiVersion: kubelet.config.k8s.io/v1beta1
-  kind: KubeletConfiguration
-  cgroupDriver: systemd
-  ```
-  
-  ![](https://cdn.jsdelivr.net/gh/lpdswing/oss@main/202306091457082.png)
+```bash
+kubeadm config print init-defaults > kubeadm.yaml
+# 配置文件如下
+apiVersion: kubeadm.k8s.io/v1beta3
+bootstrapTokens:
+- groups:
+  - system:bootstrappers:kubeadm:default-node-token
+  token: abcdef.0123456789abcdef
+  ttl: 24h0m0s
+  usages:
+  - signing
+  - authentication
+kind: InitConfiguration
+localAPIEndpoint:
+  advertiseAddress: 10.211.55.3
+  bindPort: 6443
+nodeRegistration:
+  criSocket: unix:///var/run/containerd/containerd.sock
+  imagePullPolicy: IfNotPresent
+  name: k8s-master
+  taints: null
+---
+apiServer:
+  timeoutForControlPlane: 4m0s
+apiVersion: kubeadm.k8s.io/v1beta3
+certificatesDir: /etc/kubernetes/pki
+clusterName: kubernetes
+controllerManager: {}
+dns: {}
+etcd:
+  local:
+    dataDir: /var/lib/etcd
+imageRepository: registry.k8s.io
+kind: ClusterConfiguration
+kubernetesVersion: 1.27.2
+networking:
+  dnsDomain: cluster.local
+  serviceSubnet: 10.96.0.0/12
+  podSubnet: 10.1.0.0/16  # 增加指定pod的网段
+scheduler: {}
+---
+# 指定cgroup
+apiVersion: kubelet.config.k8s.io/v1beta1
+kind: KubeletConfiguration
+cgroupDriver: systemd
+```
 
-​		`kubeadm init` 执行起见生成了一些文件，而这些文件我们先前在 kubelet server 的 `Drop-in` 的配置中配置过。
+![](https://cdn.jsdelivr.net/gh/lpdswing/oss@main/202306091457082.png)
 
-​		生成这些配置文件后，将启动 `kubelet` 服务，生成一系列的证书和相关的配置之类的，并增加一些扩展。
+`kubeadm init` 执行起见生成了一些文件，而这些文件我们先前在 kubelet server 的 `Drop-in` 的配置中配置过。
 
-​		最终集群创建成功，并提示可在任意机器上使用指定命令加入集群。
+生成这些配置文件后，将启动 `kubelet` 服务，生成一系列的证书和相关的配置之类的，并增加一些扩展。
+
+最终集群创建成功，并提示可在任意机器上使用指定命令加入集群。
+
+下面的文字记录在一个地方，后面会用到。
 
 
   ```shell
@@ -300,37 +302,37 @@ kubeadm join 10.211.55.3:6443 --token abcdef.0123456789abcdef \
 	--discovery-token-ca-cert-hash sha256:af686c123ef26692b818eda43838997ba0997d76ac2fd509ab643a838e78201d
   ```
 
-- 验证
+#### 验证
 
-  ![](https://cdn.jsdelivr.net/gh/lpdswing/oss@main/202306091500027.png)
+![](https://cdn.jsdelivr.net/gh/lpdswing/oss@main/202306091500027.png)
 
 ​		K8S 默认会监听一些端口，但并不是 `8080` 端口，由此可知，我们的 `kubectl`配置有误。
 
-- 配置kubectl
+#### 配置kubectl
 
-  - 使用 `kubectl` 的参数 `--kubeconfig` 或者环境变量 `KUBECONFIG`
+- 使用 `kubectl` 的参数 `--kubeconfig` 或者环境变量 `KUBECONFIG`
 
-  ```shell
-  root@k8s-master:/home/tom# kubectl --kubeconfig /etc/kubernetes/admin.conf get nodes
-  NAME         STATUS     ROLES           AGE     VERSION
-  k8s-master   NotReady   control-plane   6m10s   v1.27.2
-  root@k8s-master:/home/tom# KUBECONFIG=/etc/kubernetes/admin.conf kubectl get nodes
-  NAME         STATUS     ROLES           AGE     VERSION
-  k8s-master   NotReady   control-plane   6m44s   v1.27.2
-  root@k8s-master:/home/tom#
-  ```
+```shell
+root@k8s-master:/home/tom# kubectl --kubeconfig /etc/kubernetes/admin.conf get nodes
+NAME         STATUS     ROLES           AGE     VERSION
+k8s-master   NotReady   control-plane   6m10s   v1.27.2
+root@k8s-master:/home/tom# KUBECONFIG=/etc/kubernetes/admin.conf kubectl get nodes
+NAME         STATUS     ROLES           AGE     VERSION
+k8s-master   NotReady   control-plane   6m44s   v1.27.2
+root@k8s-master:/home/tom#
+```
 
-  - 更改默认配置文件
+- 更改默认配置文件
 
-  ![](https://cdn.jsdelivr.net/gh/lpdswing/oss@main/202306091505052.png)
+![](https://cdn.jsdelivr.net/gh/lpdswing/oss@main/202306091505052.png)
 
-- 配置集群网络
+#### 配置集群网络
 
-  通过上面的配置，我们已经可以正常获取 `Node` 信息。但是状态是notready,可以通过`kubectl get nodes -o yaml`查看详细信息。
+通过上面的配置，我们已经可以正常获取 `Node` 信息。但是状态是notready,可以通过`kubectl get nodes -o yaml`查看详细信息。
 
-  ![](https://cdn.jsdelivr.net/gh/lpdswing/oss@main/202306091510150.png)
+![](https://cdn.jsdelivr.net/gh/lpdswing/oss@main/202306091510150.png)
 
-​		`CNI` 是 Container Network Interface 的缩写，是 K8S 用于配置 Linux 容器网络的接口规范。
+`CNI` 是 Container Network Interface 的缩写，是 K8S 用于配置 Linux 容器网络的接口规范。
 
 ```shell
 # 使用flannel 当前最新
@@ -356,13 +358,18 @@ kube-system    kube-scheduler-k8s-master            1/1     Running             
 
 发现有两个 `coredns` 的 `Pod` 是 `ContainerCreating` 的状态，但并未就绪。`Pod` 实际会有一个调度过程，此处我们暂且不论，后续再对此进行解释。
 
-- 新增Node
+#### 新增Node
 
-  ```shell
-  # node节点忽略init配置文件修改和网络配置
-  kubeadm join 10.211.55.3:6443 --token abcdef.0123456789abcdef \
-  	--discovery-token-ca-cert-hash sha256:af686c123ef26692b818eda43838997ba0997d76ac2fd509ab643a838e78201d
-  ```
+```shell
+# node节点忽略init配置文件修改和网络配置
+kubeadm join 10.211.55.3:6443 --token abcdef.0123456789abcdef \
+	--discovery-token-ca-cert-hash sha256:af686c123ef26692b818eda43838997ba0997d76ac2fd509ab643a838e78201d
+```
 
-  ![](https://cdn.jsdelivr.net/gh/lpdswing/oss@main/202306091645324.png)
+![](https://cdn.jsdelivr.net/gh/lpdswing/oss@main/202306091645324.png)
 
+### Refence
+
+[Ubuntu22.04 安装 K8S 1.27.1 - 简书 (jianshu.com)](https://www.jianshu.com/p/4d696c8a6f41)
+
+[Kubernetes 从上手到实践 - 张晋涛 - 掘金小册 (juejin.cn)](https://juejin.cn/book/6844733753063915533)
