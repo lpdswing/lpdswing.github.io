@@ -5,8 +5,8 @@ dependencies:
     specifier: ^2.1.0
     version: 2.1.0(vue@3.2.47)
   '@sugarat/theme':
-    specifier: ^0.1.38
-    version: 0.1.38(vitepress@1.0.0-alpha.75)(vue@3.2.47)
+    specifier: ^0.1.41
+    version: 0.1.41(vitepress@1.0.0-alpha.75)(vue@3.2.47)
   element-plus:
     specifier: ^2.3.4
     version: 2.3.4(vue@3.2.47)
@@ -459,14 +459,15 @@ packages:
       fastq: 1.15.0
     dev: false
 
-  /@sugarat/theme@0.1.38(vitepress@1.0.0-alpha.75)(vue@3.2.47):
-    resolution: {integrity: sha512-c58mnLqhrkaQ6iL91Vj74DbqV5cZU9lJKXz0hh0bif5EPM4vUMIRR0RgsWK3PGwZovFURWd+KHgGHEMINMJAvA==}
+  /@sugarat/theme@0.1.41(vitepress@1.0.0-alpha.75)(vue@3.2.47):
+    resolution: {integrity: sha512-52eJwFXKWXFraT5Zrytxcq5c8jMRrjgtOrxvVeqMoOOb9f/BMsXbFmaoyAS96PomT4tyDmKS9sMb0WjxPH9ttg==}
     dependencies:
       '@mdit-vue/shared': 0.12.0
       '@mermaid-js/mermaid-mindmap': 9.3.0
       '@vue/shared': 3.3.2
       '@vueuse/core': 9.13.0(vue@3.2.47)
       fast-glob: 3.2.12
+      feed: 4.2.2
       gray-matter: 4.0.3
       highlight.js: 11.8.0
       mermaid: 10.3.0
@@ -757,7 +758,7 @@ packages:
       normalize-path: 3.0.0
       readdirp: 3.6.0
     optionalDependencies:
-      fsevents: 2.3.2
+      fsevents: 2.3.3
 
   /commander@7.2.0:
     resolution: {integrity: sha512-QrWXB+ZQSVPmIWIhtEO9H+gwHaMGYiF5ChvoJ+K9ZGHG/sVsa6yiesAD1GC/x46sET00Xlwo1u49RVVVzvcSkw==}
@@ -1229,14 +1230,21 @@ packages:
       reusify: 1.0.4
     dev: false
 
+  /feed@4.2.2:
+    resolution: {integrity: sha512-u5/sxGfiMfZNtJ3OvQpXcvotFpYkL0n9u9mM2vkui2nGo8b4wvDkJ8gAkYqbA8QpGyFCv3RK0Z+Iv+9veCS9bQ==}
+    engines: {node: '>=0.4.0'}
+    dependencies:
+      xml-js: 1.6.11
+    dev: false
+
   /fill-range@7.0.1:
     resolution: {integrity: sha512-qOo9F+dMUmC2Lcb4BbVvnKJxTPjCm+RRpe4gDuGrzkL7mEVl/djYSu2OdQ2Pa302N4oqkSg9ir6jaLWJ2USVpQ==}
     engines: {node: '>=8'}
     dependencies:
       to-regex-range: 5.0.1
 
-  /fsevents@2.3.2:
-    resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
+  /fsevents@2.3.3:
+    resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
     requiresBuild: true
@@ -1723,7 +1731,7 @@ packages:
     engines: {node: '>=14.18.0', npm: '>=8.0.0'}
     hasBin: true
     optionalDependencies:
-      fsevents: 2.3.2
+      fsevents: 2.3.3
 
   /run-parallel@1.2.0:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==}
@@ -1754,6 +1762,10 @@ packages:
       chokidar: 3.5.3
       immutable: 4.3.0
       source-map-js: 1.0.2
+
+  /sax@1.2.4:
+    resolution: {integrity: sha512-NqVDv9TpANUjFm0N8uM5GxL36UgKi9/atZw+x7YFnQ8ckwFGKrl4xX4yWtrey3UJm5nP1kUbnYgLopqWNSRhWw==}
+    dev: false
 
   /section-matter@1.0.0:
     resolution: {integrity: sha512-vfD3pmTzGpufjScBh50YHKzEu2lxBWhVEHsNGoEXmCmn2hKGfeNLYMzCJpe8cD7gqX7TJluOVpBkAequ6dgMmA==}
@@ -1873,7 +1885,7 @@ packages:
       rollup: 3.22.0
       sass: 1.59.2
     optionalDependencies:
-      fsevents: 2.3.2
+      fsevents: 2.3.3
 
   /vitepress-plugin-mermaid@2.0.13(mermaid@10.3.0)(vitepress@1.0.0-alpha.75):
     resolution: {integrity: sha512-2c0ywXHE7kOK88Ygla9aGgkyF2JbfqfjE36JnoljW/3hQTR9rYBmfTFM5tvs4TUjCUfedUYT4CeyNolCY9t3uw==}
@@ -1964,4 +1976,11 @@ packages:
 
   /web-worker@1.2.0:
     resolution: {integrity: sha512-PgF341avzqyx60neE9DD+XS26MMNMoUQRz9NOZwW32nPQrF6p77f1htcnjBSEV8BGMKZ16choqUG4hyI0Hx7mA==}
+    dev: false
+
+  /xml-js@1.6.11:
+    resolution: {integrity: sha512-7rVi2KMfwfWFl+GpPg6m80IVMWXLRjO+PxTq7V2CDhoGak0wzYzFgUY2m4XJ47OGdXd8eLE8EmwfAmdjw7lC1g==}
+    hasBin: true
+    dependencies:
+      sax: 1.2.4
     dev: false
