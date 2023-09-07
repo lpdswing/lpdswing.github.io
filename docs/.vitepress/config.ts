@@ -39,7 +39,7 @@ const blogTheme = getThemeConfig({
   authorList: [
     {
       nickname: "lpdswing",
-      url: "https://lpdswing.github.io/about.html",
+      url: "https://www.lpdswing.top/about.html",
       des: "用你的双手改变世界。",
     },
   ],
@@ -58,7 +58,7 @@ const blogTheme = getThemeConfig({
       {
         type: "button",
         content: "博客",
-        link: "https://lpdswing.github.io/",
+        link: "https://www.lpdswing.top/",
       },
     ],
     duration: -1,
@@ -69,7 +69,7 @@ const RSS: RSSOptions = {
   baseUrl: "https://lpdswing.github.io/",
   copyright: "Copyright © 2017-present @lpdswing",
 };
-const links = []
+
 export default defineConfig({
   extends: blogTheme,
   lang: "zh-cn",
@@ -107,7 +107,7 @@ export default defineConfig({
     nav: nav,
   },
   sitemap: {
-    hostname: 'https://lpdswing.top',
+    hostname: 'https://www.lpdswing.top',
     lastmodDateOnly: false
   }
 });

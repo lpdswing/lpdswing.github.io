@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.1.0",
-    "@sugarat/theme": "^0.1.41",
+    "@sugarat/theme": "^0.1.42",
     "element-plus": "^2.3.4",
     "vitepress-plugin-rss": "^0.1.1",
     "vitepress-plugin-tabs": "^0.2.0",
