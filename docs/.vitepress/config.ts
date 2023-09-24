@@ -5,6 +5,7 @@ import { head } from "./config/head";
 
 
 const blogTheme = getThemeConfig({
+  themeColor: 'vp-green',
   // 文章默认作者
   author: "lpdswing",
   tabs: true,
@@ -82,6 +83,9 @@ export default defineConfig({
       exclude: ["@sugarat/theme"],
     },
     plugins: [RssPlugin(RSS)],
+    build: {
+      chunkSizeWarningLimit: 1600,
+    }
   },
   lastUpdated: true,
   themeConfig: {
@@ -109,5 +113,6 @@ export default defineConfig({
   sitemap: {
     hostname: 'https://www.lpdswing.top',
     lastmodDateOnly: false
-  }
+  },
+
 });
