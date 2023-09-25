@@ -4,7 +4,7 @@
         <title>lpdswing的博客</title>
         <link>https://lpdswing.github.io/</link>
         <description>undefined</description>
-        <lastBuildDate>Sun, 24 Sep 2023 17:31:53 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 25 Sep 2023 17:32:05 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <copyright>Copyright © 2017-present @lpdswing</copyright>
@@ -1794,7 +1794,7 @@ nodeRegistration:
 <span class="line"><span style="color: #24292E">    </span><span style="color: #D73A49">return</span><span style="color: #24292E"> slow </span><span style="color: #D73A49">+</span><span style="color: #24292E"> </span><span style="color: #005CC5">1</span></span>
 <span class="line"><span style="color: #24292E">}</span></span></code></pre>
 </div><p>滑动窗口框架：</p>
-<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-mAdMj" id="tab-PoxxcGd" checked="checked"><label for="tab-PoxxcGd">go</label><input type="radio" name="group-mAdMj" id="tab-Ws6qaHm" ><label for="tab-Ws6qaHm">python</label></div><div class="blocks">
+<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-J7osG" id="tab-TmxNFrY" checked="checked"><label for="tab-TmxNFrY">go</label><input type="radio" name="group-J7osG" id="tab-by73hMW" ><label for="tab-by73hMW">python</label></div><div class="blocks">
 <div class="language-go vp-adaptive-theme active"><button title="Copy Code" class="copy"></button><span class="lang">go</span><pre v-pre class="shiki github-dark vp-code-dark" ><code><span class="line"><span style="color: #6A737D">// 滑动窗口算法框架</span></span>
 <span class="line"><span style="color: #F97583">func</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">slidingWindow</span><span style="color: #E1E4E8">(s </span><span style="color: #F97583">string</span><span style="color: #E1E4E8">, t </span><span style="color: #F97583">string</span><span style="color: #E1E4E8">) {</span></span>
 <span class="line"><span style="color: #E1E4E8">    </span><span style="color: #6A737D">// 初始化need 和 window</span></span>
@@ -2216,7 +2216,7 @@ nodeRegistration:
 <p>二叉树中用遍历思路解题时函数签名一般是 <code>void traverse(...)</code>，没有返回值，靠更新外部变量来计算结果，而用分解问题思路解题时函数名根据该函数具体功能而定，而且一般会有返回值，返回值是子问题的计算结果。</p>
 </blockquote>
 <h3 id="两种方案解决二叉树的最大深度" tabindex="-1">两种方案解决二叉树的最大深度 <a class="header-anchor" href="#两种方案解决二叉树的最大深度" aria-label="Permalink to &quot;两种方案解决二叉树的最大深度&quot;">&ZeroWidthSpace;</a></h3>
-<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-yvf2s" id="tab-l7pA1HZ" checked="checked"><label for="tab-l7pA1HZ">go</label><input type="radio" name="group-yvf2s" id="tab-lIaoCUp" ><label for="tab-lIaoCUp">go</label></div><div class="blocks">
+<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-LbM72" id="tab-7VARu1f" checked="checked"><label for="tab-7VARu1f">go</label><input type="radio" name="group-LbM72" id="tab-XEvmnRT" ><label for="tab-XEvmnRT">go</label></div><div class="blocks">
 <div class="language-go vp-adaptive-theme active"><button title="Copy Code" class="copy"></button><span class="lang">go</span><pre v-pre class="shiki github-dark vp-code-dark" ><code><span class="line"><span style="color: #6A737D">// 记录最大深度</span></span>
 <span class="line"><span style="color: #F97583">var</span><span style="color: #E1E4E8"> res </span><span style="color: #F97583">int</span></span>
 <span class="line"><span style="color: #6A737D">// 记录遍历到的节点的深度</span></span>
@@ -2329,7 +2329,7 @@ nodeRegistration:
 <li>
 <p>前序遍历</p>
 <p><strong>一棵二叉树的前序遍历结果 = 根节点 + 左子树的前序遍历结果 + 右子树的前序遍历结果</strong></p>
-<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-kSDwa" id="tab-iheDf15" checked="checked"><label for="tab-iheDf15">go</label><input type="radio" name="group-kSDwa" id="tab-AXegf2v" ><label for="tab-AXegf2v">go</label></div><div class="blocks">
+<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-BARVg" id="tab-8EFNDfB" checked="checked"><label for="tab-8EFNDfB">go</label><input type="radio" name="group-BARVg" id="tab-RMI4eK8" ><label for="tab-RMI4eK8">go</label></div><div class="blocks">
 <div class="language-go vp-adaptive-theme active"><button title="Copy Code" class="copy"></button><span class="lang">go</span><pre v-pre class="shiki github-dark vp-code-dark" ><code><span class="line"><span style="color: #F97583">func</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">preorderTraversal</span><span style="color: #E1E4E8">(root </span><span style="color: #F97583">*</span><span style="color: #E1E4E8">TreeNode) []</span><span style="color: #F97583">int</span><span style="color: #E1E4E8"> {</span></span>
 <span class="line"><span style="color: #E1E4E8">    res </span><span style="color: #F97583">:=</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">make</span><span style="color: #E1E4E8">([]</span><span style="color: #F97583">int</span><span style="color: #E1E4E8">, </span><span style="color: #79B8FF">0</span><span style="color: #E1E4E8">)</span></span>
 <span class="line"><span style="color: #E1E4E8">    </span><span style="color: #79B8FF">traverse</span><span style="color: #E1E4E8">(root, </span><span style="color: #F97583">&amp;</span><span style="color: #E1E4E8">res)</span></span>
@@ -2392,7 +2392,7 @@ nodeRegistration:
 </li>
 <li>
 <p>中序遍历</p>
-<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-c55x3" id="tab-0UWkC34" checked="checked"><label for="tab-0UWkC34">go</label><input type="radio" name="group-c55x3" id="tab-DwrvbTH" ><label for="tab-DwrvbTH">go</label></div><div class="blocks">
+<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-T9A_h" id="tab-8oppjuu" checked="checked"><label for="tab-8oppjuu">go</label><input type="radio" name="group-T9A_h" id="tab-HjdlQcB" ><label for="tab-HjdlQcB">go</label></div><div class="blocks">
 <div class="language-go vp-adaptive-theme active"><button title="Copy Code" class="copy"></button><span class="lang">go</span><pre v-pre class="shiki github-dark vp-code-dark" ><code><span class="line"><span style="color: #F97583">func</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">inorderTraversal</span><span style="color: #E1E4E8">(root </span><span style="color: #F97583">*</span><span style="color: #E1E4E8">TreeNode) []</span><span style="color: #F97583">int</span><span style="color: #E1E4E8"> {</span></span>
 <span class="line"><span style="color: #E1E4E8">    result </span><span style="color: #F97583">:=</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">make</span><span style="color: #E1E4E8">([]</span><span style="color: #F97583">int</span><span style="color: #E1E4E8">, </span><span style="color: #79B8FF">0</span><span style="color: #E1E4E8">)</span></span>
 <span class="line"><span style="color: #E1E4E8">    </span><span style="color: #79B8FF">traverse</span><span style="color: #E1E4E8">(root, </span><span style="color: #F97583">&amp;</span><span style="color: #E1E4E8">result)</span></span>
@@ -2453,7 +2453,7 @@ nodeRegistration:
 </li>
 <li>
 <p>后序遍历</p>
-<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-Rck0d" id="tab-RuZQzYd" checked="checked"><label for="tab-RuZQzYd">go</label><input type="radio" name="group-Rck0d" id="tab-mrmcpUC" ><label for="tab-mrmcpUC">go</label></div><div class="blocks">
+<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-hjTxP" id="tab-VIJ8C7u" checked="checked"><label for="tab-VIJ8C7u">go</label><input type="radio" name="group-hjTxP" id="tab-4p66YAW" ><label for="tab-4p66YAW">go</label></div><div class="blocks">
 <div class="language-go vp-adaptive-theme active"><button title="Copy Code" class="copy"></button><span class="lang">go</span><pre v-pre class="shiki github-dark vp-code-dark" ><code><span class="line"><span style="color: #F97583">func</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">postorderTraversal</span><span style="color: #E1E4E8">(root </span><span style="color: #F97583">*</span><span style="color: #E1E4E8">TreeNode) []</span><span style="color: #F97583">int</span><span style="color: #E1E4E8"> {</span></span>
 <span class="line"><span style="color: #E1E4E8">    result </span><span style="color: #F97583">:=</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">make</span><span style="color: #E1E4E8">([]</span><span style="color: #F97583">int</span><span style="color: #E1E4E8">, </span><span style="color: #79B8FF">0</span><span style="color: #E1E4E8">)</span></span>
 <span class="line"><span style="color: #E1E4E8">    </span><span style="color: #79B8FF">traverse</span><span style="color: #E1E4E8">(root, </span><span style="color: #F97583">&amp;</span><span style="color: #E1E4E8">result)</span></span>
@@ -2514,7 +2514,7 @@ nodeRegistration:
 </li>
 <li>
 <p>层序遍历</p>
-<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-ZFn_h" id="tab-A0Mdq74" checked="checked"><label for="tab-A0Mdq74">go</label><input type="radio" name="group-ZFn_h" id="tab-tvtxEyD" ><label for="tab-tvtxEyD">go</label></div><div class="blocks">
+<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-aP7WK" id="tab-WHs7eXy" checked="checked"><label for="tab-WHs7eXy">go</label><input type="radio" name="group-aP7WK" id="tab-Aj2vtum" ><label for="tab-Aj2vtum">go</label></div><div class="blocks">
 <div class="language-go vp-adaptive-theme active"><button title="Copy Code" class="copy"></button><span class="lang">go</span><pre v-pre class="shiki github-dark vp-code-dark" ><code><span class="line"><span style="color: #F97583">func</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">levelOrder</span><span style="color: #E1E4E8">(root </span><span style="color: #F97583">*</span><span style="color: #E1E4E8">TreeNode) [][]</span><span style="color: #F97583">int</span><span style="color: #E1E4E8"> {</span></span>
 <span class="line"><span style="color: #E1E4E8">    res </span><span style="color: #F97583">:=</span><span style="color: #E1E4E8"> [][]</span><span style="color: #F97583">int</span><span style="color: #E1E4E8">{}</span></span>
 <span class="line"><span style="color: #E1E4E8">    </span><span style="color: #F97583">if</span><span style="color: #E1E4E8"> root </span><span style="color: #F97583">==</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">nil</span><span style="color: #E1E4E8"> {</span></span>
@@ -2761,7 +2761,7 @@ nodeRegistration:
 <li>创建哑结点方便操作， 避免链表头判断</li>
 </ul>
 <h2 id="代码" tabindex="-1">代码 <a class="header-anchor" href="#代码" aria-label="Permalink to &quot;代码&quot;">&ZeroWidthSpace;</a></h2>
-<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-o2LNg" id="tab-CYPEfId" checked="checked"><label for="tab-CYPEfId">go迭代</label><input type="radio" name="group-o2LNg" id="tab-T80rrO3" ><label for="tab-T80rrO3">python递归</label><input type="radio" name="group-o2LNg" id="tab-xJDlQd0" ><label for="tab-xJDlQd0">python迭代</label></div><div class="blocks">
+<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-8Q0f7" id="tab-lFeHtkz" checked="checked"><label for="tab-lFeHtkz">go迭代</label><input type="radio" name="group-8Q0f7" id="tab-OXeD30x" ><label for="tab-OXeD30x">python递归</label><input type="radio" name="group-8Q0f7" id="tab-zRNE0Fx" ><label for="tab-zRNE0Fx">python迭代</label></div><div class="blocks">
 <div class="language-go vp-adaptive-theme active"><button title="Copy Code" class="copy"></button><span class="lang">go</span><pre v-pre class="shiki github-dark vp-code-dark" ><code><span class="line"><span style="color: #F97583">func</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">removeElements</span><span style="color: #E1E4E8">(head </span><span style="color: #F97583">*</span><span style="color: #E1E4E8">ListNode, val </span><span style="color: #F97583">int</span><span style="color: #E1E4E8">) </span><span style="color: #F97583">*</span><span style="color: #E1E4E8">ListNode {</span></span>
 <span class="line"><span style="color: #E1E4E8">    </span><span style="color: #F97583">if</span><span style="color: #E1E4E8"> head </span><span style="color: #F97583">==</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">nil</span><span style="color: #E1E4E8"> {</span></span>
 <span class="line"><span style="color: #E1E4E8">        </span><span style="color: #F97583">return</span><span style="color: #E1E4E8"> head</span></span>
