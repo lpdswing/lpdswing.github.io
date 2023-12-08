@@ -9,3 +9,5 @@ blog.tar.gz
 packages/theme/node.d.ts
 packages/theme/node.js
 _pagefind
+**/.DS_Store
+
