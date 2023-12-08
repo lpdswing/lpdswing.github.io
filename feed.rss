@@ -4,7 +4,7 @@
         <title>lpdswing的博客</title>
         <link>https://lpdswing.github.io/</link>
         <description>undefined</description>
-        <lastBuildDate>Fri, 08 Dec 2023 12:16:54 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 08 Dec 2023 12:19:43 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <copyright>Copyright © 2017-present @lpdswing</copyright>
@@ -12,8 +12,9 @@
             <title><![CDATA[go语言泛型]]></title>
             <link>https://lpdswing.github.io//lang/go/泛型.html</link>
             <guid>https://lpdswing.github.io//lang/go/泛型.html</guid>
-            <pubDate>Fri, 08 Dec 2023 12:11:39 GMT</pubDate>
-            <content:encoded><![CDATA[<p>Go 语言自从推出以来，一直被人诟病没有泛型。泛型是一种非常重要的编程概念，它可以让我们编写更加通用、可复用的代码。在 Go 语言中，我们可以使用接口和类型断言来实现类似泛型的功能，但是这种方式并不是很灵活，而且有一定的性能损失。因此，Go 语言社区一直在呼吁加入泛型支持。最近，Go 语言官方终于在 2021 年发布的 Go 1.18 版本中加入了泛型支持，这是 Go 语言发展历程中的一个重要里程碑。</p>
+            <pubDate>Fri, 08 Dec 2023 12:18:27 GMT</pubDate>
+            <content:encoded><![CDATA[<h1 id="go语言泛型" tabindex="-1">Go语言泛型 <a class="header-anchor" href="#go语言泛型" aria-label="Permalink to &quot;Go语言泛型&quot;">&ZeroWidthSpace;</a></h1>
+<p>Go 语言自从推出以来，一直被人诟病没有泛型。泛型是一种非常重要的编程概念，它可以让我们编写更加通用、可复用的代码。在 Go 语言中，我们可以使用接口和类型断言来实现类似泛型的功能，但是这种方式并不是很灵活，而且有一定的性能损失。因此，Go 语言社区一直在呼吁加入泛型支持。最近，Go 语言官方终于在 2021 年发布的 Go 1.18 版本中加入了泛型支持，这是 Go 语言发展历程中的一个重要里程碑。</p>
 <p>在 Go 语言中，泛型的实现方式是通过类型参数化来实现的。也就是说，我们可以在函数、结构体等定义中使用类型参数，这些类型参数可以在使用时被具体的类型替换。下面是一个简单的示例，演示了如何使用泛型函数来计算两个数的和：</p>
 <div class="language-go vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">go</span><pre v-pre class="shiki github-dark vp-code-dark" ><code><span class="line"><span style="color: #F97583">type</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Numeric</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">interface</span><span style="color: #E1E4E8"> {</span></span>
 <span class="line"><span style="color: #E1E4E8">	</span><span style="color: #F97583">float64</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">|</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">int</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">|</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">int8</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">|</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">int16</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">|</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">int32</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">|</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">int64</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">|</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">uint</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">|</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">uint8</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">|</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">uint16</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">|</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">uint32</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">|</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">uint64</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">|</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">uintptr</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">|</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">float32</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">|</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">complex64</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">|</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">complex128</span></span>
@@ -1310,7 +1311,7 @@ nodeRegistration:
 <span class="line"><span style="color: #24292E">    </span><span style="color: #D73A49">return</span><span style="color: #24292E"> slow </span><span style="color: #D73A49">+</span><span style="color: #24292E"> </span><span style="color: #005CC5">1</span></span>
 <span class="line"><span style="color: #24292E">}</span></span></code></pre>
 </div><p>滑动窗口框架：</p>
-<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-70z_L" id="tab-UWzaUjI" checked="checked"><label for="tab-UWzaUjI">go</label><input type="radio" name="group-70z_L" id="tab-xEUFmiZ" ><label for="tab-xEUFmiZ">python</label></div><div class="blocks">
+<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-lXC5_" id="tab-ICYeNOE" checked="checked"><label for="tab-ICYeNOE">go</label><input type="radio" name="group-lXC5_" id="tab-WbYX8TR" ><label for="tab-WbYX8TR">python</label></div><div class="blocks">
 <div class="language-go vp-adaptive-theme active"><button title="Copy Code" class="copy"></button><span class="lang">go</span><pre v-pre class="shiki github-dark vp-code-dark" ><code><span class="line"><span style="color: #6A737D">// 滑动窗口算法框架</span></span>
 <span class="line"><span style="color: #F97583">func</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">slidingWindow</span><span style="color: #E1E4E8">(s </span><span style="color: #F97583">string</span><span style="color: #E1E4E8">, t </span><span style="color: #F97583">string</span><span style="color: #E1E4E8">) {</span></span>
 <span class="line"><span style="color: #E1E4E8">    </span><span style="color: #6A737D">// 初始化need 和 window</span></span>
@@ -1730,7 +1731,7 @@ nodeRegistration:
 <p>二叉树中用遍历思路解题时函数签名一般是 <code>void traverse(...)</code>，没有返回值，靠更新外部变量来计算结果，而用分解问题思路解题时函数名根据该函数具体功能而定，而且一般会有返回值，返回值是子问题的计算结果。</p>
 </blockquote>
 <h3 id="两种方案解决二叉树的最大深度" tabindex="-1">两种方案解决二叉树的最大深度 <a class="header-anchor" href="#两种方案解决二叉树的最大深度" aria-label="Permalink to &quot;两种方案解决二叉树的最大深度&quot;">&ZeroWidthSpace;</a></h3>
-<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-2xteS" id="tab-gBEkb-K" checked="checked"><label for="tab-gBEkb-K">go</label><input type="radio" name="group-2xteS" id="tab-iaoiXUR" ><label for="tab-iaoiXUR">go</label></div><div class="blocks">
+<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-ZzdTQ" id="tab-thdece1" checked="checked"><label for="tab-thdece1">go</label><input type="radio" name="group-ZzdTQ" id="tab-FZAcskz" ><label for="tab-FZAcskz">go</label></div><div class="blocks">
 <div class="language-go vp-adaptive-theme active"><button title="Copy Code" class="copy"></button><span class="lang">go</span><pre v-pre class="shiki github-dark vp-code-dark" ><code><span class="line"><span style="color: #6A737D">// 记录最大深度</span></span>
 <span class="line"><span style="color: #F97583">var</span><span style="color: #E1E4E8"> res </span><span style="color: #F97583">int</span></span>
 <span class="line"><span style="color: #6A737D">// 记录遍历到的节点的深度</span></span>
@@ -1843,7 +1844,7 @@ nodeRegistration:
 <li>
 <p>前序遍历</p>
 <p><strong>一棵二叉树的前序遍历结果 = 根节点 + 左子树的前序遍历结果 + 右子树的前序遍历结果</strong></p>
-<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-Jh-x2" id="tab-9A8Igqp" checked="checked"><label for="tab-9A8Igqp">go</label><input type="radio" name="group-Jh-x2" id="tab-f6GdyPq" ><label for="tab-f6GdyPq">go</label></div><div class="blocks">
+<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-xpEWZ" id="tab-iqipe7T" checked="checked"><label for="tab-iqipe7T">go</label><input type="radio" name="group-xpEWZ" id="tab-ULhyXwe" ><label for="tab-ULhyXwe">go</label></div><div class="blocks">
 <div class="language-go vp-adaptive-theme active"><button title="Copy Code" class="copy"></button><span class="lang">go</span><pre v-pre class="shiki github-dark vp-code-dark" ><code><span class="line"><span style="color: #F97583">func</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">preorderTraversal</span><span style="color: #E1E4E8">(root </span><span style="color: #F97583">*</span><span style="color: #E1E4E8">TreeNode) []</span><span style="color: #F97583">int</span><span style="color: #E1E4E8"> {</span></span>
 <span class="line"><span style="color: #E1E4E8">    res </span><span style="color: #F97583">:=</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">make</span><span style="color: #E1E4E8">([]</span><span style="color: #F97583">int</span><span style="color: #E1E4E8">, </span><span style="color: #79B8FF">0</span><span style="color: #E1E4E8">)</span></span>
 <span class="line"><span style="color: #E1E4E8">    </span><span style="color: #79B8FF">traverse</span><span style="color: #E1E4E8">(root, </span><span style="color: #F97583">&amp;</span><span style="color: #E1E4E8">res)</span></span>
@@ -1906,7 +1907,7 @@ nodeRegistration:
 </li>
 <li>
 <p>中序遍历</p>
-<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-diS1_" id="tab--fE5tSO" checked="checked"><label for="tab--fE5tSO">go</label><input type="radio" name="group-diS1_" id="tab-W4W0fQ2" ><label for="tab-W4W0fQ2">go</label></div><div class="blocks">
+<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-80DXl" id="tab--hM6FuA" checked="checked"><label for="tab--hM6FuA">go</label><input type="radio" name="group-80DXl" id="tab-Z-X7CI5" ><label for="tab-Z-X7CI5">go</label></div><div class="blocks">
 <div class="language-go vp-adaptive-theme active"><button title="Copy Code" class="copy"></button><span class="lang">go</span><pre v-pre class="shiki github-dark vp-code-dark" ><code><span class="line"><span style="color: #F97583">func</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">inorderTraversal</span><span style="color: #E1E4E8">(root </span><span style="color: #F97583">*</span><span style="color: #E1E4E8">TreeNode) []</span><span style="color: #F97583">int</span><span style="color: #E1E4E8"> {</span></span>
 <span class="line"><span style="color: #E1E4E8">    result </span><span style="color: #F97583">:=</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">make</span><span style="color: #E1E4E8">([]</span><span style="color: #F97583">int</span><span style="color: #E1E4E8">, </span><span style="color: #79B8FF">0</span><span style="color: #E1E4E8">)</span></span>
 <span class="line"><span style="color: #E1E4E8">    </span><span style="color: #79B8FF">traverse</span><span style="color: #E1E4E8">(root, </span><span style="color: #F97583">&amp;</span><span style="color: #E1E4E8">result)</span></span>
@@ -1967,7 +1968,7 @@ nodeRegistration:
 </li>
 <li>
 <p>后序遍历</p>
-<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-4wjag" id="tab-kAgIEAs" checked="checked"><label for="tab-kAgIEAs">go</label><input type="radio" name="group-4wjag" id="tab-Z1UUGii" ><label for="tab-Z1UUGii">go</label></div><div class="blocks">
+<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-K3Thx" id="tab-DoGhRPt" checked="checked"><label for="tab-DoGhRPt">go</label><input type="radio" name="group-K3Thx" id="tab-Ll9zbjf" ><label for="tab-Ll9zbjf">go</label></div><div class="blocks">
 <div class="language-go vp-adaptive-theme active"><button title="Copy Code" class="copy"></button><span class="lang">go</span><pre v-pre class="shiki github-dark vp-code-dark" ><code><span class="line"><span style="color: #F97583">func</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">postorderTraversal</span><span style="color: #E1E4E8">(root </span><span style="color: #F97583">*</span><span style="color: #E1E4E8">TreeNode) []</span><span style="color: #F97583">int</span><span style="color: #E1E4E8"> {</span></span>
 <span class="line"><span style="color: #E1E4E8">    result </span><span style="color: #F97583">:=</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">make</span><span style="color: #E1E4E8">([]</span><span style="color: #F97583">int</span><span style="color: #E1E4E8">, </span><span style="color: #79B8FF">0</span><span style="color: #E1E4E8">)</span></span>
 <span class="line"><span style="color: #E1E4E8">    </span><span style="color: #79B8FF">traverse</span><span style="color: #E1E4E8">(root, </span><span style="color: #F97583">&amp;</span><span style="color: #E1E4E8">result)</span></span>
@@ -2028,7 +2029,7 @@ nodeRegistration:
 </li>
 <li>
 <p>层序遍历</p>
-<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-D36Yp" id="tab-8maolbm" checked="checked"><label for="tab-8maolbm">go</label><input type="radio" name="group-D36Yp" id="tab-Fn2OwHp" ><label for="tab-Fn2OwHp">go</label></div><div class="blocks">
+<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-zq4Kv" id="tab-l-J6exU" checked="checked"><label for="tab-l-J6exU">go</label><input type="radio" name="group-zq4Kv" id="tab-AfnKP_x" ><label for="tab-AfnKP_x">go</label></div><div class="blocks">
 <div class="language-go vp-adaptive-theme active"><button title="Copy Code" class="copy"></button><span class="lang">go</span><pre v-pre class="shiki github-dark vp-code-dark" ><code><span class="line"><span style="color: #F97583">func</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">levelOrder</span><span style="color: #E1E4E8">(root </span><span style="color: #F97583">*</span><span style="color: #E1E4E8">TreeNode) [][]</span><span style="color: #F97583">int</span><span style="color: #E1E4E8"> {</span></span>
 <span class="line"><span style="color: #E1E4E8">    res </span><span style="color: #F97583">:=</span><span style="color: #E1E4E8"> [][]</span><span style="color: #F97583">int</span><span style="color: #E1E4E8">{}</span></span>
 <span class="line"><span style="color: #E1E4E8">    </span><span style="color: #F97583">if</span><span style="color: #E1E4E8"> root </span><span style="color: #F97583">==</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">nil</span><span style="color: #E1E4E8"> {</span></span>
@@ -2275,7 +2276,7 @@ nodeRegistration:
 <li>创建哑结点方便操作， 避免链表头判断</li>
 </ul>
 <h2 id="代码" tabindex="-1">代码 <a class="header-anchor" href="#代码" aria-label="Permalink to &quot;代码&quot;">&ZeroWidthSpace;</a></h2>
-<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-vJerS" id="tab-xPLWzA-" checked="checked"><label for="tab-xPLWzA-">go迭代</label><input type="radio" name="group-vJerS" id="tab-pLTxRzb" ><label for="tab-pLTxRzb">python递归</label><input type="radio" name="group-vJerS" id="tab-JCXoVFy" ><label for="tab-JCXoVFy">python迭代</label></div><div class="blocks">
+<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-L73M7" id="tab-CZ0EBbF" checked="checked"><label for="tab-CZ0EBbF">go迭代</label><input type="radio" name="group-L73M7" id="tab-5LOAV9V" ><label for="tab-5LOAV9V">python递归</label><input type="radio" name="group-L73M7" id="tab-Trs6jNd" ><label for="tab-Trs6jNd">python迭代</label></div><div class="blocks">
 <div class="language-go vp-adaptive-theme active"><button title="Copy Code" class="copy"></button><span class="lang">go</span><pre v-pre class="shiki github-dark vp-code-dark" ><code><span class="line"><span style="color: #F97583">func</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">removeElements</span><span style="color: #E1E4E8">(head </span><span style="color: #F97583">*</span><span style="color: #E1E4E8">ListNode, val </span><span style="color: #F97583">int</span><span style="color: #E1E4E8">) </span><span style="color: #F97583">*</span><span style="color: #E1E4E8">ListNode {</span></span>
 <span class="line"><span style="color: #E1E4E8">    </span><span style="color: #F97583">if</span><span style="color: #E1E4E8"> head </span><span style="color: #F97583">==</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">nil</span><span style="color: #E1E4E8"> {</span></span>
 <span class="line"><span style="color: #E1E4E8">        </span><span style="color: #F97583">return</span><span style="color: #E1E4E8"> head</span></span>
