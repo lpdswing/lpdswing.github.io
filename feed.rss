@@ -4,10 +4,262 @@
         <title>lpdswing的博客</title>
         <link>https://lpdswing.github.io/</link>
         <description>undefined</description>
-        <lastBuildDate>Wed, 20 Dec 2023 17:31:33 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 21 Dec 2023 12:55:25 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <copyright>Copyright © 2017-present @lpdswing</copyright>
+        <item>
+            <title><![CDATA[go语言模糊测试]]></title>
+            <link>https://lpdswing.github.io//lang/go/fuzz.html</link>
+            <guid>https://lpdswing.github.io//lang/go/fuzz.html</guid>
+            <pubDate>Thu, 21 Dec 2023 12:54:24 GMT</pubDate>
+            <description><![CDATA[
+# 前言
+
+​		软件系统越复杂，测试就越重要。然而手动测试可能会非常费时和乏味。这就是为什么自动化测试变的越来越流行的原因。今天我们来聊一聊自动化测试中的一种测试技术就是fuzz测试，它是一种随机测试技术，可以帮助发现软件系统中的漏洞和错误。
+
+​		Go语言目前已经是非常流行的语言了，具有高效、并发等特性。今天我们浅谈使用Go语言进行fuzz测试。从Go1.18开始，Go在其标准工具链中支持模糊测试。
+
+## 什么是fuzz测试
+
+​		**模糊测试** （fuzz testing, fuzzing）是一种[软件测试](https://zh.wikipedia.org/wiki/软件测试)技术。其核心思想是将自动或半自动生成的随机数据输入到一个[程序](https://zh.wikipedia.org/wiki/计算机程序)中，并监视程序异常，如崩溃，[断言](https://zh.wikipedia.org/wiki/斷言_(程式))（assertion）失败，以发现可能的程序错误，比如内存泄漏。模糊测试常常用于检测软件或计算机系统的安全漏洞。
+
+## Go语言中的模糊测试
+
+​		Go为开发者提供了一套强大的工具，用于实施模糊测试，核心是`testing`包中的`Fuzz`函数。通过创建以`Fuzz`为前缀的函数，按特定的签名定义输入输出，可以很容易集成模糊测试到我们的Go程序中。
+
+![](https://cdn.jsdelivr.net/gh/lpdswing/oss@main/202312212044424.png)
+
+上图是一个模糊测试的例子，突出显示了它的主要组件。
+
+模糊测试必须要遵循的规则：
+
+1. Fuzz测试必须是一个函数，函数名必须以"Fuzz"开头，后面必须是一个大写字母开头的名称，例如"FuzzAdd"。
+2. Fuzz测试函数必须接受一个*testing.F类型的参数，不能有返回值。
+3. Fuzz测试函数必须在*_test.go文件中定义才能运行。
+4. Fuzz目标必须是一个方法调用，第一个参数必须是*testing.F类型，后面跟随着fuzz测试的参数。
+5. 每个fuzz测试函数只能有一个fuzz目标。
+6. 所有的种子语料库条目的类型必须与fuzz测试的参数类型相同，顺序也必须相同。这适用于对Fuzz函数的调用以及fuzz测试的testdata/fuzz目录中的任何语料库文件。
+7. Fuzz测试的参数类型只能是以下类型：
+   - string, []byte
+   - int, uint, uintptr, int8, int16, int32, rune, int64, uint8, uint16, uint32, uint64
+   - float32, float64
+   - bool
+
+这些规则和要求是Go语言fuzz测试的基本要求，遵循这些规则可以帮助我们编写有效的fuzz测试并提高测试覆盖率。
+
+​		接下来我们通过一些简单代码来体验一下Fuzz test。
+
+### 代码编写
+
+1. 我们创建一个名为fuzz的目录
+
+   ```shell
+   > mkdir fuzz
+   > cd fuzz
+   > go mod init example/fuzz
+   > touch main.go
+   ```
+
+2. 在main.go中我们贴如以下代码
+
+   ```go
+   package main
+   
+   import "fmt"
+   
+   func Add(a, b int) int {
+     	return a + b
+   }
+   
+   func main(){
+     	fmt.Printf("Add(1, 2) = %d\n", Add(1, 2))
+   }
+   ```
+
+3. 运行代码
+
+   ```shell
+   go run .
+   Add(1, 2) = 3
+   ```
+
+   现在代码正常运行，接下来我们来测试它。
+
+### 添加单元测试
+
+​		我们先为Add函数编写一个基本的单元测试。
+
+1. 在`fuzz`目录创建一个文件为`add_test.go`。
+
+2. 贴如以下代码到`add_test.go`。
+
+   ```go
+   package main
+   
+   import "testing"
+   
+   func TestAdd(t *testing.T) {
+   	testcases := []struct {
+   		a, b, want int
+   	}{
+   		{1, 2, 3},
+   		{0, 0, 0},
+   		{-1, -2, -3},
+   		{1, -2, -1},
+   	}
+   	for _, tc := range testcases {
+   		got := Add(tc.a, tc.b)
+   		if got != tc.want {
+   			t.Errorf("Add(%d, %d) == %d, want %d", tc.a, tc.b, got, tc.want)
+   		}
+   	}
+   }
+   ```
+
+3. 执行单元测试
+
+   ```shell
+   > go test -v
+   
+   === RUN   TestAdd
+   ]]></description>
+            <content:encoded><![CDATA[<h1 id="前言" tabindex="-1">前言 <a class="header-anchor" href="#前言" aria-label="Permalink to &quot;前言&quot;">&ZeroWidthSpace;</a></h1>
+<p>​		软件系统越复杂，测试就越重要。然而手动测试可能会非常费时和乏味。这就是为什么自动化测试变的越来越流行的原因。今天我们来聊一聊自动化测试中的一种测试技术就是fuzz测试，它是一种随机测试技术，可以帮助发现软件系统中的漏洞和错误。</p>
+<p>​		Go语言目前已经是非常流行的语言了，具有高效、并发等特性。今天我们浅谈使用Go语言进行fuzz测试。从Go1.18开始，Go在其标准工具链中支持模糊测试。</p>
+<h2 id="什么是fuzz测试" tabindex="-1">什么是fuzz测试 <a class="header-anchor" href="#什么是fuzz测试" aria-label="Permalink to &quot;什么是fuzz测试&quot;">&ZeroWidthSpace;</a></h2>
+<p>​		<strong>模糊测试</strong> （fuzz testing, fuzzing）是一种<a href="https://zh.wikipedia.org/wiki/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95" target="_blank" rel="noreferrer">软件测试</a>技术。其核心思想是将自动或半自动生成的随机数据输入到一个<a href="https://zh.wikipedia.org/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F" target="_blank" rel="noreferrer">程序</a>中，并监视程序异常，如崩溃，<a href="https://zh.wikipedia.org/wiki/%E6%96%B7%E8%A8%80_(%E7%A8%8B%E5%BC%8F)" target="_blank" rel="noreferrer">断言</a>（assertion）失败，以发现可能的程序错误，比如内存泄漏。模糊测试常常用于检测软件或计算机系统的安全漏洞。</p>
+<h2 id="go语言中的模糊测试" tabindex="-1">Go语言中的模糊测试 <a class="header-anchor" href="#go语言中的模糊测试" aria-label="Permalink to &quot;Go语言中的模糊测试&quot;">&ZeroWidthSpace;</a></h2>
+<p>​		Go为开发者提供了一套强大的工具，用于实施模糊测试，核心是<code>testing</code>包中的<code>Fuzz</code>函数。通过创建以<code>Fuzz</code>为前缀的函数，按特定的签名定义输入输出，可以很容易集成模糊测试到我们的Go程序中。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/lpdswing/oss@main/202312212044424.png" alt=""></p>
+<p>上图是一个模糊测试的例子，突出显示了它的主要组件。</p>
+<p>模糊测试必须要遵循的规则：</p>
+<ol>
+<li>Fuzz测试必须是一个函数，函数名必须以&quot;Fuzz&quot;开头，后面必须是一个大写字母开头的名称，例如&quot;FuzzAdd&quot;。</li>
+<li>Fuzz测试函数必须接受一个*testing.F类型的参数，不能有返回值。</li>
+<li>Fuzz测试函数必须在*_test.go文件中定义才能运行。</li>
+<li>Fuzz目标必须是一个方法调用，第一个参数必须是*testing.F类型，后面跟随着fuzz测试的参数。</li>
+<li>每个fuzz测试函数只能有一个fuzz目标。</li>
+<li>所有的种子语料库条目的类型必须与fuzz测试的参数类型相同，顺序也必须相同。这适用于对Fuzz函数的调用以及fuzz测试的testdata/fuzz目录中的任何语料库文件。</li>
+<li>Fuzz测试的参数类型只能是以下类型：
+<ul>
+<li>string, []byte</li>
+<li>int, uint, uintptr, int8, int16, int32, rune, int64, uint8, uint16, uint32, uint64</li>
+<li>float32, float64</li>
+<li>bool</li>
+</ul>
+</li>
+</ol>
+<p>这些规则和要求是Go语言fuzz测试的基本要求，遵循这些规则可以帮助我们编写有效的fuzz测试并提高测试覆盖率。</p>
+<p>​		接下来我们通过一些简单代码来体验一下Fuzz test。</p>
+<h3 id="代码编写" tabindex="-1">代码编写 <a class="header-anchor" href="#代码编写" aria-label="Permalink to &quot;代码编写&quot;">&ZeroWidthSpace;</a></h3>
+<ol>
+<li>
+<p>我们创建一个名为fuzz的目录</p>
+<div class="language-shell vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">shell</span><pre v-pre class="shiki shiki-themes github-light github-dark vp-code" ><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> mkdir fuzz</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> cd fuzz</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> go mod init example/fuzz</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> touch main.go</span></span></code></pre>
+</div></li>
+<li>
+<p>在main.go中我们贴如以下代码</p>
+<div class="language-go vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">go</span><pre v-pre class="shiki shiki-themes github-light github-dark vp-code" ><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">package</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> main</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">import</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> "</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">fmt</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">func</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> Add</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(a, b </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">  	return</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> a </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">+</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> b</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">func</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> main</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(){</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  	fmt.</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">Printf</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"Add(1, 2) = </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">%d\n</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">Add</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">1</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">2</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">))</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">}</span></span></code></pre>
+</div></li>
+<li>
+<p>运行代码</p>
+<div class="language-shell vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">shell</span><pre v-pre class="shiki shiki-themes github-light github-dark vp-code" ><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">go</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> run</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> .</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">Add(1,</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> 2</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">) = 3</span></span></code></pre>
+</div><p>现在代码正常运行，接下来我们来测试它。</p>
+</li>
+</ol>
+<h3 id="添加单元测试" tabindex="-1">添加单元测试 <a class="header-anchor" href="#添加单元测试" aria-label="Permalink to &quot;添加单元测试&quot;">&ZeroWidthSpace;</a></h3>
+<p>​		我们先为Add函数编写一个基本的单元测试。</p>
+<ol>
+<li>
+<p>在<code>fuzz</code>目录创建一个文件为<code>add_test.go</code>。</p>
+</li>
+<li>
+<p>贴如以下代码到<code>add_test.go</code>。</p>
+<div class="language-go vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">go</span><pre v-pre class="shiki shiki-themes github-light github-dark vp-code" ><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">package</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> main</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">import</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> "</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">testing</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">func</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> TestAdd</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(t </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">*</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">testing.T) {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">	testcases </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">:=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> []</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">struct</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">		a, b, want </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">int</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">	}{</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">		{</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">1</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">2</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">3</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">},</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">		{</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">},</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">		{</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">-</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">1</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">-</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">2</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">-</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">3</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">},</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">		{</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">1</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">-</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">2</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">-</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">1</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">},</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">	}</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">	for</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> _, tc </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">:=</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> range</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> testcases {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">		got </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">:=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> Add</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(tc.a, tc.b)</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">		if</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> got </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">!=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> tc.want {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">			t.</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">Errorf</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"Add(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">%d</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">%d</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">) == </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">%d</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">, want </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">%d</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, tc.a, tc.b, got, tc.want)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">		}</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">	}</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">}</span></span></code></pre>
+</div></li>
+<li>
+<p>执行单元测试</p>
+<div class="language-shell vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">shell</span><pre v-pre class="shiki shiki-themes github-light github-dark vp-code" ><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> go test -v</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">=== </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">RUN</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">   TestAdd</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">---</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> PASS:</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> TestAdd</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> (0.00s)</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">PASS</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">ok</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">      example/fuzz</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">    0.003</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">s</span></span></code></pre>
+</div></li>
+</ol>
+<h3 id="添加模糊测试" tabindex="-1">添加模糊测试 <a class="header-anchor" href="#添加模糊测试" aria-label="Permalink to &quot;添加模糊测试&quot;">&ZeroWidthSpace;</a></h3>
+<p>单元测试的局限是我们必须把每个输入添加到测试中，模糊测试的好处是它提供了你的代码，并且可能识别你想出的测试用例的边缘情况。</p>
+<p>我们把add_test.go中的单元测试替换为以下内容模糊测试。</p>
+<div class="language-go vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">go</span><pre v-pre class="shiki shiki-themes github-light github-dark vp-code" ><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">func</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> FuzzAdd</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(f </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">*</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">testing.F) {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">	f.</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">Add</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">1</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">2</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">	f.</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">Add</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">	f.</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">Add</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">-</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">1</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">-</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">2</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">	f.</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">Add</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">-</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">2</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">-</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">2</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">	f.</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">Fuzz</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">func</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(t </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">*</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">testing.T, a, b </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">) {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">		got </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">:=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> Add</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(a, b)</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">		if</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> got </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">!=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> a</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">+</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">b {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">			t.</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">Errorf</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"Add(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">%d</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">%d</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">) == </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">%d</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">, want </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">%d</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, a, b, got, a</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">+</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">b)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">		}</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">		t.</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">Logf</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"Add(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">%d</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">%d</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">) == </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">%d</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, a, b, got)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">	})</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">}</span></span></code></pre>
+</div><p>接下来我们执行模糊测试, 通过<code>-run</code>选项用于指定要运行的测试函数的正则表达式，<code>-fuzz</code>选项用于指定要运行的fuzz测试函数的正则表达式，<code>-fuzztime</code>选项来控制fuzz测试的持续时间。</p>
+<div class="language-shell vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">shell</span><pre v-pre class="shiki shiki-themes github-light github-dark vp-code" ><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> go test -v -run=FuzzAdd -fuzz=Fuzz -fuzztime 10s</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">=== </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">RUN</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">   FuzzAdd</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">fuzz:</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> elapsed:</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> 0</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">s,</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> gathering</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> baseline</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> coverage:</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> 0</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">/11</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> completed</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">fuzz:</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> elapsed:</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> 0</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">s,</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> gathering</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> baseline</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> coverage:</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> 11</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">/11</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> completed,</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> now</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> fuzzing</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> with</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> 8</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> workers</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">fuzz:</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> elapsed:</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> 3</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">s,</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> execs:</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> 718882</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> (239620/sec), new interesting: 1 (</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">total:</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> 12</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">)</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">fuzz:</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> elapsed:</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> 6</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">s,</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> execs:</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> 1444761</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> (241916/sec), new interesting: 1 (</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">total:</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> 12</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">)</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">fuzz:</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> elapsed:</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> 9</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">s,</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> execs:</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> 2177414</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> (244215/sec), new interesting: 1 (</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">total:</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> 12</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">)</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">fuzz:</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> elapsed:</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> 10</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">s,</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> execs:</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> 2415524</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> (216791/sec), new interesting: 1 (</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">total:</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> 12</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">)</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">---</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> PASS:</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> FuzzAdd</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> (10.10s)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">=== </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">NAME</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  </span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">PASS</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">ok</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">      example/fuzz</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">    10.106</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">s</span></span></code></pre>
+</div><p>总的来说，Go语言内置的fuzz测试框架提供了一种方便的方式来进行fuzz测试，它与testing包紧密集成，可以更方便的进行单元测试和fuzz测试。</p>
+<h1 id="参考文献" tabindex="-1">参考文献 <a class="header-anchor" href="#参考文献" aria-label="Permalink to &quot;参考文献&quot;">&ZeroWidthSpace;</a></h1>
+<ul>
+<li><a href="https://zh.wikipedia.org/wiki/%E6%A8%A1%E7%B3%8A%E6%B5%8B%E8%AF%95" target="_blank" rel="noreferrer">wiki</a></li>
+<li><a href="https://go.dev/doc/tutorial/fuzz" target="_blank" rel="noreferrer">gotutorial</a></li>
+</ul>
+]]></content:encoded>
+            <enclosure url="https://cdn.jsdelivr.net/gh/lpdswing/oss@main/202312212044424.png" length="0" type="image/png"/>
+        </item>
         <item>
             <title><![CDATA[go语言泛型]]></title>
             <link>https://lpdswing.github.io//lang/go/泛型.html</link>
@@ -1319,7 +1571,7 @@ nodeRegistration:
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">    return</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> slow </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">+</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> 1</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">}</span></span></code></pre>
 </div><p>滑动窗口框架：</p>
-<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-Fo0MO" id="tab-ngSYHds" checked="checked"><label for="tab-ngSYHds">go</label><input type="radio" name="group-Fo0MO" id="tab-5lIHWg5" ><label for="tab-5lIHWg5">python</label></div><div class="blocks">
+<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-6EHPt" id="tab-hI16i0w" checked="checked"><label for="tab-hI16i0w">go</label><input type="radio" name="group-6EHPt" id="tab-gVKUdKx" ><label for="tab-gVKUdKx">python</label></div><div class="blocks">
 <div class="language-go vp-adaptive-theme active"><button title="Copy Code" class="copy"></button><span class="lang">go</span><pre v-pre class="shiki shiki-themes github-light github-dark vp-code" ><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">// 滑动窗口算法框架</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">func</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> slidingWindow</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(s </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">string</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, t </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">string</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">) {</span></span>
 <span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">    // 初始化need 和 window</span></span>
@@ -1549,7 +1801,7 @@ nodeRegistration:
 <p>二叉树中用遍历思路解题时函数签名一般是 <code>void traverse(...)</code>，没有返回值，靠更新外部变量来计算结果，而用分解问题思路解题时函数名根据该函数具体功能而定，而且一般会有返回值，返回值是子问题的计算结果。</p>
 </blockquote>
 <h3 id="两种方案解决二叉树的最大深度" tabindex="-1">两种方案解决二叉树的最大深度 <a class="header-anchor" href="#两种方案解决二叉树的最大深度" aria-label="Permalink to &quot;两种方案解决二叉树的最大深度&quot;">&ZeroWidthSpace;</a></h3>
-<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-dTeeU" id="tab-7S5-YYz" checked="checked"><label for="tab-7S5-YYz">go</label><input type="radio" name="group-dTeeU" id="tab-kzJ0S_9" ><label for="tab-kzJ0S_9">go</label></div><div class="blocks">
+<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-j37un" id="tab-iC-JIN0" checked="checked"><label for="tab-iC-JIN0">go</label><input type="radio" name="group-j37un" id="tab-rKYMw_a" ><label for="tab-rKYMw_a">go</label></div><div class="blocks">
 <div class="language-go vp-adaptive-theme active"><button title="Copy Code" class="copy"></button><span class="lang">go</span><pre v-pre class="shiki shiki-themes github-light github-dark vp-code" ><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">// 记录最大深度</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">var</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> res </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">int</span></span>
 <span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">// 记录遍历到的节点的深度</span></span>
@@ -1610,7 +1862,7 @@ nodeRegistration:
 <li>
 <p>前序遍历</p>
 <p><strong>一棵二叉树的前序遍历结果 = 根节点 + 左子树的前序遍历结果 + 右子树的前序遍历结果</strong></p>
-<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group--vARk" id="tab-GXzdAT1" checked="checked"><label for="tab-GXzdAT1">go</label><input type="radio" name="group--vARk" id="tab-P0JW8lB" ><label for="tab-P0JW8lB">go</label></div><div class="blocks">
+<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-gG3a-" id="tab-h2W3Ejp" checked="checked"><label for="tab-h2W3Ejp">go</label><input type="radio" name="group-gG3a-" id="tab-VCqi0i_" ><label for="tab-VCqi0i_">go</label></div><div class="blocks">
 <div class="language-go vp-adaptive-theme active"><button title="Copy Code" class="copy"></button><span class="lang">go</span><pre v-pre class="shiki shiki-themes github-light github-dark vp-code" ><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">func</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> preorderTraversal</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(root </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">*</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">TreeNode) []</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    res </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">:=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> make</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">([]</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">)</span></span>
 <span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">    traverse</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(root, </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">&#x26;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">res)</span></span>
@@ -1645,7 +1897,7 @@ nodeRegistration:
 </li>
 <li>
 <p>中序遍历</p>
-<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-TBTZ5" id="tab-aW-NeEg" checked="checked"><label for="tab-aW-NeEg">go</label><input type="radio" name="group-TBTZ5" id="tab-Jdtjz9O" ><label for="tab-Jdtjz9O">go</label></div><div class="blocks">
+<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-N0sM7" id="tab-9rCPrvz" checked="checked"><label for="tab-9rCPrvz">go</label><input type="radio" name="group-N0sM7" id="tab-y1nA0rQ" ><label for="tab-y1nA0rQ">go</label></div><div class="blocks">
 <div class="language-go vp-adaptive-theme active"><button title="Copy Code" class="copy"></button><span class="lang">go</span><pre v-pre class="shiki shiki-themes github-light github-dark vp-code" ><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">func</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> inorderTraversal</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(root </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">*</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">TreeNode) []</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    result </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">:=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> make</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">([]</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">)</span></span>
 <span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">    traverse</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(root, </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">&#x26;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">result)</span></span>
@@ -1679,7 +1931,7 @@ nodeRegistration:
 </li>
 <li>
 <p>后序遍历</p>
-<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-aJdtj" id="tab-nVXPVrL" checked="checked"><label for="tab-nVXPVrL">go</label><input type="radio" name="group-aJdtj" id="tab-ijdFMuq" ><label for="tab-ijdFMuq">go</label></div><div class="blocks">
+<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-rOrM3" id="tab-Py__nhf" checked="checked"><label for="tab-Py__nhf">go</label><input type="radio" name="group-rOrM3" id="tab-HFfcPxR" ><label for="tab-HFfcPxR">go</label></div><div class="blocks">
 <div class="language-go vp-adaptive-theme active"><button title="Copy Code" class="copy"></button><span class="lang">go</span><pre v-pre class="shiki shiki-themes github-light github-dark vp-code" ><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">func</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> postorderTraversal</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(root </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">*</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">TreeNode) []</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    result </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">:=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> make</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">([]</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">)</span></span>
 <span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">    traverse</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(root, </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">&#x26;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">result)</span></span>
@@ -1713,7 +1965,7 @@ nodeRegistration:
 </li>
 <li>
 <p>层序遍历</p>
-<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-xmY5L" id="tab-IAoU0wy" checked="checked"><label for="tab-IAoU0wy">go</label><input type="radio" name="group-xmY5L" id="tab-sgUv8Pn" ><label for="tab-sgUv8Pn">go</label></div><div class="blocks">
+<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-sjEoA" id="tab-J1wkOzl" checked="checked"><label for="tab-J1wkOzl">go</label><input type="radio" name="group-sjEoA" id="tab-vC9_YJH" ><label for="tab-vC9_YJH">go</label></div><div class="blocks">
 <div class="language-go vp-adaptive-theme active"><button title="Copy Code" class="copy"></button><span class="lang">go</span><pre v-pre class="shiki shiki-themes github-light github-dark vp-code" ><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">func</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> levelOrder</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(root </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">*</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">TreeNode) [][]</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    res </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">:=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> [][]</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">{}</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">    if</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> root </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">==</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> nil</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span>
@@ -1881,7 +2133,7 @@ nodeRegistration:
 <li>创建哑结点方便操作， 避免链表头判断</li>
 </ul>
 <h2 id="代码" tabindex="-1">代码 <a class="header-anchor" href="#代码" aria-label="Permalink to &quot;代码&quot;">&ZeroWidthSpace;</a></h2>
-<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-9rnCV" id="tab-KjlHhET" checked="checked"><label for="tab-KjlHhET">go迭代</label><input type="radio" name="group-9rnCV" id="tab-7fR298E" ><label for="tab-7fR298E">python递归</label><input type="radio" name="group-9rnCV" id="tab-tEWNiqr" ><label for="tab-tEWNiqr">python迭代</label></div><div class="blocks">
+<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-ZgE1F" id="tab-LFFFW-Y" checked="checked"><label for="tab-LFFFW-Y">go迭代</label><input type="radio" name="group-ZgE1F" id="tab-YCEi2Ki" ><label for="tab-YCEi2Ki">python递归</label><input type="radio" name="group-ZgE1F" id="tab-TZDdA43" ><label for="tab-TZDdA43">python迭代</label></div><div class="blocks">
 <div class="language-go vp-adaptive-theme active"><button title="Copy Code" class="copy"></button><span class="lang">go</span><pre v-pre class="shiki shiki-themes github-light github-dark vp-code" ><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">func</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> removeElements</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(head </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">*</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">ListNode, val </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">*</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">ListNode {</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">    if</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> head </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">==</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> nil</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">        return</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> head</span></span>

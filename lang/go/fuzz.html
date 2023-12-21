@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>django进阶-笔记 | lpdswing的博客</title>
+    <title>go语言模糊测试 | lpdswing的博客</title>
     <meta name="description" content="lpdswing的个人blog，记录学习过程。">
     <meta name="generator" content="VitePress v1.0.0-rc.31">
     <link rel="preload stylesheet" href="/assets/style.szWkuAEF.css" as="style">
@@ -13,7 +13,7 @@
     <link rel="modulepreload" href="/assets/chunks/framework.UjIW6W3V.js">
     <link rel="modulepreload" href="/assets/chunks/theme.fkOJH0UU.js">
     <link rel="modulepreload" href="/assets/chunks/giscus-2a044aea.hJSdW-mA.js">
-    <link rel="modulepreload" href="/assets/technology_other_Django_advanced.md.GQVxwCz-.lean.js">
+    <link rel="modulepreload" href="/assets/lang_go_fuzz.md.qLwWEiGs.lean.js">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <meta name="baidu-site-verification" content="codeva-VEjtXGitUS">
     <meta name="google-site-verification" content="2z10OBbRtcHMNBM5K8NAJy8pSES6ZtZk1kmh-HJJKHY">
@@ -46,503 +46,69 @@
 <circle cx="79.6" cy="53.7" r="20.6" fill="#CCC" fill-opacity=".5" stroke="#404040" stroke-miterlimit="10" stroke-width="3.5"/>
 <path fill="#FFF" d="M94.8 52.5c-.4-3.8-2.1-7.3-4.9-9.7s-6.4-3.7-10-3.7c-3.7 0-7.3 1.2-10.1 3.5s-4.6 5.8-4.9 9.6c0 .3-.3.5-.5.4c-.2 0-.4-.2-.4-.5c-.1-2 .3-4.1 1.1-6c.8-1.9 2-3.6 3.5-5.1c3-2.9 7.3-4.3 11.4-4.3c4.2 0 8.3 1.6 11.3 4.5c1.5 1.5 2.7 3.2 3.5 5.1c.8 1.9 1.1 4 1 6c0 .3-.2.5-.5.5c-.3.1-.5-.1-.5-.3z"/>
 <path fill="#896024" d="M37.01 49.35c-1.03-.72-2.58-.49-3.58.95s-.67 2.97.36 3.69c1.03.72 2.58.49 3.58-.95c1.01-1.45.68-2.98-.36-3.69z"/>
-</svg></span>相关文章</span><button ariadisabled="false" type="button" class="el-button el-button--primary el-button--small is-text" style="" data-v-b7b275b7><!--v-if--><span class=""><!--[-->换一组<!--]--></span></button></div><ol class="recommend-container" data-v-b7b275b7><!--[--><li data-v-b7b275b7><i class="num" data-v-b7b275b7>1</i><div class="des" data-v-b7b275b7><a class="el-link el-link--info is-underline title" href="/technology/other/vitepress" data-v-b7b275b7><!--v-if--><span class="el-link__inner"><!--[-->vitepress博客主题参数配置<!--]--></span><!--v-if--></a><div class="suffix" data-v-b7b275b7><span class="tag" data-v-b7b275b7>2023-05-19</span></div></div></li><li data-v-b7b275b7><i class="num" data-v-b7b275b7>2</i><div class="des" data-v-b7b275b7><a class="el-link el-link--info is-underline title" href="/technology/other/index" data-v-b7b275b7><!--v-if--><span class="el-link__inner"><!--[-->杂谈<!--]--></span><!--v-if--></a><div class="suffix" data-v-b7b275b7><span class="tag" data-v-b7b275b7>2023-05-18</span></div></div></li><li data-v-b7b275b7><i class="num" data-v-b7b275b7>3</i><div class="des" data-v-b7b275b7><a class="el-link el-link--info is-underline title" href="/technology/other/windows使用tornado启动django应用" data-v-b7b275b7><!--v-if--><span class="el-link__inner"><!--[-->windows使用tornado启动django应用<!--]--></span><!--v-if--></a><div class="suffix" data-v-b7b275b7><span class="tag" data-v-b7b275b7>2020-05-10</span></div></div></li><li data-v-b7b275b7><i class="num" data-v-b7b275b7>4</i><div class="des" data-v-b7b275b7><a class="el-link el-link--info is-underline title" href="/technology/other/Hexo：语雀云端写作 Coding 持续集成实现自动部署" data-v-b7b275b7><!--v-if--><span class="el-link__inner"><!--[-->Hexo：语雀云端写作 Coding 持续集成实现自动部署<!--]--></span><!--v-if--></a><div class="suffix" data-v-b7b275b7><span class="tag" data-v-b7b275b7>2020-05-10</span></div></div></li><li data-v-b7b275b7><i class="num" data-v-b7b275b7>5</i><div class="des" data-v-b7b275b7><a class="el-link el-link--info is-underline title" href="/technology/other/sqlalchemy之event使用" data-v-b7b275b7><!--v-if--><span class="el-link__inner"><!--[-->sqlalchemy之event使用<!--]--></span><!--v-if--></a><div class="suffix" data-v-b7b275b7><span class="tag" data-v-b7b275b7>2020-04-24</span></div></div></li><li data-v-b7b275b7><i class="num" data-v-b7b275b7>6</i><div class="des" data-v-b7b275b7><a class="el-link el-link--info is-underline title" href="/technology/other/Python算法之栈" data-v-b7b275b7><!--v-if--><span class="el-link__inner"><!--[-->python算法之栈<!--]--></span><!--v-if--></a><div class="suffix" data-v-b7b275b7><span class="tag" data-v-b7b275b7>2019-04-24</span></div></div></li><li data-v-b7b275b7><i class="num" data-v-b7b275b7>7</i><div class="des" data-v-b7b275b7><a class="el-link el-link--info is-underline title" href="/technology/other/理解进程线程协程" data-v-b7b275b7><!--v-if--><span class="el-link__inner"><!--[-->理解进程线程协程<!--]--></span><!--v-if--></a><div class="suffix" data-v-b7b275b7><span class="tag" data-v-b7b275b7>2019-04-24</span></div></div></li><li data-v-b7b275b7><i class="num" data-v-b7b275b7>8</i><div class="des" data-v-b7b275b7><a class="el-link el-link--info is-underline title" href="/technology/other/Sublime-text-常用插件" data-v-b7b275b7><!--v-if--><span class="el-link__inner"><!--[-->Sublime text 常用插件<!--]--></span><!--v-if--></a><div class="suffix" data-v-b7b275b7><span class="tag" data-v-b7b275b7>2018-04-20</span></div></div></li><li data-v-b7b275b7><i class="num" data-v-b7b275b7>9</i><div class="des" data-v-b7b275b7><a class="el-link el-link--info is-underline title" href="/technology/other/U盘量产修复金士顿PS2251-07-PS2307" data-v-b7b275b7><!--v-if--><span class="el-link__inner"><!--[-->U盘量产修复金士顿PS2251-07(PS2307)<!--]--></span><!--v-if--></a><div class="suffix" data-v-b7b275b7><span class="tag" data-v-b7b275b7>2018-04-16</span></div></div></li><!--]--></ol></div></div><!--]--><!--]--></nav></aside><div class="VPContent has-sidebar" id="VPContent" data-pagefind-body data-v-bb4ad0f4 data-v-54a52440><div class="VPDoc has-sidebar has-aside" data-v-54a52440 data-v-9ac9bab3><!--[--><!--]--><div class="container" data-v-9ac9bab3><div class="aside" data-v-9ac9bab3><div class="aside-curtain" data-v-9ac9bab3></div><div class="aside-container" data-v-9ac9bab3><div class="aside-content" data-v-9ac9bab3><div class="VPDocAside" data-v-9ac9bab3 data-v-d20586be><!--[--><!--]--><!--[--><!--]--><div class="VPDocAsideOutline" role="navigation" data-v-d20586be data-v-ad912b11><div class="content" data-v-ad912b11><div class="outline-marker" data-v-ad912b11></div><div class="outline-title" role="heading" aria-level="2" data-v-ad912b11>On this page</div><nav aria-labelledby="doc-outline-aria-label" data-v-ad912b11><span class="visually-hidden" id="doc-outline-aria-label" data-v-ad912b11> Table of Contents for current page </span><ul class="root" data-v-ad912b11 data-v-71efbea9><!--[--><!--]--></ul></nav></div></div><!--[--><!--]--><div class="spacer" data-v-d20586be></div><!--[--><!--]--><!----><!--[--><!--]--><!--[--><!--]--></div></div></div></div><div class="content" data-v-9ac9bab3><div class="content-container" data-v-9ac9bab3><!--[--><!--[--><!--[--><!--[--><!--]--><!----><!----><!--]--><!--]--><!--]--><!----><main class="main" data-v-9ac9bab3><div style="position:relative;" class="vp-doc _technology_other_Django_advanced" data-v-9ac9bab3><div><h1 id="django-进阶" tabindex="-1">Django 进阶 <a class="header-anchor" href="#django-进阶" aria-label="Permalink to &quot;Django 进阶&quot;">​</a></h1><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code"><code><span class="line"><span>1.  [HTTP Objects](https://docs.djangoproject.com/en/2.0/ref/request-response/)</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>    - HttpRequest</span></span>
-<span class="line"><span>      - 自身属性</span></span>
-<span class="line"><span>        request.path -&gt; `/foo/bar/`</span></span>
-<span class="line"><span>        request.method</span></span>
-<span class="line"><span>        request.GET</span></span>
-<span class="line"><span>        request.POST</span></span>
-<span class="line"><span>        request.COOKIES</span></span>
-<span class="line"><span>        request.FILES -&gt; `{name1: file1, name2: file2, ...}`</span></span>
-<span class="line"><span>        request.META[&#39;REMOTE_ADDR&#39;]</span></span>
-<span class="line"><span>        request.META[&#39;HTTP_USER_AGENT&#39;]</span></span>
-<span class="line"><span>      - 中间件添加的属性</span></span>
-<span class="line"><span>        - request.session</span></span>
-<span class="line"><span>        - request.user</span></span>
-<span class="line"><span>      - 方法</span></span>
-<span class="line"><span>        - request.get_full_path() -&gt; `/foo/bar/?a=123`</span></span>
-<span class="line"><span>        - request.get_signed_cookie(key)</span></span>
-<span class="line"><span>    - HttpResponse</span></span>
-<span class="line"><span>      - 属性</span></span>
-<span class="line"><span>        - response.status_code</span></span>
-<span class="line"><span>        - response.content</span></span>
-<span class="line"><span>      - 方法</span></span>
-<span class="line"><span>        - response.set_cookie(key, value, max_age=None)</span></span>
-<span class="line"><span>    - JsonHttpResponse</span></span>
-<span class="line"><span>      - `response = JsonHttpResponse({&#39;a&#39;: 12, &#39;b&#39;: &#39;xyz&#39;})`</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>2.  Django 中间件</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>    - 最简单的中间件</span></span>
-<span class="line"><span>      ```python</span></span>
-<span class="line"><span>              def simple_middleware(get_response):</span></span>
-<span class="line"><span>                  # do_something_for_init()</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>                  def middleware(request):</span></span>
-<span class="line"><span>                      # do_something_before_views()</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>                      response = get_response(request)  # views 函数在这里执行</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>                      # do_something_after_views()</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>                      return response</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>                  return middleware</span></span>
-<span class="line"><span>      ```</span></span>
-<span class="line"><span>    - 中间件类</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>      ```python</span></span>
-<span class="line"><span>          class MyMiddleware:</span></span>
-<span class="line"><span>              def __init__(self, get_response):</span></span>
-<span class="line"><span>                  self.get_response = get_response</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>              def __call__(self, request):</span></span>
-<span class="line"><span>                  response = self.get_response(request)</span></span>
-<span class="line"><span>                  return response</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>              def process_view(self, request, view_func, view_args, view_kwargs):</span></span>
-<span class="line"><span>                  pass</span></span>
-<span class="line"><span>      ```</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>    - Django-1.10 以前的中间件</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>      ```python</span></span>
-<span class="line"><span>          from django.utils.deprecation import MiddlewareMixin</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>          class MyMiddleware(MiddlewareMixin):</span></span>
-<span class="line"><span>              def process_request(self, request):</span></span>
-<span class="line"><span>                  pass</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>              def process_view(self, request, view_func, view_args, view_kwargs):</span></span>
-<span class="line"><span>                  pass</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>              def process_response(self, request, response):</span></span>
-<span class="line"><span>                  return response</span></span>
-<span class="line"><span>      ```</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>    - 执行顺序</span></span>
-<span class="line"><span>      - process_request, process_view 从上往下执行</span></span>
-<span class="line"><span>      - process_response 从下往上执行</span></span>
-<span class="line"><span>    - [内置中间件的排序](https://docs.djangoproject.com/en/2.0/ref/middleware/#middleware-ordering)</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>3.  Form 表单</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>    - form 的 method 只能是 POST 或 GET</span></span>
-<span class="line"><span>    - method=GET 时, 表单提交的参数会出现在 URL 里</span></span>
-<span class="line"><span>    - 属性和方法</span></span>
-<span class="line"><span>      - form.is_valid()</span></span>
-<span class="line"><span>      - form.has_changed()</span></span>
-<span class="line"><span>      - form.cleaned_data[&#39;fieldname&#39;]</span></span>
-<span class="line"><span>    - Form 的定义和使用</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>      ```python</span></span>
-<span class="line"><span>          from django.forms import Form</span></span>
-<span class="line"><span>          from django.forms import IntegerField, CharField, DateField, ChoiceField</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>          class TestForm(Form):</span></span>
-<span class="line"><span>              TAGS = (</span></span>
-<span class="line"><span>                  (&#39;py&#39;, &#39;python&#39;),</span></span>
-<span class="line"><span>                  (&#39;ln&#39;, &#39;linux&#39;),</span></span>
-<span class="line"><span>                  (&#39;dj&#39;, &#39;django&#39;),</span></span>
-<span class="line"><span>              )</span></span>
-<span class="line"><span>              fid = IntegerField()</span></span>
-<span class="line"><span>              name = CharField(max_length=10)</span></span>
-<span class="line"><span>              tag = ChoiceField(choices=TAGS)</span></span>
-<span class="line"><span>              date = DateField()</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>          data = {&#39;fid&#39;: 123, &#39;name&#39;: &#39;1234567890&#39;, &#39;tag&#39;: &#39;dj&#39;, &#39;date&#39;: &#39;2017-12-17&#39;}</span></span>
-<span class="line"><span>          form = TestForm(data)</span></span>
-<span class="line"><span>          print(form.is_valid())</span></span>
-<span class="line"><span>          print(form.cleaned_data)  # cleaned_data 属性是 is_valid 函数执行时动态添加的</span></span>
-<span class="line"><span>      ```</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>    - ModelForm</span></span>
-<span class="line"><span>      ```python</span></span>
-<span class="line"><span>          class UserForm(ModelForm):</span></span>
-<span class="line"><span>              class Meta:</span></span>
-<span class="line"><span>                  model = User</span></span>
-<span class="line"><span>                  fields = [&#39;name&#39;, &#39;birth&#39;]</span></span>
-<span class="line"><span>      ```</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>4.  模板</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>    - base.html 模板推荐布局</span></span>
-<span class="line"><span>      ```html</span></span>
-<span class="line"><span>      &lt;!DOCTYPE html&gt;</span></span>
-<span class="line"><span>      &lt;html&gt;</span></span>
-<span class="line"><span>        &lt;head&gt;</span></span>
-<span class="line"><span>          &lt;title&gt;{{title}}&lt;/title&gt;</span></span>
-<span class="line"><span>          &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/static/css/style.css&quot; /&gt;</span></span>
-<span class="line"><span>          {% block &quot;ext_css&quot; %}{% endblock %}</span></span>
-<span class="line"><span>        &lt;/head&gt;</span></span>
-<span class="line"><span>        &lt;body&gt;</span></span>
-<span class="line"><span>          &lt;!-- {% block &quot;navbar&quot; %}{% endblock %} --&gt;</span></span>
-<span class="line"><span>          {% block &quot;sidebar&quot; %}{% endblock %} {% block &quot;content&quot; %}{% endblock</span></span>
-<span class="line"><span>          %}</span></span>
-<span class="line"><span>          &lt;!-- {% block &quot;foot&quot; %}{% endblock %} --&gt;</span></span>
-<span class="line"><span>          {% block &quot;ext_js&quot; %}{% endblock %}</span></span>
-<span class="line"><span>        &lt;/body&gt;</span></span>
-<span class="line"><span>      &lt;/html&gt;</span></span>
-<span class="line"><span>      ```</span></span>
-<span class="line"><span>    - [内建 Tags](https://docs.djangoproject.com/en/2.0/ref/templates/builtins/#ref-templates-builtins-tags)</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>      - `autoescape`</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>              {% autoescape off %}</span></span>
-<span class="line"><span>                  {{ body }}</span></span>
-<span class="line"><span>              {% endautoescape %}</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>      - `csrf_token`</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>              &lt;form&gt;</span></span>
-<span class="line"><span>              {% csrf_token %}</span></span>
-<span class="line"><span>              &lt;/form&gt;</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>      - `for...endfor` 中的变量</span></span>
-<span class="line"><span>        - `forloop.counter` 从 1 开始计数</span></span>
-<span class="line"><span>        - `forloop.counter0` 从 0 开始计数</span></span>
-<span class="line"><span>        - `forloop.revcounter` 逆序计数到 1</span></span>
-<span class="line"><span>        - `forloop.revcounter0` 逆序计数到 0</span></span>
-<span class="line"><span>        - `forloop.first` 是否是循环中的第一个</span></span>
-<span class="line"><span>        - `forloop.last` 是否是循环中的最后一个</span></span>
-<span class="line"><span>        - `forloop.parentloop` 用于引用上级循环中的变量, 如 `{{ forloop.parentloop.counter }}`</span></span>
-<span class="line"><span>      - empty 子句</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>              {% for x in lst %}</span></span>
-<span class="line"><span>                  &lt;div&gt;...&lt;/div&gt;</span></span>
-<span class="line"><span>              {% empty %}</span></span>
-<span class="line"><span>                  &lt;div&gt;Sorry&lt;/div&gt;</span></span>
-<span class="line"><span>              {% endfor %}</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>      - load: 加载自定义 Tag {`%`load foo.bar `%`}</span></span>
-<span class="line"><span>      - url: 根据 url name 替换 {`%` url &#39;your-url-name&#39; v1 v2 `%`}</span></span>
-<span class="line"><span>      - static</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>              {% load static %}</span></span>
-<span class="line"><span>              &lt;img src=&quot;{% static &quot;img/smile.jpg&quot; %}&quot;&gt;</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>        或</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>              {% load static %}</span></span>
-<span class="line"><span>              &lt;img src=&quot;{% get_static_prefix %}img/smile.jpg&quot;&gt;</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>    - [内建的 filter](https://docs.djangoproject.com/en/2.0/ref/templates/builtins/#built-in-filter-reference)</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>      - safe 和 escape: `{{ var|safe|escape }}`</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>    - [使用 Jinja2 替换内置模板引擎](https://docs.djangoproject.com/en/2.0/topics/templates/#django.template.backends.jinja2.Jinja2)</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>5.  ORM</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>    - 什么是 ORM</span></span>
-<span class="line"><span>    - CURD (Create/Update/Retrieve/Delete)</span></span>
-<span class="line"><span>    - [Field](https://docs.djangoproject.com/en/2.0/ref/models/fields/)</span></span>
-<span class="line"><span>    - Field 选项</span></span>
-<span class="line"><span>      - `null` 针对数据库, 允许数据库该字段为 Null</span></span>
-<span class="line"><span>      - `blank` 针对 Model 本身, 允许传入字段为空. blank 为 True 时, 对数据库来说, 该字段依然为必填项</span></span>
-<span class="line"><span>      - `default` 尽量使用 default, 少用 null 和 blank</span></span>
-<span class="line"><span>      - `choices`</span></span>
-<span class="line"><span>      - `primary_key` 非必要时不要设置, 用默认 id, 保持条目自增、有序</span></span>
-<span class="line"><span>      - `unique`</span></span>
-<span class="line"><span>      - `db_index` (True | False)</span></span>
-<span class="line"><span>      - `max_length`</span></span>
-<span class="line"><span>      - `auto_now` 每次 save 时，更新为当前时间</span></span>
-<span class="line"><span>      - `auto_now_add` 只记录创建时的时间, 保存时不更新</span></span>
-<span class="line"><span>    - [QuerySet](https://docs.djangoproject.com/en/2.0/ref/models/querysets/)</span></span>
-<span class="line"><span>      - 方法</span></span>
-<span class="line"><span>        - 创建: `create() / get_or_create() / update_or_create() / bulk_create()`</span></span>
-<span class="line"><span>        - 条件过滤和排除: `filter() / exclude()`</span></span>
-<span class="line"><span>        - 只加载需要的字段: `only() / defer()`</span></span>
-<span class="line"><span>        - `order_by() / count() / exists()`</span></span>
-<span class="line"><span>        - `latest() / earliest()`</span></span>
-<span class="line"><span>        - `first() / last()`</span></span>
-<span class="line"><span>      - 查找条件</span></span>
-<span class="line"><span>        - `filter(id__in=[123, 555, 231])`</span></span>
-<span class="line"><span>        - `filter(id__range=[123, 456])`</span></span>
-<span class="line"><span>        - `filter(name__contains=&#39;123&#39;)`</span></span>
-<span class="line"><span>        - `filter(name__regex=&#39;^\w+\d+&#39;)`</span></span>
-<span class="line"><span>        - `gt / gte / lt / lte`</span></span>
-<span class="line"><span>    - 其他 ORM</span></span>
-<span class="line"><span>      - sqlalchemy</span></span>
-<span class="line"><span>      - peewee</span></span>
-<span class="line"><span>    - 主键和外键约束</span></span>
-<span class="line"><span>      - 内部系统、传统企业级应用可以使用 (需要数据量可控，数据库服务器数量可控)</span></span>
-<span class="line"><span>      - 互联网行业不建议使用</span></span>
-<span class="line"><span>        - 性能缺陷</span></span>
-<span class="line"><span>        - 不能用于分布式环境</span></span>
-<span class="line"><span>        - 不容易做到数据解耦</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>6.  Cache</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>    - 默认缓存: `from django.core.cache import cache`</span></span>
-<span class="line"><span>    - BACKEND: `DatabaseCache / MemcachedCache / LocMemCache`</span></span>
-<span class="line"><span>    - LOCATION: IP:Port 绑定, 只有一个时配制成字符串链接, 有多台时配制为列表</span></span>
-<span class="line"><span>    - 使用 Redis 做缓存</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>            CACHES = {</span></span>
-<span class="line"><span>                &quot;default&quot;: {</span></span>
-<span class="line"><span>                    &quot;BACKEND&quot;: &quot;django_redis.cache.RedisCache&quot;,</span></span>
-<span class="line"><span>                    &quot;LOCATION&quot;: &quot;redis://127.0.0.1:6379/1&quot;,</span></span>
-<span class="line"><span>                    &quot;OPTIONS&quot;: {</span></span>
-<span class="line"><span>                        &quot;CLIENT_CLASS&quot;: &quot;django_redis.client.DefaultClient&quot;,</span></span>
-<span class="line"><span>                        &quot;PICKLE_VERSION&quot;: -1,</span></span>
-<span class="line"><span>                    }</span></span>
-<span class="line"><span>                }</span></span>
-<span class="line"><span>            }</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>    - 基本方法</span></span>
-<span class="line"><span>      - `cache.set(key, value, timeout=None)`</span></span>
-<span class="line"><span>      - `cache.get(key, default=None)`</span></span>
-<span class="line"><span>      - `cache.delete(key)`</span></span>
-<span class="line"><span>      - `cache.incr(&#39;num&#39;)`</span></span>
-<span class="line"><span>      - `cache.decr(&#39;num&#39;)`</span></span>
-<span class="line"><span>      - `cache.get_or_set(key, default, timeout=None)`</span></span>
-<span class="line"><span>      - `cache.set_many({&#39;a&#39;: 1, &#39;b&#39;: 2, &#39;c&#39;: 3})`</span></span>
-<span class="line"><span>      - `cache.get_many([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;])`</span></span>
-<span class="line"><span>    - 全站缓存中间件: `django.middleware.cache.UpdateCacheMiddleware`</span></span>
-<span class="line"><span>      - 前置中间件</span></span>
-<span class="line"><span>      - 缓存期限: CACHE_MIDDLEWARE_SECONDS</span></span>
-<span class="line"><span>    - 页面缓存装饰器: `from django.views.decorators.cache import cache_page`</span></span>
-<span class="line"><span>    - 属性缓存装饰器: `from django.utils.functional import cached_property`</span></span>
-<span class="line"><span>    - pickle</span></span>
-<span class="line"><span>      - dumps</span></span>
-<span class="line"><span>      - loads</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>7.  Cookie 和 Session</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>    - Cookie: `response.set_cookie(key, value, max_age=None)`</span></span>
-<span class="line"><span>    - Session 配置</span></span>
-<span class="line"><span>      1. 开启 Session 中间件: `django.contrib.sessions.middleware.SessionMiddleware`</span></span>
-<span class="line"><span>      2. 配置缓存</span></span>
-<span class="line"><span>      3. 配置 Session 引擎: `SESSION_ENGINE = &quot;django.contrib.sessions.backends.cache&quot;`</span></span>
-<span class="line"><span>    - 可选项</span></span>
-<span class="line"><span>      - `SESSION_COOKIE_AGE` 缓存时间, 默认 2 周</span></span>
-<span class="line"><span>      - `SESSION_COOKIE_NAME` Session 名, 默认 &#39;sessionid&#39;</span></span>
-<span class="line"><span>      - `SESSION_EXPIRE_AT_BROWSER_CLOSE` 浏览器关闭页面时, Session 是否设为过期</span></span>
-<span class="line"><span>      - `SESSION_SAVE_EVERY_REQUEST` 每次请求时, 是否强制保存一次 Session</span></span>
-<span class="line"><span>    - 用法</span></span>
-<span class="line"><span>      - `request.session.session_key` 查看 session_id</span></span>
-<span class="line"><span>      - `request.session.modified` session 是否发生过修改</span></span>
-<span class="line"><span>      - `request.session[&#39;uid&#39;] = 1234` 当 session 发生更改时会自动保存</span></span>
-<span class="line"><span>      - `request.session.get(&#39;uid&#39;)` 取值</span></span>
-<span class="line"><span>      - `request.session.save()` 手动保存</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>8.  Logging</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>    - 日志级别</span></span>
-<span class="line"><span>      - DEBUG</span></span>
-<span class="line"><span>      - INFO</span></span>
-<span class="line"><span>      - WARNING</span></span>
-<span class="line"><span>      - ERROR</span></span>
-<span class="line"><span>      - FATAL</span></span>
-<span class="line"><span>    - 使用</span></span>
-<span class="line"><span>      - logger.debug(&#39;xxxxxxxx&#39;)</span></span>
-<span class="line"><span>      - logger.info(&#39;xxxxxxxx&#39;)</span></span>
-<span class="line"><span>      - logger.warning(&#39;xxxxxxxx&#39;)</span></span>
-<span class="line"><span>      - logger.error(&#39;xxxxxxxx&#39;)</span></span>
-<span class="line"><span>      - logger.fatal(&#39;xxxxxxxx&#39;)</span></span>
-<span class="line"><span>    - 查找、分析</span></span>
-<span class="line"><span>      - tail</span></span>
-<span class="line"><span>      - head</span></span>
-<span class="line"><span>      - less</span></span>
-<span class="line"><span>      - awk</span></span>
-<span class="line"><span>      - grep</span></span>
-<span class="line"><span>    - [配置](https://docs.python.org/2/library/logging.html)</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>            LOGGING = {</span></span>
-<span class="line"><span>                &#39;version&#39;: 1,</span></span>
-<span class="line"><span>                &#39;disable_existing_loggers&#39;: True,</span></span>
-<span class="line"><span>                &#39;formatters&#39;: {</span></span>
-<span class="line"><span>                    &#39;simple&#39;: {</span></span>
-<span class="line"><span>                        &#39;format&#39;: &#39;%(asctime)s %(module)s.%(funcName)s: %(message)s&#39;,</span></span>
-<span class="line"><span>                        &#39;datefmt&#39;: &#39;%Y-%m-%d %H:%M:%S&#39;,</span></span>
-<span class="line"><span>                    },</span></span>
-<span class="line"><span>                    &#39;verbose&#39;: {</span></span>
-<span class="line"><span>                        &#39;format&#39;: &#39;%(asctime)s %(levelname)s [%(process)d-%(threadName)s] &#39;</span></span>
-<span class="line"><span>                                  &#39;%(module)s.%(funcName)s line %(lineno)d: %(message)s&#39;,</span></span>
-<span class="line"><span>                        &#39;datefmt&#39;: &#39;%Y-%m-%d %H:%M:%S&#39;,</span></span>
-<span class="line"><span>                    }</span></span>
-<span class="line"><span>                },</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>                &#39;handlers&#39;: {</span></span>
-<span class="line"><span>                    &#39;inf&#39;: {</span></span>
-<span class="line"><span>                        &#39;class&#39;: &#39;logging.handlers.TimedRotatingFileHandler&#39;,</span></span>
-<span class="line"><span>                        &#39;filename&#39;: &#39;/data/web/gnt.out&#39;,</span></span>
-<span class="line"><span>                        &#39;when&#39;: &#39;W0&#39;,  # 每周一切割日志</span></span>
-<span class="line"><span>                        &#39;backupCount&#39;: 5,</span></span>
-<span class="line"><span>                        &#39;formatter&#39;: &#39;simple&#39;,</span></span>
-<span class="line"><span>                        &#39;level&#39;: &#39;DEBUG&#39; if DEBUG else &#39;INFO&#39;,</span></span>
-<span class="line"><span>                    },</span></span>
-<span class="line"><span>                    &#39;err&#39;: {</span></span>
-<span class="line"><span>                        &#39;class&#39;: &#39;logging.handlers.TimedRotatingFileHandler&#39;,</span></span>
-<span class="line"><span>                        &#39;filename&#39;: &#39;/data/web/gnt.err&#39;,</span></span>
-<span class="line"><span>                        &#39;when&#39;: &#39;D&#39;,  # 每天切割日志</span></span>
-<span class="line"><span>                        &#39;backupCount&#39;: 5,</span></span>
-<span class="line"><span>                        &#39;formatter&#39;: &#39;verbose&#39;,</span></span>
-<span class="line"><span>                        &#39;level&#39;: &#39;WARNING&#39;,</span></span>
-<span class="line"><span>                    }</span></span>
-<span class="line"><span>                },</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>                &#39;loggers&#39;: {</span></span>
-<span class="line"><span>                    &#39;inf&#39;: {</span></span>
-<span class="line"><span>                        &#39;handlers&#39;: [&#39;inf&#39;],</span></span>
-<span class="line"><span>                        &#39;level&#39;: &#39;DEBUG&#39;,</span></span>
-<span class="line"><span>                        &#39;propagate&#39;: True,</span></span>
-<span class="line"><span>                    },</span></span>
-<span class="line"><span>                    &#39;err&#39;: {</span></span>
-<span class="line"><span>                        &#39;handlers&#39;: [&#39;err&#39;],</span></span>
-<span class="line"><span>                        &#39;level&#39;: &#39;DEBUG&#39;,</span></span>
-<span class="line"><span>                        &#39;propagate&#39;: True,</span></span>
-<span class="line"><span>                    }</span></span>
-<span class="line"><span>                }</span></span>
-<span class="line"><span>            }</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>9.  Django 的性能</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>    - Django 自身优化</span></span>
-<span class="line"><span>      - 充分之用缓存</span></span>
-<span class="line"><span>      - 惰性求值和迭代器</span></span>
-<span class="line"><span>      - 尽量使用 `defer()` 和 `only()` 查找</span></span>
-<span class="line"><span>      - 尽量使用 `count()` 和 `exists()`</span></span>
-<span class="line"><span>      - 模板中 `{% block %}` 性能优于 `{% include %}`</span></span>
-<span class="line"><span>      - [开启模板缓存](https://docs.djangoproject.com/en/2.0/ref/templates/api/#django.template.loaders.cached.Loader)</span></span>
-<span class="line"><span>      - **不要使用外键！不要使用外键！不要使用外键！**</span></span>
-<span class="line"><span>    - 其他优化</span></span>
-<span class="line"><span>      - I/O 密集型: 异步化</span></span>
-<span class="line"><span>        - 请求异步化</span></span>
-<span class="line"><span>        - 数据操作异步化</span></span>
-<span class="line"><span>        - gevent, asyncio, aiopg, aiohttp, tornado</span></span>
-<span class="line"><span>      - 计算密集型</span></span>
-<span class="line"><span>        - 耗时操作用 [Celery](http://docs.jinkan.org/docs/celery/) 等工具异步完成</span></span>
-<span class="line"><span>      - 分库分表</span></span>
-<span class="line"><span>        - 取余、哈希</span></span>
-<span class="line"><span>        - 范围</span></span>
-<span class="line"><span>        - 一致性哈希</span></span>
-<span class="line"><span>      - 索引优化</span></span>
-<span class="line"><span>      - 慢查询优化 ([相关工具: DjangoDebugToolbar](https://django-debug-toolbar.readthedocs.io))</span></span>
-<span class="line"><span>      - Gunicorn 开启多进程模式利用多核</span></span>
-<span class="line"><span>      - PyPy</span></span>
-<span class="line"><span>      - Cython</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>10. Python / Django 环境加载</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>    - sys.argv</span></span>
-<span class="line"><span>    - sys.path</span></span>
-<span class="line"><span>    - os.environ</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>11. Git</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>    - 常用操作</span></span>
-<span class="line"><span>      - git init</span></span>
-<span class="line"><span>      - git clone</span></span>
-<span class="line"><span>      - git add</span></span>
-<span class="line"><span>      - git commit -m &#39;xxxxxxxx&#39;</span></span>
-<span class="line"><span>      - git push</span></span>
-<span class="line"><span>      - git pull</span></span>
-<span class="line"><span>      - git fetch</span></span>
-<span class="line"><span>      - git log</span></span>
-<span class="line"><span>      - git checkout</span></span>
-<span class="line"><span>      - git branch</span></span>
-<span class="line"><span>      - git merge</span></span>
-<span class="line"><span>    - 代码管理</span></span>
-<span class="line"><span>      - code review</span></span>
-<span class="line"><span>        - 发现代码逻辑问题</span></span>
-<span class="line"><span>        - 代码风格及规范化问题</span></span>
-<span class="line"><span>        - 算法问题</span></span>
-<span class="line"><span>        - 错误的使用方式</span></span>
-<span class="line"><span>        - 能够学习其他人的优秀代码</span></span>
-<span class="line"><span>      - 分支: master / dev / feature</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>12. Blog</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>    1.  基础功能</span></span>
-<span class="line"><span>        1. 看文章</span></span>
-<span class="line"><span>        2. 写文章</span></span>
-<span class="line"><span>        3. 查看文章列表</span></span>
-<span class="line"><span>        4. 根据正文搜索文章</span></span>
-<span class="line"><span>        5. 可以评论</span></span>
-<span class="line"><span>    2.  扩展功能 0. 实现分页功能: 首页文章列表每页显示 5 篇文章</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>        1.  实现一个基于 redis 的文章缓存</span></span>
-<span class="line"><span>        2.  给首页增加一个模块, 显示最受欢迎的 10 篇文章 (点击率最高的)</span></span>
-<span class="line"><span>        3.  创建用户模块</span></span>
-<span class="line"><span>            - 实现注册、登录功能</span></span>
-<span class="line"><span>            - 添加用户个人信息展示</span></span>
-<span class="line"><span>            - 开发头像上传功能</span></span>
-<span class="line"><span>        4.  写一个装饰器, 在 blog.log 文件中输出阅读文章的用户 IP, 及所读文章的 ID</span></span>
-<span class="line"><span>        5.  基于日志的简单统计</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>            - 计算出阅读次数最多的文章: `awk &#39;{print $6}&#39; blog6.log | sort | uniq -c | sort -r`</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>            - 计算出每个访客读了多少篇文章: `awk &#39;{print $5}&#39; blog6.log | sort | uniq -c | sort -r`</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>        6.  写一个中间件, 限制用户的访问频率最大为每秒 2 次，超过 2 次时，等待至合理时间再返回</span></span>
-<span class="line"><span>        7.  给文章增加 Tag 功能:</span></span>
-<span class="line"><span>            - 每篇文章可以添加多个 Tag</span></span>
-<span class="line"><span>            - 每个 Tag 分类下有多篇文章</span></span>
-<span class="line"><span>            - 点击每个 Tag 直接跳转到此 tag 的文章列表</span></span>
-<span class="line"><span>            - 不要使用外键</span></span>
-<span class="line"><span>        8.  实现权限管理功能</span></span>
-<span class="line"><span>            - 未登录用户只能查看文章</span></span>
-<span class="line"><span>            - 普通注册用户，可以发表评论</span></span>
-<span class="line"><span>            - 管理员，可以发表和删除文章、评论</span></span>
-<span class="line"><span>        9.  [使用 Gunicorn 驱动 Django, 对比性能差异](http://docs.gunicorn.org/en/latest/install.html)</span></span>
-<span class="line"><span>            - 文件描述符</span></span>
-<span class="line"><span>            - 单台服务器最大连接数</span></span>
-<span class="line"><span>            - TCP 连接上限</span></span>
-<span class="line"><span>        10. Nginx</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>            - 负载均衡: 轮询, 权重, IP 哈希</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>                                   User Requests</span></span>
-<span class="line"><span>                                 |    |    |    |</span></span>
-<span class="line"><span>                                 V    V    V    V</span></span>
-<span class="line"><span>                                 www.example.com</span></span>
-<span class="line"><span>                                     DNS 轮训</span></span>
-<span class="line"><span>                                   /         \</span></span>
-<span class="line"><span>                                  V           V</span></span>
-<span class="line"><span>                              Nginx            Nginx</span></span>
-<span class="line"><span>                           113.5.3.10        110.2.9.11         ---&gt; Nginx 绑定公网 IP</span></span>
-<span class="line"><span>                           /        |        |       \</span></span>
-<span class="line"><span>                          V         V        V        V</span></span>
-<span class="line"><span>                    AppServer  AppServer  AppServer  AppServer  ---&gt; Gunicorn + Django</span></span>
-<span class="line"><span>                    10.0.0.1   10.0.0.2   10.0.0.3   10.0.0.3   ---&gt; AppServer 绑定内网 IP</span></span>
-<span class="line"><span>                    weight:2   weight:5   weight:10  weight:20  ---&gt; 权重</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>            - 为什么用 Nginx, 不直接用 gunicorn</span></span>
-<span class="line"><span>            - 代理网站、图片</span></span>
-<span class="line"><span>            - Nginx 和 Apache 的区别</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>        11. 压力测试</span></span>
-<span class="line"><span>            - ab</span></span>
-<span class="line"><span>            - webbench</span></span>
-<span class="line"><span>        12. 其他: uWSGI, tornado</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>13. 项目</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>    - 代码组织</span></span>
-<span class="line"><span>    - 常用组件</span></span>
-<span class="line"><span>      - nginx</span></span>
-<span class="line"><span>      - [Redis](http://redisdoc.com/)</span></span>
-<span class="line"><span>      - MySQL</span></span>
-<span class="line"><span>      - 软件安装</span></span>
-<span class="line"><span>        - `apt-get`</span></span>
-<span class="line"><span>        - `yum`</span></span>
-<span class="line"><span>        - `make` / `make install`</span></span>
-<span class="line"><span>    - DB 集群</span></span>
-<span class="line"><span>      - 主从备份</span></span>
-<span class="line"><span>      - 一主两从</span></span>
-<span class="line"><span>      - 双主互备</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>14. 静态文件存储</span></span>
-<span class="line"><span>    - 线上系统 Django 会关掉自身的静态文件处理</span></span>
-<span class="line"><span>    - 用 Nginx 代理静态文件</span></span>
-<span class="line"><span>    - CDN (内容分发网络)</span></span>
-<span class="line"><span>      - 基于缓存技术为静态资源 (主要是多媒体资源) 提供访问加速的服务</span></span>
-<span class="line"><span>      - 在不同地区部署镜像服务器节点</span></span>
-<span class="line"><span>      - 定期与源站做内容同步</span></span></code></pre></div></div></div></main><footer class="VPDocFooter" data-v-9ac9bab3 data-v-643acc1d><!--[--><!--]--><div class="edit-info" data-v-643acc1d><!----><div class="last-updated" data-v-643acc1d><p class="VPLastUpdated" data-v-643acc1d data-v-4bcaebaf>上次更新于: <time datetime="2023-05-18T08:41:37.000Z" data-v-4bcaebaf></time></p></div></div><!----></footer><!--[--><!--[--><!--[--><!--[--><!--]--><div id="giscus-comment" class="comment" data-pagefind-ignore="all" data-v-4afc7aeb data-v-a38e394b><div class="el-affix comment-btn" style="height:;width:;" data-v-a38e394b><div class="" style=""><!--[--><button ariadisabled="false" type="button" class="el-button el-button--primary is-plain" style="" data-v-a38e394b><i class="el-icon" style=""><!--[--><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><path fill="currentColor" d="M736 504a56 56 0 1 1 0-112 56 56 0 0 1 0 112zm-224 0a56 56 0 1 1 0-112 56 56 0 0 1 0 112zm-224 0a56 56 0 1 1 0-112 56 56 0 0 1 0 112zM128 128v640h192v160l224-160h352V128H128z"></path></svg><!--]--></i><span class=""><!--[--> 评论 <!--]--></span></button><!--]--></div></div><!----></div><!--]--><!--]--><!--]--></div></div></div><!--[--><!--]--></div></div><footer class="VPFooter has-sidebar" data-v-bb4ad0f4 data-v-b4d94707><div class="container" data-v-b4d94707><p class="message" data-v-b4d94707>Released under the Apache License</p><p class="copyright" data-v-b4d94707>Copyright <a target="_blank" href="https://lpdswing.github.io/"> © 2017-present @lpdswing</a></p></div></footer><!--[--><!--]--></div></div>
+</svg></span>相关文章</span><!----></div><ol class="recommend-container" data-v-b7b275b7><!--[--><li data-v-b7b275b7><i class="num" data-v-b7b275b7>1</i><div class="des" data-v-b7b275b7><a class="el-link el-link--info is-underline title current" href="/lang/go/fuzz" data-v-b7b275b7><!--v-if--><span class="el-link__inner"><!--[-->go语言模糊测试<!--]--></span><!--v-if--></a><div class="suffix" data-v-b7b275b7><span class="tag" data-v-b7b275b7>57秒前</span></div></div></li><li data-v-b7b275b7><i class="num" data-v-b7b275b7>2</i><div class="des" data-v-b7b275b7><a class="el-link el-link--info is-underline title" href="/lang/go/泛型" data-v-b7b275b7><!--v-if--><span class="el-link__inner"><!--[-->go语言泛型<!--]--></span><!--v-if--></a><div class="suffix" data-v-b7b275b7><span class="tag" data-v-b7b275b7>2023-12-08</span></div></div></li><!--]--></ol></div></div><!--]--><!--]--></nav></aside><div class="VPContent has-sidebar" id="VPContent" data-pagefind-body data-v-bb4ad0f4 data-v-54a52440><div class="VPDoc has-sidebar has-aside" data-v-54a52440 data-v-9ac9bab3><!--[--><!--]--><div class="container" data-v-9ac9bab3><div class="aside" data-v-9ac9bab3><div class="aside-curtain" data-v-9ac9bab3></div><div class="aside-container" data-v-9ac9bab3><div class="aside-content" data-v-9ac9bab3><div class="VPDocAside" data-v-9ac9bab3 data-v-d20586be><!--[--><!--]--><!--[--><!--]--><div class="VPDocAsideOutline" role="navigation" data-v-d20586be data-v-ad912b11><div class="content" data-v-ad912b11><div class="outline-marker" data-v-ad912b11></div><div class="outline-title" role="heading" aria-level="2" data-v-ad912b11>On this page</div><nav aria-labelledby="doc-outline-aria-label" data-v-ad912b11><span class="visually-hidden" id="doc-outline-aria-label" data-v-ad912b11> Table of Contents for current page </span><ul class="root" data-v-ad912b11 data-v-71efbea9><!--[--><!--]--></ul></nav></div></div><!--[--><!--]--><div class="spacer" data-v-d20586be></div><!--[--><!--]--><!----><!--[--><!--]--><!--[--><!--]--></div></div></div></div><div class="content" data-v-9ac9bab3><div class="content-container" data-v-9ac9bab3><!--[--><!--[--><!--[--><!--[--><!--]--><!----><!----><!--]--><!--]--><!--]--><!----><main class="main" data-v-9ac9bab3><div style="position:relative;" class="vp-doc _lang_go_fuzz" data-v-9ac9bab3><div><h1 id="前言" tabindex="-1">前言 <a class="header-anchor" href="#前言" aria-label="Permalink to &quot;前言&quot;">​</a></h1><p>​ 软件系统越复杂，测试就越重要。然而手动测试可能会非常费时和乏味。这就是为什么自动化测试变的越来越流行的原因。今天我们来聊一聊自动化测试中的一种测试技术就是fuzz测试，它是一种随机测试技术，可以帮助发现软件系统中的漏洞和错误。</p><p>​ Go语言目前已经是非常流行的语言了，具有高效、并发等特性。今天我们浅谈使用Go语言进行fuzz测试。从Go1.18开始，Go在其标准工具链中支持模糊测试。</p><h2 id="什么是fuzz测试" tabindex="-1">什么是fuzz测试 <a class="header-anchor" href="#什么是fuzz测试" aria-label="Permalink to &quot;什么是fuzz测试&quot;">​</a></h2><p>​ <strong>模糊测试</strong> （fuzz testing, fuzzing）是一种<a href="https://zh.wikipedia.org/wiki/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95" target="_blank" rel="noreferrer">软件测试</a>技术。其核心思想是将自动或半自动生成的随机数据输入到一个<a href="https://zh.wikipedia.org/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F" target="_blank" rel="noreferrer">程序</a>中，并监视程序异常，如崩溃，<a href="https://zh.wikipedia.org/wiki/%E6%96%B7%E8%A8%80_(%E7%A8%8B%E5%BC%8F)" target="_blank" rel="noreferrer">断言</a>（assertion）失败，以发现可能的程序错误，比如内存泄漏。模糊测试常常用于检测软件或计算机系统的安全漏洞。</p><h2 id="go语言中的模糊测试" tabindex="-1">Go语言中的模糊测试 <a class="header-anchor" href="#go语言中的模糊测试" aria-label="Permalink to &quot;Go语言中的模糊测试&quot;">​</a></h2><p>​ Go为开发者提供了一套强大的工具，用于实施模糊测试，核心是<code>testing</code>包中的<code>Fuzz</code>函数。通过创建以<code>Fuzz</code>为前缀的函数，按特定的签名定义输入输出，可以很容易集成模糊测试到我们的Go程序中。</p><p><img src="https://cdn.jsdelivr.net/gh/lpdswing/oss@main/202312212044424.png" alt=""></p><p>上图是一个模糊测试的例子，突出显示了它的主要组件。</p><p>模糊测试必须要遵循的规则：</p><ol><li>Fuzz测试必须是一个函数，函数名必须以&quot;Fuzz&quot;开头，后面必须是一个大写字母开头的名称，例如&quot;FuzzAdd&quot;。</li><li>Fuzz测试函数必须接受一个*testing.F类型的参数，不能有返回值。</li><li>Fuzz测试函数必须在*_test.go文件中定义才能运行。</li><li>Fuzz目标必须是一个方法调用，第一个参数必须是*testing.F类型，后面跟随着fuzz测试的参数。</li><li>每个fuzz测试函数只能有一个fuzz目标。</li><li>所有的种子语料库条目的类型必须与fuzz测试的参数类型相同，顺序也必须相同。这适用于对Fuzz函数的调用以及fuzz测试的testdata/fuzz目录中的任何语料库文件。</li><li>Fuzz测试的参数类型只能是以下类型： <ul><li>string, []byte</li><li>int, uint, uintptr, int8, int16, int32, rune, int64, uint8, uint16, uint32, uint64</li><li>float32, float64</li><li>bool</li></ul></li></ol><p>这些规则和要求是Go语言fuzz测试的基本要求，遵循这些规则可以帮助我们编写有效的fuzz测试并提高测试覆盖率。</p><p>​ 接下来我们通过一些简单代码来体验一下Fuzz test。</p><h3 id="代码编写" tabindex="-1">代码编写 <a class="header-anchor" href="#代码编写" aria-label="Permalink to &quot;代码编写&quot;">​</a></h3><ol><li><p>我们创建一个名为fuzz的目录</p><div class="language-shell vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">shell</span><pre class="shiki shiki-themes github-light github-dark vp-code"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">&gt;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> mkdir fuzz</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">&gt;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> cd fuzz</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">&gt;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> go mod init example/fuzz</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">&gt;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> touch main.go</span></span></code></pre></div></li><li><p>在main.go中我们贴如以下代码</p><div class="language-go vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">go</span><pre class="shiki shiki-themes github-light github-dark vp-code"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">package</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> main</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">import</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> &quot;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">fmt</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">func</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> Add</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(a, b </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> {</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">  	return</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> a </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">+</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> b</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">func</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> main</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(){</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  	fmt.</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">Printf</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Add(1, 2) = </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">%d\n</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">Add</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">1</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">2</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">))</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">}</span></span></code></pre></div></li><li><p>运行代码</p><div class="language-shell vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">shell</span><pre class="shiki shiki-themes github-light github-dark vp-code"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">go</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> run</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> .</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">Add(1,</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 2</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">) = 3</span></span></code></pre></div><p>现在代码正常运行，接下来我们来测试它。</p></li></ol><h3 id="添加单元测试" tabindex="-1">添加单元测试 <a class="header-anchor" href="#添加单元测试" aria-label="Permalink to &quot;添加单元测试&quot;">​</a></h3><p>​ 我们先为Add函数编写一个基本的单元测试。</p><ol><li><p>在<code>fuzz</code>目录创建一个文件为<code>add_test.go</code>。</p></li><li><p>贴如以下代码到<code>add_test.go</code>。</p><div class="language-go vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">go</span><pre class="shiki shiki-themes github-light github-dark vp-code"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">package</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> main</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">import</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> &quot;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">testing</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">func</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> TestAdd</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(t </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">*</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">testing.T) {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">	testcases </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">:=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> []</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">struct</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">		a, b, want </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">int</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">	}{</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">		{</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">1</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">2</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">3</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">},</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">		{</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">},</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">		{</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">-</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">1</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">-</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">2</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">-</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">3</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">},</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">		{</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">1</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">-</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">2</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">-</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">1</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">},</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">	}</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">	for</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> _, tc </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">:=</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> range</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> testcases {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">		got </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">:=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> Add</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(tc.a, tc.b)</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">		if</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> got </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">!=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> tc.want {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">			t.</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">Errorf</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Add(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">%d</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">%d</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">) == </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">%d</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">, want </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">%d</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, tc.a, tc.b, got, tc.want)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">		}</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">	}</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">}</span></span></code></pre></div></li><li><p>执行单元测试</p><div class="language-shell vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">shell</span><pre class="shiki shiki-themes github-light github-dark vp-code"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">&gt;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> go test -v</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=== </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">RUN</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">   TestAdd</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">---</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> PASS:</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> TestAdd</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> (0.00s)</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">PASS</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">ok</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">      example/fuzz</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">    0.003</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">s</span></span></code></pre></div></li></ol><h3 id="添加模糊测试" tabindex="-1">添加模糊测试 <a class="header-anchor" href="#添加模糊测试" aria-label="Permalink to &quot;添加模糊测试&quot;">​</a></h3><p>单元测试的局限是我们必须把每个输入添加到测试中，模糊测试的好处是它提供了你的代码，并且可能识别你想出的测试用例的边缘情况。</p><p>我们把add_test.go中的单元测试替换为以下内容模糊测试。</p><div class="language-go vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">go</span><pre class="shiki shiki-themes github-light github-dark vp-code"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">func</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> FuzzAdd</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(f </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">*</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">testing.F) {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">	f.</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">Add</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">1</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">2</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">	f.</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">Add</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">	f.</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">Add</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">-</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">1</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">-</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">2</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">	f.</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">Add</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">-</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">2</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">-</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">2</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">	f.</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">Fuzz</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">func</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(t </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">*</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">testing.T, a, b </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">) {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">		got </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">:=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> Add</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(a, b)</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">		if</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> got </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">!=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> a</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">+</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">b {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">			t.</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">Errorf</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Add(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">%d</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">%d</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">) == </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">%d</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">, want </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">%d</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, a, b, got, a</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">+</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">b)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">		}</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">		t.</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">Logf</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Add(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">%d</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">%d</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">) == </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">%d</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, a, b, got)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">	})</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">}</span></span></code></pre></div><p>接下来我们执行模糊测试, 通过<code>-run</code>选项用于指定要运行的测试函数的正则表达式，<code>-fuzz</code>选项用于指定要运行的fuzz测试函数的正则表达式，<code>-fuzztime</code>选项来控制fuzz测试的持续时间。</p><div class="language-shell vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">shell</span><pre class="shiki shiki-themes github-light github-dark vp-code"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">&gt;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> go test -v -run=FuzzAdd -fuzz=Fuzz -fuzztime 10s</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=== </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">RUN</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">   FuzzAdd</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">fuzz:</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> elapsed:</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 0</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">s,</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> gathering</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> baseline</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> coverage:</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 0</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">/11</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> completed</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">fuzz:</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> elapsed:</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 0</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">s,</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> gathering</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> baseline</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> coverage:</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 11</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">/11</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> completed,</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> now</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> fuzzing</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> with</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 8</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> workers</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">fuzz:</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> elapsed:</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 3</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">s,</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> execs:</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 718882</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> (239620/sec), new interesting: 1 (</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">total:</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 12</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">fuzz:</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> elapsed:</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 6</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">s,</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> execs:</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 1444761</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> (241916/sec), new interesting: 1 (</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">total:</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 12</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">fuzz:</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> elapsed:</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 9</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">s,</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> execs:</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 2177414</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> (244215/sec), new interesting: 1 (</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">total:</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 12</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">fuzz:</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> elapsed:</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 10</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">s,</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> execs:</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 2415524</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> (216791/sec), new interesting: 1 (</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">total:</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 12</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">---</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> PASS:</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> FuzzAdd</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> (10.10s)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=== </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">NAME</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  </span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">PASS</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">ok</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">      example/fuzz</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">    10.106</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">s</span></span></code></pre></div><p>总的来说，Go语言内置的fuzz测试框架提供了一种方便的方式来进行fuzz测试，它与testing包紧密集成，可以更方便的进行单元测试和fuzz测试。</p><h1 id="参考文献" tabindex="-1">参考文献 <a class="header-anchor" href="#参考文献" aria-label="Permalink to &quot;参考文献&quot;">​</a></h1><ul><li><a href="https://zh.wikipedia.org/wiki/%E6%A8%A1%E7%B3%8A%E6%B5%8B%E8%AF%95" target="_blank" rel="noreferrer">wiki</a></li><li><a href="https://go.dev/doc/tutorial/fuzz" target="_blank" rel="noreferrer">gotutorial</a></li></ul></div></div></main><footer class="VPDocFooter" data-v-9ac9bab3 data-v-643acc1d><!--[--><!--]--><div class="edit-info" data-v-643acc1d><!----><div class="last-updated" data-v-643acc1d><p class="VPLastUpdated" data-v-643acc1d data-v-4bcaebaf>上次更新于: <time datetime="2023-12-21T12:54:24.000Z" data-v-4bcaebaf></time></p></div></div><!----></footer><!--[--><!--[--><!--[--><!--[--><!--]--><div id="giscus-comment" class="comment" data-pagefind-ignore="all" data-v-4afc7aeb data-v-a38e394b><div class="el-affix comment-btn" style="height:;width:;" data-v-a38e394b><div class="" style=""><!--[--><button ariadisabled="false" type="button" class="el-button el-button--primary is-plain" style="" data-v-a38e394b><i class="el-icon" style=""><!--[--><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><path fill="currentColor" d="M736 504a56 56 0 1 1 0-112 56 56 0 0 1 0 112zm-224 0a56 56 0 1 1 0-112 56 56 0 0 1 0 112zm-224 0a56 56 0 1 1 0-112 56 56 0 0 1 0 112zM128 128v640h192v160l224-160h352V128H128z"></path></svg><!--]--></i><span class=""><!--[--> 评论 <!--]--></span></button><!--]--></div></div><!----></div><!--]--><!--]--><!--]--></div></div></div><!--[--><!--]--></div></div><footer class="VPFooter has-sidebar" data-v-bb4ad0f4 data-v-b4d94707><div class="container" data-v-b4d94707><p class="message" data-v-b4d94707>Released under the Apache License</p><p class="copyright" data-v-b4d94707>Copyright <a target="_blank" href="https://lpdswing.github.io/"> © 2017-present @lpdswing</a></p></div></footer><!--[--><!--]--></div></div>
     <script>window.__VP_HASH_MAP__=JSON.parse("{\"interviews_algorithm_index.md\":\"_ax2nbHT\",\"booklet_mysql45_index.md\":\"K41jzFBb\",\"booklet_distributed_index.md\":\"SSPwyJcm\",\"booklet_design_index.md\":\"uPoikMPt\",\"lang_ts_index.md\":\"QnMAVdPF\",\"technology_learn_traefik.md\":\"XLl6n-p-\",\"technology_other_django_advanced.md\":\"GQVxwCz-\",\"technology_other_index.md\":\"f3FL_Ela\",\"technology_other_pycharm操作技巧.md\":\"bVUIaTCL\",\"technology_other_git-解决push报错.md\":\"b3oh5DEu\",\"technology_other_vitepress.md\":\"fg8SOVTX\",\"technology_other_sqlalchemy之event使用.md\":\"GFEUVBrf\",\"technology_other_学习笔记.md\":\"9CaaUPLE\",\"technology_other_理解进程线程协程.md\":\"bPX6RmhZ\",\"technology_source_index.md\":\"DGbxNa7_\",\"technology_other_面试总结.md\":\"azRe2OjE\",\"interviews_algorithm_算法框架思维.md\":\"EowFOL3c\",\"booklet_k8s_初识k8s和动手实践.md\":\"xf1lU27X\",\"lang_go_index.md\":\"LX7ylTpP\",\"technology_other_windows使用tornado启动django应用.md\":\"4Tz3o_9D\",\"index.md\":\"6r59JtTb\",\"lang_go_fuzz.md\":\"qLwWEiGs\",\"technology_other_hexo：语雀云端写作 coding 持续集成实现自动部署.md\":\"TXPV8nCD\",\"booklet_highconcurrency_index.md\":\"TmYcpPtW\",\"technology_other_sublime-text-常用插件.md\":\"m2IDqA_k\",\"lang_rust_index.md\":\"3MkFxrhk\",\"interviews_algorithm_二分法套路总结.md\":\"OGTCeHsz\",\"technology_other_u盘量产修复金士顿ps2251-07-ps2307.md\":\"KH60MNdZ\",\"technology_other_python进阶.md\":\"uYTFqlAA\",\"technology_other_python算法之栈.md\":\"qtwpjeYj\",\"technology_learn_k8s_dashboard.md\":\"N97B_lDa\",\"technology_learn_index.md\":\"OowP6Ej1\",\"interviews_leetcode_203移除链表元素.md\":\"vj6sz1NG\",\"lang_go_泛型.md\":\"PNWoRJpH\",\"about.md\":\"eyZMEfg5\",\"interviews_algorithm_常见算法套路.md\":\"FMz0hBT4\",\"interviews_leetcode_index.md\":\"Ir93PH-N\",\"technology_other_django进阶-中间件.md\":\"meFS1PC7\",\"technology_other_web基础.md\":\"KaVKHsUF\",\"booklet_k8s_etcd.md\":\"jukO5d43\",\"lang_python_index.md\":\"knnTxhbi\",\"booklet_k8s_index.md\":\"sbRH3E-C\",\"technology_other_django进阶-web基础.md\":\"lqRfBe5o\"}");window.__VP_SITE_DATA__=JSON.parse("{\"lang\":\"zh-cn\",\"dir\":\"ltr\",\"title\":\"lpdswing的博客\",\"description\":\"lpdswing的个人blog，记录学习过程。\",\"base\":\"/\",\"head\":[],\"router\":{\"prefetchLinks\":true},\"appearance\":true,\"themeConfig\":{\"blog\":{\"pagesData\":[{\"route\":\"/about\",\"meta\":{\"sticky\":1,\"title\":\"\",\"date\":\"2023-05-18 07:26:49\",\"tag\":[],\"cover\":\"\"}},{\"route\":\"/booklet/design/index\",\"meta\":{\"hidden\":true,\"title\":\"\",\"date\":\"2023-05-18 07:26:49\",\"tag\":[],\"description\":\"架构设计\\n:::\",\"cover\":\"\"}},{\"route\":\"/booklet/distributed/index\",\"meta\":{\"hidden\":true,\"title\":\"\",\"date\":\"2023-05-18 07:26:49\",\"tag\":[],\"description\":\"分布式系统\\n:::\",\"cover\":\"\"}},{\"route\":\"/booklet/highConcurrency/index\",\"meta\":{\"hidden\":true,\"title\":\"\",\"date\":\"2023-05-18 07:26:49\",\"tag\":[],\"description\":\"高并发\\n:::\",\"cover\":\"\"}},{\"route\":\"/booklet/k8s/etcd\",\"meta\":{\"title\":\"etcd\",\"comment\":true,\"tags\":[\"k8s\",\"Docker\"],\"categories\":[\"学习小册\"],\"sticky\":1,\"date\":\"2023-08-01 09:14:32\",\"tag\":[\"学习小册\",\"k8s\",\"Docker\"],\"cover\":\"https://cdn.jsdelivr.net/gh/lpdswing/oss@main/202308011505223.png\"}},{\"route\":\"/booklet/k8s/index\",\"meta\":{\"hidden\":true,\"title\":\"\",\"date\":\"2023-05-18 07:26:49\",\"tag\":[],\"description\":\"k8s\\n:::\",\"cover\":\"\"}},{\"route\":\"/booklet/k8s/初识k8s和动手实践\",\"meta\":{\"title\":\"初识k8s和动手实践\",\"comment\":true,\"tags\":[\"k8s\",\"Docker\"],\"categories\":[\"学习小册\"],\"sticky\":1,\"date\":\"2023-09-24 02:28:07\",\"tag\":[\"学习小册\",\"k8s\",\"Docker\"],\"description\":\"systemctl enable kubelet\\n```\\n配置containerd，常见的CRI有：containerd、CRI-O、Docker Engine、Mirantis Container \",\"cover\":\"https://cdn.jsdelivr.net/gh/lpdswing/oss@main/202306061724997.png\"}},{\"route\":\"/booklet/mysql45/index\",\"meta\":{\"hidden\":true,\"title\":\"\",\"date\":\"2023-05-18 07:26:49\",\"tag\":[],\"description\":\"mysql45讲\\n:::\",\"cover\":\"\"}},{\"route\":\"/interviews/algorithm/index\",\"meta\":{\"hidden\":true,\"title\":\"\",\"date\":\"2023-05-19 09:45:47\",\"tag\":[],\"description\":\"算法技巧\\n:::\",\"cover\":\"\"}},{\"route\":\"/interviews/algorithm/二分法套路总结\",\"meta\":{\"title\":\"二分法套路总结\",\"comment\":true,\"tags\":[\"go\"],\"categories\":[\"面试\"],\"sticky\":1,\"date\":\"2023-05-30 08:58:22\",\"tag\":[\"面试\",\"go\"],\"cover\":\"\"}},{\"route\":\"/interviews/algorithm/常见算法套路\",\"meta\":{\"title\":\"常见算法套路\",\"comment\":true,\"tags\":[\"go\"],\"categories\":[\"面试\"],\"sticky\":1,\"date\":\"2023-05-30 08:58:22\",\"tag\":[\"面试\",\"go\"],\"description\":\" 双指针\\n用到双指针的几道链表题：\\n1、合并两个有序链表\\n2、链表的分解\\n3、合并 `k` 个有序链表（先把node存到pq里，每次取最小节点）\\n4、寻找单链表的倒数第 `k` 个节点\\n5、寻找单链表\",\"cover\":\"\"}},{\"route\":\"/interviews/algorithm/算法框架思维\",\"meta\":{\"title\":\"算法框架思维\",\"comment\":true,\"tags\":[\"go\"],\"categories\":[\"面试\"],\"sticky\":1,\"date\":\"2023-05-30 08:58:22\",\"tag\":[\"面试\",\"go\"],\"description\":\"数据结构的存储结构只有2种，只有链表和数组。\\n比如说「队列」、「栈」这两种数据结构既可以使用链表也可以使用数组实现。用数组实现，就要处理扩容缩容的问题；用链表实现，没有这个问题，但需要更多的内存空间存\",\"cover\":\"\"}},{\"route\":\"/interviews/leetcode/203移除链表元素\",\"meta\":{\"title\":\"203. 移除链表元素\",\"comment\":true,\"tags\":[\"go\",\"python\"],\"categories\":[\"面试\"],\"sticky\":1,\"date\":\"2023-05-19 09:45:47\",\"tag\":[\"面试\",\"go\",\"python\"],\"description\":\"传送门\\n 解题思路\\n- 创建哑结点方便操作， 避免链表头判断\\n 代码\\n:::code-group\\n```go [go迭代]\\nfunc removeElements(head *ListNode, va\",\"cover\":\"https://cdn.jsdelivr.net/gh/lpdswing/oss@main/202305190923246.png\"}},{\"route\":\"/interviews/leetcode/index\",\"meta\":{\"hidden\":true,\"title\":\"\",\"date\":\"2023-05-19 09:45:47\",\"tag\":[],\"description\":\"leetcode刷题\\n:::\",\"cover\":\"\"}},{\"route\":\"/lang/go/fuzz\",\"meta\":{\"title\":\"go语言模糊测试\",\"comment\":true,\"tags\":[\"go\",\"golang\"],\"categories\":[\"语言\"],\"sticky\":1,\"date\":\"2023-12-21 12:54:24\",\"tag\":[\"语言\",\"go\",\"golang\"],\"description\":\"​\\t\\t软件系统越复杂，测试就越重要。然而手动测试可能会非常费时和乏味。这就是为什么自动化测试变的越来越流行的原因。今天我们来聊一聊自动化测试中的一种测试技术就是fuzz测试，它是一种随机测试技术，可以\",\"cover\":\"https://cdn.jsdelivr.net/gh/lpdswing/oss@main/202312212044424.png\"}},{\"route\":\"/lang/go/index\",\"meta\":{\"hidden\":true,\"title\":\"\",\"date\":\"2023-05-18 07:26:49\",\"tag\":[],\"description\":\"go\\n:::\",\"cover\":\"\"}},{\"route\":\"/lang/go/泛型\",\"meta\":{\"title\":\"go语言泛型\",\"comment\":true,\"tags\":[\"go\",\"golang\"],\"categories\":[\"语言\"],\"sticky\":1,\"date\":\"2023-12-08 12:37:28\",\"tag\":[\"语言\",\"go\",\"golang\"],\"description\":\"Go 语言自从推出以来，一直被人诟病没有泛型。泛型是一种非常重要的编程概念，它可以让我们编写更加通用、可复用的代码。在 Go 语言中，我们可以使用接口和类型断言来实现类似泛型的功能，但是这种方式并不是\",\"cover\":\"\"}},{\"route\":\"/lang/python/index\",\"meta\":{\"hidden\":true,\"title\":\"\",\"date\":\"2023-05-18 07:26:49\",\"tag\":[],\"description\":\"python\\n:::\",\"cover\":\"\"}},{\"route\":\"/lang/rust/index\",\"meta\":{\"hidden\":true,\"title\":\"\",\"date\":\"2023-05-18 07:26:49\",\"tag\":[],\"description\":\"rust\\n:::\",\"cover\":\"\"}},{\"route\":\"/lang/ts/index\",\"meta\":{\"hidden\":true,\"title\":\"\",\"date\":\"2023-05-18 07:26:49\",\"tag\":[],\"description\":\"ts\\n:::\",\"cover\":\"\"}},{\"route\":\"/technology/learn/index\",\"meta\":{\"hidden\":true,\"title\":\"\",\"date\":\"2023-05-18 07:26:49\",\"tag\":[],\"description\":\"技术学习\\n:::\",\"cover\":\"\"}},{\"route\":\"/technology/learn/k8s_dashboard\",\"meta\":{\"title\":\"深入了解Kubernetes的Top和Dashboard功能\",\"comment\":true,\"tags\":[\"k8s\",\"Kubernetes\"],\"categories\":[\"技术教程\"],\"sticky\":1,\"cover\":\"https://cdn.jsdelivr.net/gh/lpdswing/oss@main/202309241117935.png\",\"date\":\"2023-09-24 04:48:56\",\"tag\":[\"技术教程\",\"k8s\",\"Kubernetes\"]}},{\"route\":\"/technology/learn/traefik\",\"meta\":{\"title\":\"traefik在docker中的使用\",\"comment\":true,\"tags\":[\"traefik\",\"Docker\",\"技术教程\"],\"categories\":[\"知识库\"],\"sticky\":1,\"date\":\"2023-08-01 09:14:32\",\"tag\":[\"知识库\",\"traefik\",\"Docker\",\"技术教程\"],\"cover\":\"https://cdn.jsdelivr.net/gh/lpdswing/oss@main/202308011605561.png\"}},{\"route\":\"/technology/other/Django_advanced\",\"meta\":{\"title\":\"django进阶-笔记\",\"date\":\"2017-05-03 10:16:44\",\"tags\":[\"python\",\"django\"],\"categories\":[\"知识库\"],\"tag\":[\"知识库\",\"python\",\"django\"],\"description\":\"```\\n1.  HTTP Objects\\n    - HttpRequest\\n      - 自身属性\\n        request.path -\\n        request.method\\n  \",\"cover\":\"\"}},{\"route\":\"/technology/other/Hexo：语雀云端写作 Coding 持续集成实现自动部署\",\"meta\":{\"title\":\"Hexo：语雀云端写作 Coding 持续集成实现自动部署\",\"date\":\"2020-05-10 11:28:00\",\"tags\":[\"hexo\"],\"categories\":[\"知识库\"],\"tag\":[\"知识库\",\"hexo\"],\"description\":\"ps：参考文章：https://www.yuque.com/u46795/blog/dlloc7\\n上文所用的是 GitHub action，不过我们用的是 coding 平台，好处是国内访问速度快，部\",\"cover\":\"\"}},{\"route\":\"/technology/other/Python算法之栈\",\"meta\":{\"title\":\"python算法之栈\",\"date\":\"2019-04-24 08:10:15\",\"tags\":[\"python\",\"算法\"],\"categories\":[\"知识库\"],\"tag\":[\"知识库\",\"python\",\"算法\"],\"cover\":\"\"}},{\"route\":\"/technology/other/Python进阶\",\"meta\":{\"title\":\"python进阶笔记\",\"date\":\"2017-05-03 10:16:36\",\"tags\":[\"python\"],\"categories\":[\"知识库\"],\"tag\":[\"知识库\",\"python\"],\"cover\":\"https://cdn.jsdelivr.net/gh/lpdswing/oss@main/202305181010449.png\"}},{\"route\":\"/technology/other/Sublime-text-常用插件\",\"meta\":{\"title\":\"Sublime text 常用插件\",\"date\":\"2018-04-20 16:15:21\",\"tags\":[\"ide\"],\"categories\":[\"知识库\"],\"tag\":[\"知识库\",\"ide\"],\"description\":\"集成插件：\\n(1)Alignment: 代码对齐插件，即”=”号对齐，变量定义太多，长短不一，可一键对齐，默认快捷键Ctrl+Alt+A可能和QQ截屏功能冲突，可设置其他快捷键如：Ctrl+Shift\",\"cover\":\"\"}},{\"route\":\"/technology/other/U盘量产修复金士顿PS2251-07-PS2307\",\"meta\":{\"title\":\"U盘量产修复金士顿PS2251-07(PS2307)\",\"date\":\"2018-04-16 13:49:32\",\"tags\":[\"硬件\"],\"categories\":[\"知识库\"],\"tag\":[\"知识库\",\"硬件\"],\"description\":\"教程截取自量产吧\\n 注意：根据此教程量产的U盘有写保护，第十步时Filesystem不要用default，选择fat32，最后完成变绿时马上拔下U盘。可以解决有写保护的问题。\",\"cover\":\"https://cdn.jsdelivr.net/gh/lpdswing/oss@main/202305181009497.png\"}},{\"route\":\"/technology/other/Web基础\",\"meta\":{\"title\":\"web基础-django\",\"date\":\"2017-05-03 10:16:44\",\"tags\":[\"django\",\"python\"],\"categories\":[\"知识库\"],\"tag\":[\"知识库\",\"django\",\"python\"],\"cover\":\"https://cdn.jsdelivr.net/gh/lpdswing/oss@main/202305181012607.png\"}},{\"route\":\"/technology/other/django进阶-web基础\",\"meta\":{\"title\":\"django进阶-web基础\",\"date\":\"2017-05-03 10:16:33\",\"tags\":[\"python\",\"django\"],\"categories\":[\"知识库\"],\"tag\":[\"知识库\",\"python\",\"django\"],\"description\":\"最简单的web框架:\\n```python\\n coding: utf-8\\nimport socket\\n(HOST, PORT) = '0.0.0.0', 8888\\nRESPONSE = b'''\\nHTT\",\"cover\":\"\"}},{\"route\":\"/technology/other/django进阶-中间件\",\"meta\":{\"title\":\"django进阶学习-中间件\",\"date\":\"2017-05-03 11:19:39\",\"tags\":[\"python\",\"django\"],\"categories\":[\"知识库\"],\"tag\":[\"知识库\",\"python\",\"django\"],\"description\":\"1. HTTP Objects\\n    HttpRequest \\n   ​\\t自身属性 \\n   ​\\t\\t`request.path -\\n   ​\\t\\t`request.method `\\n   ​\\t\\t`req\",\"cover\":\"\"}},{\"route\":\"/technology/other/git-解决push报错\",\"meta\":{\"title\":\"git解决push报错\",\"date\":\"2017-04-22 10:04:30\",\"tags\":[\"git\"],\"categories\":[\"知识库\"],\"tag\":[\"知识库\",\"git\"],\"description\":\" 问题出现场景\\ngithub新建仓库,想把本地仓库推送到github\\n---\\n操作步骤\\n1. 进入本地仓库,假设项目为test\\n   `cd test`\\n   `git init`\\n2. 查看状态\\n \",\"cover\":\"\"}},{\"route\":\"/technology/other/index\",\"meta\":{\"hidden\":true,\"title\":\"杂谈\",\"date\":\"2023-05-18 07:26:49\",\"tag\":[],\"description\":\"::: tip 笔者说\\n这里是之前hexo blog的迁移。\\n:::\",\"cover\":\"\"}},{\"route\":\"/technology/other/pycharm操作技巧\",\"meta\":{\"title\":\"pycharm操作技巧\",\"date\":\"2017-04-19 16:42:43\",\"tags\":[\"python\",\"ide\"],\"categories\":[\"知识库\"],\"tag\":[\"知识库\",\"python\",\"ide\"],\"description\":\"- 常用快捷键\\n  \\n   \\n  \\n  \\n- 查看使用库源码\\n  `Command+B`  或 `command+click`\\n- 让代码PEP8\\n  `Command+OPtion+L`\\n- 查找文\",\"cover\":\"https://cdn.jsdelivr.net/gh/lpdswing/oss@main/202305181006382.jpg\"}},{\"route\":\"/technology/other/sqlalchemy之event使用\",\"meta\":{\"title\":\"sqlalchemy之event使用\",\"date\":\"2020-04-24 02:50:10\",\"tags\":[\"flask\",\"sqlalchemy\"],\"categories\":[\"知识库\"],\"tag\":[\"知识库\",\"flask\",\"sqlalchemy\"],\"description\":\"@listens_for(User,'after_delete')\\ndef after_del_user(mapper,connection,target):\\n    print(mapped)   \",\"cover\":\"\"}},{\"route\":\"/technology/other/vitepress\",\"meta\":{\"title\":\"vitepress博客主题参数配置\",\"description\":\"列举了一些常用参数。\",\"comment\":true,\"tags\":[\"vitepress\"],\"categories\":[\"知识库\"],\"sticky\":999,\"date\":\"2023-05-19 03:40:44\",\"tag\":[\"知识库\",\"vitepress\"],\"cover\":\"\"}},{\"route\":\"/technology/other/windows使用tornado启动django应用\",\"meta\":{\"title\":\"windows使用tornado启动django应用\",\"date\":\"2020-05-10 11:42:05\",\"tags\":[\"tornado\",\"django\",\"python\"],\"categories\":[\"知识库\"],\"tag\":[\"知识库\",\"tornado\",\"django\",\"python\"],\"cover\":\"\"}},{\"route\":\"/technology/other/学习笔记\",\"meta\":{\"title\":\"python学习笔记\",\"date\":\"2017-04-24 08:10:15\",\"tags\":[\"python\",\"django\"],\"categories\":[\"知识库\"],\"tag\":[\"知识库\",\"python\",\"django\"],\"cover\":\"\"}},{\"route\":\"/technology/other/理解进程线程协程\",\"meta\":{\"title\":\"理解进程线程协程\",\"date\":\"2019-04-24 08:10:15\",\"tags\":[\"技术笔记\",\"go\"],\"categories\":[\"知识库\"],\"tag\":[\"知识库\",\"技术笔记\",\"go\"],\"description\":\" 1.1 多任务\\n怎么来理解多任务呢？其实就是指我们的操作系统可以同时执行多个任务。举个例子，你一边听音乐，一边刷微博，一边聊 QQ，一边用 Markdown 写作业，这就是多任务，至少同时有 4 个\",\"cover\":\"https://www.qfgolang.com/wp-content/uploads/2019/08/WX20190730-100944.png#align=left&display=inline&height=515&margin=%5Bobject%20Object%5D&originHeight=515&originWidth=777&status=done&style=none&width=777#alt=\"}},{\"route\":\"/technology/other/面试总结\",\"meta\":{\"title\":\"python常用面试\",\"date\":\"2017-04-24 08:10:15\",\"tags\":[\"python\"],\"categories\":[\"面试\"],\"tag\":[\"面试\",\"python\"],\"cover\":\"\"}},{\"route\":\"/technology/source/index\",\"meta\":{\"hidden\":true,\"title\":\"\",\"date\":\"2023-05-18 07:26:49\",\"tag\":[],\"description\":\"源码学习\\n:::\",\"cover\":\"\"}}],\"themeColor\":\"vp-green\",\"author\":\"lpdswing\",\"tabs\":true,\"friend\":[{\"nickname\":\"粥里有勺糖\",\"des\":\"你的指尖用于改变世界的力量\",\"avatar\":\"https://img.cdn.sugarat.top/mdImg/MTY3NDk5NTE2NzAzMA==674995167030\",\"url\":\"https://sugarat.top\"},{\"nickname\":\"Vitepress\",\"des\":\"Vite & Vue Powered Static Site Generator\",\"avatar\":\"https://img.cdn.sugarat.top/mdImg/MTY3NDk5NTI2NzY1Ng==674995267656\",\"url\":\"https://vitepress.vuejs.org/\"}],\"recommend\":{\"showSelf\":true},\"search\":\"pagefind\",\"comment\":{\"repo\":\"lpdswing/lpdswing.github.io\",\"repoId\":\"MDEwOlJlcG9zaXRvcnkxMjc0MDAxNDg=\",\"category\":\"Announcements\",\"categoryId\":\"DIC_kwDOB5f41M4CWkfm\"},\"authorList\":[{\"nickname\":\"lpdswing\",\"url\":\"https://www.lpdswing.top/about.html\",\"des\":\"用你的双手改变世界。\"}],\"popover\":{\"title\":\"公告\",\"body\":[{\"type\":\"text\",\"content\":\"👇公众号👇\"},{\"type\":\"image\",\"src\":\"https://cdn.jsdelivr.net/gh/lpdswing/oss@main/202305181102485.jpeg\"},{\"type\":\"text\",\"content\":\"欢迎大家私信交流\"},{\"type\":\"button\",\"content\":\"博客\",\"link\":\"https://www.lpdswing.top/\"}],\"duration\":-1},\"mermaid\":true},\"sidebar\":[{\"text\":\"\",\"items\":[]}],\"lastUpdatedText\":\"上次更新于\",\"footer\":{\"message\":\"Released under the Apache License\",\"copyright\":\"Copyright <a target=\\\"_blank\\\" href=\\\"https://lpdswing.github.io/\\\"> © 2017-present @lpdswing</a>\"},\"logo\":\"/logo.png\",\"socialLinks\":[{\"icon\":{\"svg\":\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" xmlns:xlink=\\\"http://www.w3.org/1999/xlink\\\" viewBox=\\\"0 0 448 512\\\"><title>RSS</title><path d=\\\"M400 32H48C21.49 32 0 53.49 0 80v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V80c0-26.51-21.49-48-48-48zM112 416c-26.51 0-48-21.49-48-48s21.49-48 48-48s48 21.49 48 48s-21.49 48-48 48zm157.533 0h-34.335c-6.011 0-11.051-4.636-11.442-10.634c-5.214-80.05-69.243-143.92-149.123-149.123c-5.997-.39-10.633-5.431-10.633-11.441v-34.335c0-6.535 5.468-11.777 11.994-11.425c110.546 5.974 198.997 94.536 204.964 204.964c.352 6.526-4.89 11.994-11.425 11.994zm103.027 0h-34.334c-6.161 0-11.175-4.882-11.427-11.038c-5.598-136.535-115.204-246.161-251.76-251.76C68.882 152.949 64 147.935 64 141.774V107.44c0-6.454 5.338-11.664 11.787-11.432c167.83 6.025 302.21 141.191 308.205 308.205c.232 6.449-4.978 11.787-11.432 11.787z\\\" fill=\\\"currentColor\\\"></path></svg>\"},\"link\":\"https://lpdswing.github.io//feed.rss\",\"ariaLabel\":\"RSS\"},{\"icon\":\"github\",\"link\":\"https://github.com/lpdswing/lpdswing.github.io\"},{\"icon\":{\"svg\":\"<svg role=\\\"img\\\" viewBox=\\\"0 0 24 24\\\" xmlns=\\\"http://www.w3.org/2000/svg\\\"><title>码云</title><path d=\\\"M11.984 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.016 0zm6.09 5.333c.328 0 .593.266.592.593v1.482a.594.594 0 0 1-.593.592H9.777c-.982 0-1.778.796-1.778 1.778v5.63c0 .327.266.592.593.592h5.63c.982 0 1.778-.796 1.778-1.778v-.296a.593.593 0 0 0-.592-.593h-4.15a.592.592 0 0 1-.592-.592v-1.482a.593.593 0 0 1 .593-.592h6.815c.327 0 .593.265.593.592v3.408a4 4 0 0 1-4 4H5.926a.593.593 0 0 1-.593-.593V9.778a4.444 4.444 0 0 1 4.445-4.444h8.296Z\\\"/></svg>\"},\"link\":\"https://gitee.com/lpdswing\"}],\"nav\":[{\"text\":\"知识库\",\"items\":[{\"text\":\"技术教程\",\"link\":\"/technology/learn/\"},{\"text\":\"源码学习\",\"link\":\"/technology/source/\"},{\"text\":\"杂谈\",\"link\":\"/technology/other/\"}]},{\"text\":\"学习小册\",\"items\":[{\"text\":\"架构\",\"link\":\"/booklet/design/\"},{\"text\":\"Mysql45讲\",\"link\":\"/booklet/mysql45/\"},{\"text\":\"高并发系统设计\",\"link\":\"/booklet/highConcurrency/\"},{\"text\":\"分布式系统\",\"link\":\"/booklet/distributed/\"},{\"text\":\"Kubernetes从上手到实践\",\"link\":\"/booklet/k8s/\"}]},{\"text\":\"语言\",\"items\":[{\"text\":\"Python\",\"link\":\"/lang/python/\"},{\"text\":\"Go\",\"link\":\"/lang/go/\"},{\"text\":\"Rust\",\"link\":\"/lang/rust/\"},{\"text\":\"TypeScript\",\"link\":\"/lang/ts/\"}]},{\"text\":\"面试\",\"items\":[{\"text\":\"LeetCode\",\"link\":\"/interviews/leetcode/\"},{\"text\":\"算法技巧\",\"link\":\"/interviews/algorithm/\"}]},{\"text\":\"个人项目\",\"items\":[{\"text\":\"GPTFusion\",\"link\":\"https://github.com/lpdswing/GPTFusion\"}]},{\"text\":\"关于我\",\"link\":\"/about\"}]},\"locales\":{},\"scrollOffset\":90,\"cleanUrls\":false}");</script>
     
   </body>
