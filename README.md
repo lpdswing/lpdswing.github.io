@@ -27,3 +27,4 @@ pnpm build
 ```sh
 pnpm serve
 ```
+vercel pages部署
