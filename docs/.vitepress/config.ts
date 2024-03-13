@@ -5,6 +5,13 @@ import { head } from "./config/head";
 
 
 const blogTheme = getThemeConfig({
+  oml2d: {
+    models: [
+      {
+        path: 'https://registry.npmmirror.com/oml2d-models/latest/files/models/Senko_Normals/senko.model3.json'
+      }
+    ]
+  },
   themeColor: 'vp-green',
   // 文章默认作者
   author: "lpdswing",
