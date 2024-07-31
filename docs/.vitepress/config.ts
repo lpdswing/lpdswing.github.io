@@ -12,6 +12,11 @@ const blogTheme = getThemeConfig({
       }
     ]
   },
+  alert: {
+    type: 'success',
+    title: '教程有实效性, 如果不成功请先质疑教程',
+    duration: 3000
+  },
   themeColor: 'vp-green',
   // 文章默认作者
   author: "lpdswing",
@@ -37,7 +42,10 @@ const blogTheme = getThemeConfig({
     showSelf: true,
   },
   // 开启离线的全文搜索支持（如构建报错可注释下面的配置再次尝试）
-  search: "pagefind",
+  search: {
+    showDate: true,
+    pageResultCount: 4,
+  },
   comment: {
     repo: "lpdswing/lpdswing.github.io",
     repoId: "MDEwOlJlcG9zaXRvcnkxMjc0MDAxNDg=",
@@ -96,6 +104,15 @@ export default defineConfig({
   },
   lastUpdated: true,
   themeConfig: {
+    outline: {
+      level: [2, 3],
+      label: '目录'
+    },
+    editLink: {
+      pattern:
+        'https://github.com/lpdswing/lpdswing.github.io/tree/master/docs/:path',
+      text: '去 GitHub 上编辑内容'
+    },
     lastUpdatedText: "上次更新于",
     footer: {
       message: "Released under the Apache License",

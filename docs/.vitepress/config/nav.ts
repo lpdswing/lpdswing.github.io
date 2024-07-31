@@ -10,6 +10,12 @@ export const nav: DefaultTheme.Config['nav'] = [
         ]
     },
     {
+        text: 'Nas玩机',
+        items: [
+            { text: '杂七杂八', link: '/nas/note/' }
+        ]
+    },
+    {
         text: '学习小册',
         items: [
             { text: '架构', link: '/booklet/design/' },
