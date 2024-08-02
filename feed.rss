@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
     <channel>
         <title>lpdswing的博客</title>
-        <link>https://lpdswing.github.io/</link>
+        <link>https://www.lpdswing.top</link>
         <description>undefined</description>
-        <lastBuildDate>Thu, 01 Aug 2024 17:32:43 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 02 Aug 2024 10:34:55 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <copyright>Copyright © 2017-present @lpdswing</copyright>
         <item>
             <title><![CDATA[NginxProxyManager非标准端口http自动跳转https配置方法]]></title>
-            <link>https://lpdswing.github.io//nas/note/nginx-proxy-manager.html</link>
-            <guid>https://lpdswing.github.io//nas/note/nginx-proxy-manager.html</guid>
+            <link>https://www.lpdswing.top/nas/note/nginx-proxy-manager.html</link>
+            <guid>https://www.lpdswing.top/nas/note/nginx-proxy-manager.html</guid>
             <pubDate>Thu, 01 Aug 2024 19:00:00 GMT</pubDate>
             <description><![CDATA[NginxProxyManager非标准端口http自动跳转https配置方法
 家庭网络的80/443端口一般都封锁的, NPM配置强制https, 非标准端口会提示`the plain http w]]></description>
@@ -25,8 +25,8 @@
         </item>
         <item>
             <title><![CDATA[家庭ipv6的安全防护, 路由器ACL规则设置]]></title>
-            <link>https://lpdswing.github.io//nas/note/ikuai-ipv6-firewall.html</link>
-            <guid>https://lpdswing.github.io//nas/note/ikuai-ipv6-firewall.html</guid>
+            <link>https://www.lpdswing.top/nas/note/ikuai-ipv6-firewall.html</link>
+            <guid>https://www.lpdswing.top/nas/note/ikuai-ipv6-firewall.html</guid>
             <pubDate>Thu, 01 Aug 2024 00:00:00 GMT</pubDate>
             <description><![CDATA[
 # 家庭ipv6的安全防护, 路由器ACL规则设置
@@ -81,8 +81,8 @@ IPv6的设计确实考虑了一些安全性问题，例如，它在协议级别�
         </item>
         <item>
             <title><![CDATA[初识k8s和动手实践]]></title>
-            <link>https://lpdswing.github.io//booklet/k8s/First-introduction-to-k8s-and-hands-on-practice.html</link>
-            <guid>https://lpdswing.github.io//booklet/k8s/First-introduction-to-k8s-and-hands-on-practice.html</guid>
+            <link>https://www.lpdswing.top/booklet/k8s/First-introduction-to-k8s-and-hands-on-practice.html</link>
+            <guid>https://www.lpdswing.top/booklet/k8s/First-introduction-to-k8s-and-hands-on-practice.html</guid>
             <pubDate>Wed, 31 Jul 2024 10:48:22 GMT</pubDate>
             <description><![CDATA[
 ## 什么是Kubernetes
@@ -607,8 +607,8 @@ nodeRegistration:
         </item>
         <item>
             <title><![CDATA[算法框架思维]]></title>
-            <link>https://lpdswing.github.io//interviews/algorithm/Algorithm-framework-thinking.html</link>
-            <guid>https://lpdswing.github.io//interviews/algorithm/Algorithm-framework-thinking.html</guid>
+            <link>https://www.lpdswing.top/interviews/algorithm/Algorithm-framework-thinking.html</link>
+            <guid>https://www.lpdswing.top/interviews/algorithm/Algorithm-framework-thinking.html</guid>
             <pubDate>Wed, 31 Jul 2024 10:48:22 GMT</pubDate>
             <description><![CDATA[数据结构的存储方式
 数据结构的存储结构只有2种，只有链表和数组。
@@ -696,8 +696,8 @@ nodeRegistration:
         </item>
         <item>
             <title><![CDATA[常见算法套路]]></title>
-            <link>https://lpdswing.github.io//interviews/algorithm/Common-algorithm-routines.html</link>
-            <guid>https://lpdswing.github.io//interviews/algorithm/Common-algorithm-routines.html</guid>
+            <link>https://www.lpdswing.top/interviews/algorithm/Common-algorithm-routines.html</link>
+            <guid>https://www.lpdswing.top/interviews/algorithm/Common-algorithm-routines.html</guid>
             <pubDate>Wed, 31 Jul 2024 10:48:22 GMT</pubDate>
             <description><![CDATA[链表
  双指针
@@ -772,7 +772,7 @@ nodeRegistration:
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">    return</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> slow </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">+</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> 1</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">}</span></span></code></pre>
 </div><p>滑动窗口框架：</p>
-<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-dDrtz" id="tab-JJIM2E7" checked><label for="tab-JJIM2E7">go</label><input type="radio" name="group-dDrtz" id="tab-QE78zEG" ><label for="tab-QE78zEG">python</label></div><div class="blocks">
+<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-s9HIp" id="tab-5wrlN_X" checked><label for="tab-5wrlN_X">go</label><input type="radio" name="group-s9HIp" id="tab-kNuXpE9" ><label for="tab-kNuXpE9">python</label></div><div class="blocks">
 <div class="language-go vp-adaptive-theme active"><button title="Copy Code" class="copy"></button><span class="lang">go</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">// 滑动窗口算法框架</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">func</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> slidingWindow</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70">s</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> string</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70">t</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> string</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">) {</span></span>
 <span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">    // 初始化need 和 window</span></span>
@@ -1002,7 +1002,7 @@ nodeRegistration:
 <p>二叉树中用遍历思路解题时函数签名一般是 <code>void traverse(...)</code>，没有返回值，靠更新外部变量来计算结果，而用分解问题思路解题时函数名根据该函数具体功能而定，而且一般会有返回值，返回值是子问题的计算结果。</p>
 </blockquote>
 <h3 id="两种方案解决二叉树的最大深度" tabindex="-1">两种方案解决二叉树的最大深度 <a class="header-anchor" href="#两种方案解决二叉树的最大深度" aria-label="Permalink to &quot;两种方案解决二叉树的最大深度&quot;"></a></h3>
-<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-Dkm65" id="tab-v_Dxws6" checked><label for="tab-v_Dxws6">go</label><input type="radio" name="group-Dkm65" id="tab-VqU5vY-" ><label for="tab-VqU5vY-">go</label></div><div class="blocks">
+<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-PaAST" id="tab-HaL0hmN" checked><label for="tab-HaL0hmN">go</label><input type="radio" name="group-PaAST" id="tab-piIQ9mU" ><label for="tab-piIQ9mU">go</label></div><div class="blocks">
 <div class="language-go vp-adaptive-theme active"><button title="Copy Code" class="copy"></button><span class="lang">go</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">// 记录最大深度</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">var</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> res </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">int</span></span>
 <span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">// 记录遍历到的节点的深度</span></span>
@@ -1063,7 +1063,7 @@ nodeRegistration:
 <li>
 <p>前序遍历</p>
 <p><strong>一棵二叉树的前序遍历结果 = 根节点 + 左子树的前序遍历结果 + 右子树的前序遍历结果</strong></p>
-<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-1zhzo" id="tab-rZtPz2X" checked><label for="tab-rZtPz2X">go</label><input type="radio" name="group-1zhzo" id="tab-ZYjB5je" ><label for="tab-ZYjB5je">go</label></div><div class="blocks">
+<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-BNQ-S" id="tab-5HdgOmf" checked><label for="tab-5HdgOmf">go</label><input type="radio" name="group-BNQ-S" id="tab-YDOSY_-" ><label for="tab-YDOSY_-">go</label></div><div class="blocks">
 <div class="language-go vp-adaptive-theme active"><button title="Copy Code" class="copy"></button><span class="lang">go</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">func</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> preorderTraversal</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70">root</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> *</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">TreeNode</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">) []</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    res </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">:=</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> make</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">([]</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">)</span></span>
 <span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">    traverse</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(root, </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">&#x26;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">res)</span></span>
@@ -1098,7 +1098,7 @@ nodeRegistration:
 </li>
 <li>
 <p>中序遍历</p>
-<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-i1ZEE" id="tab-MKdDQUf" checked><label for="tab-MKdDQUf">go</label><input type="radio" name="group-i1ZEE" id="tab-xo4QaTu" ><label for="tab-xo4QaTu">go</label></div><div class="blocks">
+<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-6GF8S" id="tab-l0ZD7zZ" checked><label for="tab-l0ZD7zZ">go</label><input type="radio" name="group-6GF8S" id="tab-7CH2o3L" ><label for="tab-7CH2o3L">go</label></div><div class="blocks">
 <div class="language-go vp-adaptive-theme active"><button title="Copy Code" class="copy"></button><span class="lang">go</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">func</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> inorderTraversal</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70">root</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> *</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">TreeNode</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">) []</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    result </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">:=</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> make</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">([]</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">)</span></span>
 <span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">    traverse</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(root, </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">&#x26;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">result)</span></span>
@@ -1132,7 +1132,7 @@ nodeRegistration:
 </li>
 <li>
 <p>后序遍历</p>
-<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-6k0Je" id="tab-aRzZqWH" checked><label for="tab-aRzZqWH">go</label><input type="radio" name="group-6k0Je" id="tab-6wc3PUp" ><label for="tab-6wc3PUp">go</label></div><div class="blocks">
+<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-hATc4" id="tab-GPJYQ1H" checked><label for="tab-GPJYQ1H">go</label><input type="radio" name="group-hATc4" id="tab-UAuconv" ><label for="tab-UAuconv">go</label></div><div class="blocks">
 <div class="language-go vp-adaptive-theme active"><button title="Copy Code" class="copy"></button><span class="lang">go</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">func</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> postorderTraversal</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70">root</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> *</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">TreeNode</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">) []</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    result </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">:=</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> make</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">([]</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">)</span></span>
 <span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">    traverse</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(root, </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">&#x26;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">result)</span></span>
@@ -1166,7 +1166,7 @@ nodeRegistration:
 </li>
 <li>
 <p>层序遍历</p>
-<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-YRXic" id="tab-T3Vew2H" checked><label for="tab-T3Vew2H">go</label><input type="radio" name="group-YRXic" id="tab-KquOxwv" ><label for="tab-KquOxwv">go</label></div><div class="blocks">
+<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-z4_QH" id="tab-_YmwmTw" checked><label for="tab-_YmwmTw">go</label><input type="radio" name="group-z4_QH" id="tab-OJoSjX8" ><label for="tab-OJoSjX8">go</label></div><div class="blocks">
 <div class="language-go vp-adaptive-theme active"><button title="Copy Code" class="copy"></button><span class="lang">go</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">func</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> levelOrder</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70">root</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> *</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">TreeNode</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">) [][]</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    res </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">:=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> [][]</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">{}</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">    if</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> root </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">==</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> nil</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span>
@@ -1227,8 +1227,8 @@ nodeRegistration:
         </item>
         <item>
             <title><![CDATA[二分法套路总结]]></title>
-            <link>https://lpdswing.github.io//interviews/algorithm/Summary-of-dichotomy-routines.html</link>
-            <guid>https://lpdswing.github.io//interviews/algorithm/Summary-of-dichotomy-routines.html</guid>
+            <link>https://www.lpdswing.top/interviews/algorithm/Summary-of-dichotomy-routines.html</link>
+            <guid>https://www.lpdswing.top/interviews/algorithm/Summary-of-dichotomy-routines.html</guid>
             <pubDate>Wed, 31 Jul 2024 10:48:22 GMT</pubDate>
             <description><![CDATA[寻找一个数
 基本的二分搜索, leetcode:704
@@ -1339,8 +1339,8 @@ func binarySearch(nums []int, target int) int {
         </item>
         <item>
             <title><![CDATA[203. 移除链表元素]]></title>
-            <link>https://lpdswing.github.io//interviews/leetcode/203Remove-linked-list-element.html</link>
-            <guid>https://lpdswing.github.io//interviews/leetcode/203Remove-linked-list-element.html</guid>
+            <link>https://www.lpdswing.top/interviews/leetcode/203Remove-linked-list-element.html</link>
+            <guid>https://www.lpdswing.top/interviews/leetcode/203Remove-linked-list-element.html</guid>
             <pubDate>Wed, 31 Jul 2024 10:48:22 GMT</pubDate>
             <description><![CDATA[传送门
  解题思路
@@ -1357,7 +1357,7 @@ func removeElements(head *ListNode, va]]></description>
 <li>创建哑结点方便操作， 避免链表头判断</li>
 </ul>
 <h2 id="代码" tabindex="-1">代码 <a class="header-anchor" href="#代码" aria-label="Permalink to &quot;代码&quot;"></a></h2>
-<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-b29pZ" id="tab-vLLmQ7F" checked><label for="tab-vLLmQ7F">go迭代</label><input type="radio" name="group-b29pZ" id="tab-NchGu-s" ><label for="tab-NchGu-s">python递归</label><input type="radio" name="group-b29pZ" id="tab-TlKtPxf" ><label for="tab-TlKtPxf">python迭代</label></div><div class="blocks">
+<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-2_IxR" id="tab-BDeY-k5" checked><label for="tab-BDeY-k5">go迭代</label><input type="radio" name="group-2_IxR" id="tab-srb_xlH" ><label for="tab-srb_xlH">python递归</label><input type="radio" name="group-2_IxR" id="tab-I-6m93S" ><label for="tab-I-6m93S">python迭代</label></div><div class="blocks">
 <div class="language-go vp-adaptive-theme active"><button title="Copy Code" class="copy"></button><span class="lang">go</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">func</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> removeElements</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70">head</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> *</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">ListNode</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70">val</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">*</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">ListNode</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">    if</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> head </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">==</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> nil</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">        return</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> head</span></span>
@@ -1404,8 +1404,8 @@ func removeElements(head *ListNode, va]]></description>
         </item>
         <item>
             <title><![CDATA[go语言泛型]]></title>
-            <link>https://lpdswing.github.io//lang/go/Generics.html</link>
-            <guid>https://lpdswing.github.io//lang/go/Generics.html</guid>
+            <link>https://www.lpdswing.top/lang/go/Generics.html</link>
+            <guid>https://www.lpdswing.top/lang/go/Generics.html</guid>
             <pubDate>Wed, 31 Jul 2024 10:48:22 GMT</pubDate>
             <description><![CDATA[Go语言泛型
 Go 语言自从推出以来，一直被人诟病没有泛型。泛型是一种非常重要的编程概念，它可以让我们编写更加通用、可复用的代码。在 Go 语言中，我们可以使用接口和类型断言来实现类似泛型的功能，但是]]></description>
@@ -1477,8 +1477,8 @@ Go 语言自从推出以来，一直被人诟病没有泛型。泛型是一种�
         </item>
         <item>
             <title><![CDATA[杂七杂八]]></title>
-            <link>https://lpdswing.github.io//nas/note/</link>
-            <guid>https://lpdswing.github.io//nas/note/</guid>
+            <link>https://www.lpdswing.top/nas/note/</link>
+            <guid>https://www.lpdswing.top/nas/note/</guid>
             <pubDate>Wed, 31 Jul 2024 10:48:22 GMT</pubDate>
             <description><![CDATA[杂七杂八
 Nas & 软路由 & 影音库相关]]></description>
@@ -1488,8 +1488,8 @@ Nas & 软路由 & 影音库相关]]></description>
         </item>
         <item>
             <title><![CDATA[并发控制中的悲观锁]]></title>
-            <link>https://lpdswing.github.io//technology/learn/pessimistic_lock.html</link>
-            <guid>https://lpdswing.github.io//technology/learn/pessimistic_lock.html</guid>
+            <link>https://www.lpdswing.top/technology/learn/pessimistic_lock.html</link>
+            <guid>https://www.lpdswing.top/technology/learn/pessimistic_lock.html</guid>
             <pubDate>Fri, 02 Feb 2024 09:19:25 GMT</pubDate>
             <description><![CDATA[
 ![](https://cdn.jsdelivr.net/gh/lpdswing/oss@main/202402021718881.png)
@@ -1763,8 +1763,8 @@ Nas & 软路由 & 影音库相关]]></description>
         </item>
         <item>
             <title><![CDATA[go语言模糊测试]]></title>
-            <link>https://lpdswing.github.io//lang/go/fuzz.html</link>
-            <guid>https://lpdswing.github.io//lang/go/fuzz.html</guid>
+            <link>https://www.lpdswing.top/lang/go/fuzz.html</link>
+            <guid>https://www.lpdswing.top/lang/go/fuzz.html</guid>
             <pubDate>Thu, 21 Dec 2023 12:54:24 GMT</pubDate>
             <description><![CDATA[
 # 前言
@@ -2015,8 +2015,8 @@ Nas & 软路由 & 影音库相关]]></description>
         </item>
         <item>
             <title><![CDATA[深入了解Kubernetes的Top和Dashboard功能]]></title>
-            <link>https://lpdswing.github.io//technology/learn/k8s_dashboard.html</link>
-            <guid>https://lpdswing.github.io//technology/learn/k8s_dashboard.html</guid>
+            <link>https://www.lpdswing.top/technology/learn/k8s_dashboard.html</link>
+            <guid>https://www.lpdswing.top/technology/learn/k8s_dashboard.html</guid>
             <pubDate>Sun, 24 Sep 2023 04:48:56 GMT</pubDate>
             <description><![CDATA[
 
@@ -2396,8 +2396,8 @@ Dashboard功能还提供了查看Pod日志和事件的能力。用户可以方�
         </item>
         <item>
             <title><![CDATA[etcd]]></title>
-            <link>https://lpdswing.github.io//booklet/k8s/etcd.html</link>
-            <guid>https://lpdswing.github.io//booklet/k8s/etcd.html</guid>
+            <link>https://www.lpdswing.top/booklet/k8s/etcd.html</link>
+            <guid>https://www.lpdswing.top/booklet/k8s/etcd.html</guid>
             <pubDate>Tue, 01 Aug 2023 09:14:32 GMT</pubDate>
             <description><![CDATA[Master是k8s集群的大脑, 而`etcd`则是大脑的核心.
  什么是etcd
@@ -2443,8 +2443,8 @@ Dashboard功能还提供了查看Pod日志和事件的能力。用户可以方�
         </item>
         <item>
             <title><![CDATA[traefik在docker中的使用]]></title>
-            <link>https://lpdswing.github.io//technology/learn/traefik.html</link>
-            <guid>https://lpdswing.github.io//technology/learn/traefik.html</guid>
+            <link>https://www.lpdswing.top/technology/learn/traefik.html</link>
+            <guid>https://www.lpdswing.top/technology/learn/traefik.html</guid>
             <pubDate>Tue, 01 Aug 2023 09:14:32 GMT</pubDate>
             <description><![CDATA[什么是traefik
 Traefik 是一个 开源 的可以使得服务发布变得轻松有趣的 *边缘路由器*。它负责接收你系统的请求，然后使用合适的组件来对这些请求进行处理。Traefik 的与众不同之处还在]]></description>
@@ -2557,8 +2557,8 @@ Traefik 是一个 开源 的可以使得服务发布变得轻松有趣的 *边�
         </item>
         <item>
             <title><![CDATA[::: tip About]]></title>
-            <link>https://lpdswing.github.io//interviews/algorithm/</link>
-            <guid>https://lpdswing.github.io//interviews/algorithm/</guid>
+            <link>https://www.lpdswing.top/interviews/algorithm/</link>
+            <guid>https://www.lpdswing.top/interviews/algorithm/</guid>
             <pubDate>Fri, 19 May 2023 09:45:47 GMT</pubDate>
             <description><![CDATA[::: tip About
 算法技巧
@@ -2571,8 +2571,8 @@ Traefik 是一个 开源 的可以使得服务发布变得轻松有趣的 *边�
         </item>
         <item>
             <title><![CDATA[::: tip About]]></title>
-            <link>https://lpdswing.github.io//interviews/leetcode/</link>
-            <guid>https://lpdswing.github.io//interviews/leetcode/</guid>
+            <link>https://www.lpdswing.top/interviews/leetcode/</link>
+            <guid>https://www.lpdswing.top/interviews/leetcode/</guid>
             <pubDate>Fri, 19 May 2023 09:45:47 GMT</pubDate>
             <description><![CDATA[::: tip About
 leetcode刷题
@@ -2585,8 +2585,8 @@ leetcode刷题
         </item>
         <item>
             <title><![CDATA[vitepress博客主题参数配置]]></title>
-            <link>https://lpdswing.github.io//technology/other/vitepress.html</link>
-            <guid>https://lpdswing.github.io//technology/other/vitepress.html</guid>
+            <link>https://www.lpdswing.top/technology/other/vitepress.html</link>
+            <guid>https://www.lpdswing.top/technology/other/vitepress.html</guid>
             <pubDate>Fri, 19 May 2023 03:40:44 GMT</pubDate>
             <description><![CDATA[列举了一些常用参数。]]></description>
             <content:encoded><![CDATA[<h1 id="主题配置" tabindex="-1">主题配置 <a class="header-anchor" href="#主题配置" aria-label="Permalink to &quot;主题配置&quot;"></a></h1>
@@ -2646,8 +2646,8 @@ leetcode刷题
         </item>
         <item>
             <title><![CDATA[About me 👋]]></title>
-            <link>https://lpdswing.github.io//about.html</link>
-            <guid>https://lpdswing.github.io//about.html</guid>
+            <link>https://www.lpdswing.top/about.html</link>
+            <guid>https://www.lpdswing.top/about.html</guid>
             <pubDate>Thu, 18 May 2023 07:26:49 GMT</pubDate>
             <description><![CDATA[Here are some ideas to get you started:
 - 🔭 I’m currently working on Beijing
@@ -2666,8 +2666,8 @@ leetcode刷题
         </item>
         <item>
             <title><![CDATA[::: tip About]]></title>
-            <link>https://lpdswing.github.io//booklet/design/</link>
-            <guid>https://lpdswing.github.io//booklet/design/</guid>
+            <link>https://www.lpdswing.top/booklet/design/</link>
+            <guid>https://www.lpdswing.top/booklet/design/</guid>
             <pubDate>Thu, 18 May 2023 07:26:49 GMT</pubDate>
             <description><![CDATA[::: tip About
 架构设计
@@ -2680,8 +2680,8 @@ leetcode刷题
         </item>
         <item>
             <title><![CDATA[::: tip About]]></title>
-            <link>https://lpdswing.github.io//booklet/distributed/</link>
-            <guid>https://lpdswing.github.io//booklet/distributed/</guid>
+            <link>https://www.lpdswing.top/booklet/distributed/</link>
+            <guid>https://www.lpdswing.top/booklet/distributed/</guid>
             <pubDate>Thu, 18 May 2023 07:26:49 GMT</pubDate>
             <description><![CDATA[::: tip About
 分布式系统
@@ -2694,8 +2694,8 @@ leetcode刷题
         </item>
         <item>
             <title><![CDATA[::: tip About]]></title>
-            <link>https://lpdswing.github.io//booklet/highConcurrency/</link>
-            <guid>https://lpdswing.github.io//booklet/highConcurrency/</guid>
+            <link>https://www.lpdswing.top/booklet/highConcurrency/</link>
+            <guid>https://www.lpdswing.top/booklet/highConcurrency/</guid>
             <pubDate>Thu, 18 May 2023 07:26:49 GMT</pubDate>
             <description><![CDATA[::: tip About
 高并发
@@ -2708,8 +2708,8 @@ leetcode刷题
         </item>
         <item>
             <title><![CDATA[::: tip About]]></title>
-            <link>https://lpdswing.github.io//booklet/k8s/</link>
-            <guid>https://lpdswing.github.io//booklet/k8s/</guid>
+            <link>https://www.lpdswing.top/booklet/k8s/</link>
+            <guid>https://www.lpdswing.top/booklet/k8s/</guid>
             <pubDate>Thu, 18 May 2023 07:26:49 GMT</pubDate>
             <description><![CDATA[::: tip About
 k8s
@@ -2722,8 +2722,8 @@ k8s
         </item>
         <item>
             <title><![CDATA[::: tip About]]></title>
-            <link>https://lpdswing.github.io//booklet/mysql45/</link>
-            <guid>https://lpdswing.github.io//booklet/mysql45/</guid>
+            <link>https://www.lpdswing.top/booklet/mysql45/</link>
+            <guid>https://www.lpdswing.top/booklet/mysql45/</guid>
             <pubDate>Thu, 18 May 2023 07:26:49 GMT</pubDate>
             <description><![CDATA[::: tip About
 mysql45讲
@@ -2736,8 +2736,8 @@ mysql45讲
         </item>
         <item>
             <title><![CDATA[::: tip About]]></title>
-            <link>https://lpdswing.github.io//lang/go/</link>
-            <guid>https://lpdswing.github.io//lang/go/</guid>
+            <link>https://www.lpdswing.top/lang/go/</link>
+            <guid>https://www.lpdswing.top/lang/go/</guid>
             <pubDate>Thu, 18 May 2023 07:26:49 GMT</pubDate>
             <description><![CDATA[::: tip About
 go
@@ -2750,8 +2750,8 @@ go
         </item>
         <item>
             <title><![CDATA[::: tip About]]></title>
-            <link>https://lpdswing.github.io//lang/python/</link>
-            <guid>https://lpdswing.github.io//lang/python/</guid>
+            <link>https://www.lpdswing.top/lang/python/</link>
+            <guid>https://www.lpdswing.top/lang/python/</guid>
             <pubDate>Thu, 18 May 2023 07:26:49 GMT</pubDate>
             <description><![CDATA[::: tip About
 python
@@ -2764,8 +2764,8 @@ python
         </item>
         <item>
             <title><![CDATA[::: tip About]]></title>
-            <link>https://lpdswing.github.io//lang/rust/</link>
-            <guid>https://lpdswing.github.io//lang/rust/</guid>
+            <link>https://www.lpdswing.top/lang/rust/</link>
+            <guid>https://www.lpdswing.top/lang/rust/</guid>
             <pubDate>Thu, 18 May 2023 07:26:49 GMT</pubDate>
             <description><![CDATA[::: tip About
 rust
@@ -2778,8 +2778,8 @@ rust
         </item>
         <item>
             <title><![CDATA[::: tip About]]></title>
-            <link>https://lpdswing.github.io//lang/ts/</link>
-            <guid>https://lpdswing.github.io//lang/ts/</guid>
+            <link>https://www.lpdswing.top/lang/ts/</link>
+            <guid>https://www.lpdswing.top/lang/ts/</guid>
             <pubDate>Thu, 18 May 2023 07:26:49 GMT</pubDate>
             <description><![CDATA[::: tip About
 ts
@@ -2792,8 +2792,8 @@ ts
         </item>
         <item>
             <title><![CDATA[::: tip About]]></title>
-            <link>https://lpdswing.github.io//technology/learn/</link>
-            <guid>https://lpdswing.github.io//technology/learn/</guid>
+            <link>https://www.lpdswing.top/technology/learn/</link>
+            <guid>https://www.lpdswing.top/technology/learn/</guid>
             <pubDate>Thu, 18 May 2023 07:26:49 GMT</pubDate>
             <description><![CDATA[::: tip About
 技术学习
@@ -2806,8 +2806,8 @@ ts
         </item>
         <item>
             <title><![CDATA[杂谈]]></title>
-            <link>https://lpdswing.github.io//technology/other/</link>
-            <guid>https://lpdswing.github.io//technology/other/</guid>
+            <link>https://www.lpdswing.top/technology/other/</link>
+            <guid>https://www.lpdswing.top/technology/other/</guid>
             <pubDate>Thu, 18 May 2023 07:26:49 GMT</pubDate>
             <description><![CDATA[杂谈
 ::: tip 笔者说
@@ -2821,8 +2821,8 @@ ts
         </item>
         <item>
             <title><![CDATA[::: tip About]]></title>
-            <link>https://lpdswing.github.io//technology/source/</link>
-            <guid>https://lpdswing.github.io//technology/source/</guid>
+            <link>https://www.lpdswing.top/technology/source/</link>
+            <guid>https://www.lpdswing.top/technology/source/</guid>
             <pubDate>Thu, 18 May 2023 07:26:49 GMT</pubDate>
             <description><![CDATA[::: tip About
 源码学习
@@ -2835,8 +2835,8 @@ ts
         </item>
         <item>
             <title><![CDATA[windows使用tornado启动django应用]]></title>
-            <link>https://lpdswing.github.io//technology/other/windows-uses-tornado-to-start-django-application.html</link>
-            <guid>https://lpdswing.github.io//technology/other/windows-uses-tornado-to-start-django-application.html</guid>
+            <link>https://www.lpdswing.top/technology/other/windows-uses-tornado-to-start-django-application.html</link>
+            <guid>https://www.lpdswing.top/technology/other/windows-uses-tornado-to-start-django-application.html</guid>
             <pubDate>Sun, 10 May 2020 19:42:05 GMT</pubDate>
             <description><![CDATA[由于 windows 不支持 gunicorn,uwsgi 等高性能的 server,使用 Apache + mod_uwsgi 我觉得有点麻烦,就想用 tornado 来作为 django 的 ht]]></description>
             <content:encoded><![CDATA[<p>由于 windows 不支持 gunicorn,uwsgi 等高性能的 server,使用 Apache + mod_uwsgi 我觉得有点麻烦,就想用 tornado 来作为 django 的 http server..</p>
@@ -3149,8 +3149,8 @@ ts
         </item>
         <item>
             <title><![CDATA[Hexo：语雀云端写作 Coding 持续集成实现自动部署]]></title>
-            <link>https://lpdswing.github.io//technology/other/Hexo:-Yuque-Cloud-Writing-Coding-Continuous-Integration-Achieves-Automatic-Deployment.html</link>
-            <guid>https://lpdswing.github.io//technology/other/Hexo:-Yuque-Cloud-Writing-Coding-Continuous-Integration-Achieves-Automatic-Deployment.html</guid>
+            <link>https://www.lpdswing.top/technology/other/Hexo:-Yuque-Cloud-Writing-Coding-Continuous-Integration-Achieves-Automatic-Deployment.html</link>
+            <guid>https://www.lpdswing.top/technology/other/Hexo:-Yuque-Cloud-Writing-Coding-Continuous-Integration-Achieves-Automatic-Deployment.html</guid>
             <pubDate>Sun, 10 May 2020 19:28:00 GMT</pubDate>
             <description><![CDATA[Hexo：语雀云端写作 Coding 持续集成实现自动部署
 ps：参考文章：https://www.yuque.com/u46795/blog/dlloc7
@@ -3298,8 +3298,8 @@ ps：参考文章：https://www.yuque.com/u46795/blog/dlloc7
         </item>
         <item>
             <title><![CDATA[sqlalchemy之event使用]]></title>
-            <link>https://lpdswing.github.io//technology/other/sqlalchemy-event-usage.html</link>
-            <guid>https://lpdswing.github.io//technology/other/sqlalchemy-event-usage.html</guid>
+            <link>https://www.lpdswing.top/technology/other/sqlalchemy-event-usage.html</link>
+            <guid>https://www.lpdswing.top/technology/other/sqlalchemy-event-usage.html</guid>
             <pubDate>Fri, 24 Apr 2020 10:50:10 GMT</pubDate>
             <description><![CDATA[- 参考文档
   
@@ -3333,8 +3333,8 @@ from sqlalchemy.orm import sessionmake]]></description>
         </item>
         <item>
             <title><![CDATA[python算法之栈]]></title>
-            <link>https://lpdswing.github.io//technology/other/Python-algorithm-stack.html</link>
-            <guid>https://lpdswing.github.io//technology/other/Python-algorithm-stack.html</guid>
+            <link>https://www.lpdswing.top/technology/other/Python-algorithm-stack.html</link>
+            <guid>https://www.lpdswing.top/technology/other/Python-algorithm-stack.html</guid>
             <pubDate>Wed, 24 Apr 2019 16:10:15 GMT</pubDate>
             <description><![CDATA[
 栈(stack)又称之为堆栈是一个特殊的有序表，其插入和删除操作都在栈顶进行操作，并且按照先进后出，后进先出的规则进行运作。
@@ -3464,8 +3464,8 @@ list 就类似一个栈
         </item>
         <item>
             <title><![CDATA[理解进程线程协程]]></title>
-            <link>https://lpdswing.github.io//technology/other/Understanding-process-thread-coroutines.html</link>
-            <guid>https://lpdswing.github.io//technology/other/Understanding-process-thread-coroutines.html</guid>
+            <link>https://www.lpdswing.top/technology/other/Understanding-process-thread-coroutines.html</link>
+            <guid>https://www.lpdswing.top/technology/other/Understanding-process-thread-coroutines.html</guid>
             <pubDate>Wed, 24 Apr 2019 16:10:15 GMT</pubDate>
             <description><![CDATA[理解进程线程协程
  1.1 多任务
@@ -3506,8 +3506,8 @@ list 就类似一个栈
         </item>
         <item>
             <title><![CDATA[Sublime text 常用插件]]></title>
-            <link>https://lpdswing.github.io//technology/other/Sublime-text-commonly-used-plug-ins.html</link>
-            <guid>https://lpdswing.github.io//technology/other/Sublime-text-commonly-used-plug-ins.html</guid>
+            <link>https://www.lpdswing.top/technology/other/Sublime-text-commonly-used-plug-ins.html</link>
+            <guid>https://www.lpdswing.top/technology/other/Sublime-text-commonly-used-plug-ins.html</guid>
             <pubDate>Sat, 21 Apr 2018 00:15:21 GMT</pubDate>
             <description><![CDATA[Sublime text3常用插件
 集成插件：
@@ -3589,8 +3589,8 @@ A：这里以Win7来说明，桌面 – 鼠标右键 – 个性化 – 显示 �
         </item>
         <item>
             <title><![CDATA[U盘量产修复金士顿PS2251-07(PS2307)]]></title>
-            <link>https://lpdswing.github.io//technology/other/U-disk-mass-production-repair-Kingston-PS2251-07-PS2307.html</link>
-            <guid>https://lpdswing.github.io//technology/other/U-disk-mass-production-repair-Kingston-PS2251-07-PS2307.html</guid>
+            <link>https://www.lpdswing.top/technology/other/U-disk-mass-production-repair-Kingston-PS2251-07-PS2307.html</link>
+            <guid>https://www.lpdswing.top/technology/other/U-disk-mass-production-repair-Kingston-PS2251-07-PS2307.html</guid>
             <pubDate>Mon, 16 Apr 2018 21:49:32 GMT</pubDate>
             <description><![CDATA[群联MPALL(Rel)-7F-V5.03.0A-DL07量产PS2251-07(PS2307)步骤
 教程截取自量产吧
@@ -3604,8 +3604,8 @@ A：这里以Win7来说明，桌面 – 鼠标右键 – 个性化 – 显示 �
         </item>
         <item>
             <title><![CDATA[django进阶学习-中间件]]></title>
-            <link>https://lpdswing.github.io//technology/other/django-advanced-middleware.html</link>
-            <guid>https://lpdswing.github.io//technology/other/django-advanced-middleware.html</guid>
+            <link>https://www.lpdswing.top/technology/other/django-advanced-middleware.html</link>
+            <guid>https://www.lpdswing.top/technology/other/django-advanced-middleware.html</guid>
             <pubDate>Wed, 03 May 2017 19:19:39 GMT</pubDate>
             <description><![CDATA[
 # django进阶
@@ -4094,8 +4094,8 @@ class MyMiddleware:
         </item>
         <item>
             <title><![CDATA[django进阶-笔记]]></title>
-            <link>https://lpdswing.github.io//technology/other/Django_advanced.html</link>
-            <guid>https://lpdswing.github.io//technology/other/Django_advanced.html</guid>
+            <link>https://www.lpdswing.top/technology/other/Django_advanced.html</link>
+            <guid>https://www.lpdswing.top/technology/other/Django_advanced.html</guid>
             <pubDate>Wed, 03 May 2017 18:16:44 GMT</pubDate>
             <description><![CDATA[
 # Django 进阶
@@ -5061,8 +5061,8 @@ class MyMiddleware:
         </item>
         <item>
             <title><![CDATA[web基础-django]]></title>
-            <link>https://lpdswing.github.io//technology/other/Web-Basics.html</link>
-            <guid>https://lpdswing.github.io//technology/other/Web-Basics.html</guid>
+            <link>https://www.lpdswing.top/technology/other/Web-Basics.html</link>
+            <guid>https://www.lpdswing.top/technology/other/Web-Basics.html</guid>
             <pubDate>Wed, 03 May 2017 18:16:44 GMT</pubDate>
             <description><![CDATA[Web 基础
 ========
@@ -5358,8 +5358,8 @@ class MyMiddleware:
         </item>
         <item>
             <title><![CDATA[python进阶笔记]]></title>
-            <link>https://lpdswing.github.io//technology/other/Python-advanced.html</link>
-            <guid>https://lpdswing.github.io//technology/other/Python-advanced.html</guid>
+            <link>https://www.lpdswing.top/technology/other/Python-advanced.html</link>
+            <guid>https://www.lpdswing.top/technology/other/Python-advanced.html</guid>
             <pubDate>Wed, 03 May 2017 18:16:36 GMT</pubDate>
             <description><![CDATA[Python 进阶
 ===========
@@ -6296,8 +6296,8 @@ class MyMiddleware:
         </item>
         <item>
             <title><![CDATA[django进阶-web基础]]></title>
-            <link>https://lpdswing.github.io//technology/other/Django-advanced-web-basics.html</link>
-            <guid>https://lpdswing.github.io//technology/other/Django-advanced-web-basics.html</guid>
+            <link>https://www.lpdswing.top/technology/other/Django-advanced-web-basics.html</link>
+            <guid>https://www.lpdswing.top/technology/other/Django-advanced-web-basics.html</guid>
             <pubDate>Wed, 03 May 2017 18:16:33 GMT</pubDate>
             <description><![CDATA[
 # web基础
@@ -6590,8 +6590,8 @@ while True:
         </item>
         <item>
             <title><![CDATA[python常用面试]]></title>
-            <link>https://lpdswing.github.io//technology/other/Interview-summary.html</link>
-            <guid>https://lpdswing.github.io//technology/other/Interview-summary.html</guid>
+            <link>https://www.lpdswing.top/technology/other/Interview-summary.html</link>
+            <guid>https://www.lpdswing.top/technology/other/Interview-summary.html</guid>
             <pubDate>Mon, 24 Apr 2017 16:10:15 GMT</pubDate>
             <description><![CDATA[
 ## 技术面试准备
@@ -6842,8 +6842,8 @@ MyISAM 适合于一些需要大量查询的应用，但其对于有大量写操�
         </item>
         <item>
             <title><![CDATA[python学习笔记]]></title>
-            <link>https://lpdswing.github.io//technology/other/study-notes.html</link>
-            <guid>https://lpdswing.github.io//technology/other/study-notes.html</guid>
+            <link>https://www.lpdswing.top/technology/other/study-notes.html</link>
+            <guid>https://www.lpdswing.top/technology/other/study-notes.html</guid>
             <pubDate>Mon, 24 Apr 2017 16:10:15 GMT</pubDate>
             <description><![CDATA[
 学习笔记
@@ -6958,8 +6958,8 @@ django   510 r/s</p>
         </item>
         <item>
             <title><![CDATA[git解决push报错]]></title>
-            <link>https://lpdswing.github.io//technology/other/git-solve-push-error.html</link>
-            <guid>https://lpdswing.github.io//technology/other/git-solve-push-error.html</guid>
+            <link>https://www.lpdswing.top/technology/other/git-solve-push-error.html</link>
+            <guid>https://www.lpdswing.top/technology/other/git-solve-push-error.html</guid>
             <pubDate>Sat, 22 Apr 2017 18:04:30 GMT</pubDate>
             <description><![CDATA[
 # git -解决push报错问题
@@ -7054,8 +7054,8 @@ github新建仓库,想把本地仓库推送到github
         </item>
         <item>
             <title><![CDATA[pycharm操作技巧]]></title>
-            <link>https://lpdswing.github.io//technology/other/pycharm-operation-skills.html</link>
-            <guid>https://lpdswing.github.io//technology/other/pycharm-operation-skills.html</guid>
+            <link>https://www.lpdswing.top/technology/other/pycharm-operation-skills.html</link>
+            <guid>https://www.lpdswing.top/technology/other/pycharm-operation-skills.html</guid>
             <pubDate>Thu, 20 Apr 2017 00:42:43 GMT</pubDate>
             <description><![CDATA[pycharm使用技巧
 - 常用快捷键
