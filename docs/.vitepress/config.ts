@@ -1,21 +1,26 @@
-import { getThemeConfig, defineConfig } from "@sugarat/theme/node";
+import { getThemeConfig, defineConfig, footerHTML } from "@sugarat/theme/node";
 import { RssPlugin, RSSOptions } from "vitepress-plugin-rss";
 import { nav } from "./config/nav";
 import { head } from "./config/head";
 
 
 const blogTheme = getThemeConfig({
-  oml2d: {
-    models: [
-      {
-        path: 'https://registry.npmmirror.com/oml2d-models/latest/files/models/Senko_Normals/senko.model3.json'
-      }
-    ]
-  },
   alert: {
     type: 'success',
     title: '教程有实效性, 如果不成功请先质疑教程',
     duration: 3000
+  },
+  footer: {
+    message: '<a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank" style="display:flex;align-items:center;justify-content:center;">本网站由 <img src="https://cdn.upyun.sugarat.top/logo/upyun.png-upyun" style="width:56px;height:24px;" alt="又拍云"> 提供CDN加速/云存储服务</a>',
+    copyright: `lpdswing 2017 - ${new Date().getFullYear()}`,
+    // icpRecord: {
+    //   name: '京ICP备xxxx号',
+    //   link: 'https://beian.miit.gov.cn/'
+    // },
+    // securityRecord: {
+    //   name: '公网安备xxxxx',
+    //   link: 'https://www.beian.gov.cn/portal/index.do'
+    // },
   },
   themeColor: 'vp-green',
   // 文章默认作者
@@ -82,7 +87,7 @@ const blogTheme = getThemeConfig({
 });
 const RSS: RSSOptions = {
   title: "lpdswing的博客",
-  baseUrl: "https://lpdswing.github.io/",
+  baseUrl: "https://www.lpdswing.top",
   copyright: "Copyright © 2017-present @lpdswing",
 };
 
@@ -114,11 +119,6 @@ export default defineConfig({
       text: '去 GitHub 上编辑内容'
     },
     lastUpdatedText: "上次更新于",
-    footer: {
-      message: "Released under the Apache License",
-      copyright:
-        'Copyright <a target="_blank" href="https://lpdswing.github.io/"> © 2017-present @lpdswing</a>',
-    },
     logo: "/logo.png",
     socialLinks: [
       {
