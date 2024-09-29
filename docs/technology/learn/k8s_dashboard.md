@@ -9,6 +9,7 @@ categories:
 # 设置首页的精选文章，值越大越靠前
 sticky: 1  
 cover: https://cdn.jsdelivr.net/gh/lpdswing/oss@main/202309241117935.png
+top: 1
 ---
 
 

@@ -1,17 +1,23 @@
 import { getThemeConfig, defineConfig, footerHTML } from "@sugarat/theme/node";
-import { RssPlugin, RSSOptions } from "vitepress-plugin-rss";
 import { nav } from "./config/nav";
 import { head } from "./config/head";
 import workConfig from './works'
+import type { Theme } from '@sugarat/theme'
 
+const RSS: Theme.RSSOptions = {
+  title: "lpdswing的博客",
+  baseUrl: "https://www.lpdswing.top",
+  copyright: "Copyright © 2017-present @lpdswing",
+};
 
 const blogTheme = getThemeConfig({
   works: workConfig,
-  alert: {
-    type: 'success',
-    title: '教程有实效性, 如果不成功请先质疑教程',
-    duration: 3000
-  },
+  RSS,
+  // alert: {
+  //   type: 'success',
+  //   title: '教程有实效性, 如果不成功请先质疑教程',
+  //   duration: 3000
+  // },
   footer: {
     message: '<a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank" style="display:flex;align-items:center;justify-content:center;">本网站由 <img src="https://cdn.upyun.sugarat.top/logo/upyun.png-upyun" style="width:56px;height:24px;" alt="又拍云"> 提供CDN加速/云存储服务</a>',
     copyright: `lpdswing 2017 - ${new Date().getFullYear()}`,
@@ -80,11 +86,7 @@ const blogTheme = getThemeConfig({
     duration: -1,
   },
 });
-const RSS: RSSOptions = {
-  title: "lpdswing的博客",
-  baseUrl: "https://www.lpdswing.top",
-  copyright: "Copyright © 2017-present @lpdswing",
-};
+
 
 export default defineConfig({
   extends: blogTheme,
@@ -97,7 +99,6 @@ export default defineConfig({
       include: ["element-plus"],
       exclude: ["@sugarat/theme"],
     },
-    plugins: [RssPlugin(RSS)],
     build: {
       chunkSizeWarningLimit: 1600,
     }

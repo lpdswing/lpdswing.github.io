@@ -10,6 +10,7 @@ categories:
 # 设置首页的精选文章，值越大越靠前
 sticky: 1  
 date: 2024-08-01 19:00:00
+top: 1
 ---
 
 # NginxProxyManager非标准端口http自动跳转https配置方法
