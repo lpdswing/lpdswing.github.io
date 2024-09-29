@@ -4,10 +4,391 @@
         <title>lpdswing的博客</title>
         <link>https://www.lpdswing.top</link>
         <description>undefined</description>
-        <lastBuildDate>Sat, 28 Sep 2024 17:33:01 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 29 Sep 2024 07:48:34 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <copyright>Copyright © 2017-present @lpdswing</copyright>
+        <item>
+            <title><![CDATA[深入了解Kubernetes的Top和Dashboard功能]]></title>
+            <link>https://www.lpdswing.top/technology/learn/k8s_dashboard.html</link>
+            <guid>https://www.lpdswing.top/technology/learn/k8s_dashboard.html</guid>
+            <pubDate>Sun, 29 Sep 2024 07:46:09 GMT</pubDate>
+            <description><![CDATA[
+
+Kubernetes（通常简称为K8s）已成为容器编排和管理的事实标准，为开发人员和运维团队提供了强大的工具和功能集。在Kubernetes生态系统中，"Top"和"Dashboard"是两个非常有用的组件，它们为用户提供了实时监控和可视化管理容器集群的能力。本文将深入探讨Kubernetes的Top和Dashboard功能，介绍它们的特点和用法，以及如何在日常工作中充分利用它们。
+
+## Kubernetes的Top功能
+Kubernetes的Top功能提供了对集群中资源使用情况的实时监控。它可以帮助用户了解各个节点和容器的资源消耗情况，包括CPU、内存、存储等方面的指标。通过使用Top命令，用户可以获得集群的整体性能概览，并深入了解资源的分配和利用情况。
+
+### 资源监控
+Top功能通过收集和展示节点和容器的资源使用指标，帮助用户了解系统的健康状况。用户可以查看各个节点的负载情况，以及容器的资源消耗情况，从而及时识别出资源瓶颈和性能问题。
+
+### 资源调优
+Top功能提供了对资源使用情况的实时监控，用户可以根据监控数据进行资源调优。通过查看资源使用情况的变化趋势，用户可以调整容器的资源配额，优化资源分配，提高系统的整体性能和稳定性。
+
+## Kubernetes的Dashboard功能
+Kubernetes的Dashboard是一个基于Web的用户界面，提供了对Kubernetes集群的可视化管理和操作。它为用户提供了一个直观的界面，用于监控和管理集群中的各种资源，如节点、Pod、服务、存储等。
+
+### 集群概览
+Dashboard功能提供了集群的整体概览，用户可以一目了然地查看集群中的节点数量、运行的Pod数量、服务数量等关键信息。通过Dashboard，用户可以快速了解集群的规模和状态，为后续的管理和操作提供参考。
+
+### 资源管理
+Dashboard功能允许用户对集群中的各种资源进行管理和操作。用户可以创建、删除和编辑Pod、服务等对象，也可以扩展和收缩节点的数量。通过Dashboard，用户可以轻松管理集群中的资源，提高工作效率。
+
+### 日志和事件查看
+Dashboard功能还提供了查看Pod日志和事件的能力。用户可以方便地查看Pod的日志输出，以便快速定位和解决问题。同时，用户还可以查看集群中发生的事件，如Pod的创建、删除和调度等，帮助用户了解系统的运行情况。
+
+## 实操开启Top和Dashboard
+
+### Top
+
+对于较新的Kubernetes版本，Metrics Server是默认的资源监控组件。如果执行`kubectl top node`出现`error: Metrics API not available`说明没有安装好metrics server, 我们需要先安装好metrics server。
+
+1. 执行`kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml`安装，具体版本信息可以参考[metrics-server](https://github.com/kubernetes-sigs/metrics-server)。
+
+![](https://cdn.jsdelivr.net/gh/lpdswing/oss@main/202309241045945.png)
+
+2. 执行`kubectl get pods -n kube-system`查看metris-server是否已经启动。如下图所示说明已经启动成功。
+
+![](https://cdn.jsdelivr.net/gh/lpdswing/oss@main/202309241049444.png)
+
+3. 执行`kubectl top node`查看node状态, :grin::grin: 搞定收工。
+
+![](https://cdn.jsdelivr.net/gh/lpdswing/oss@main/202309241051783.png)
+
+4. Trouble shooting
+
+   如果网络环境不好，镜像下不下来可以使用阿里云镜像，我们把components.yaml下载下来。
+
+   ```yaml
+   apiVersion: v1
+   kind: ServiceAccount
+   metadata:
+     labels:
+       k8s-app: metrics-server
+     name: metrics-server
+     namespace: kube-system
+   ]]></description>
+            <content:encoded><![CDATA[<p>Kubernetes（通常简称为K8s）已成为容器编排和管理的事实标准，为开发人员和运维团队提供了强大的工具和功能集。在Kubernetes生态系统中，&quot;Top&quot;和&quot;Dashboard&quot;是两个非常有用的组件，它们为用户提供了实时监控和可视化管理容器集群的能力。本文将深入探讨Kubernetes的Top和Dashboard功能，介绍它们的特点和用法，以及如何在日常工作中充分利用它们。</p>
+<h2 id="kubernetes的top功能" tabindex="-1">Kubernetes的Top功能 <a class="header-anchor" href="#kubernetes的top功能" aria-label="Permalink to &quot;Kubernetes的Top功能&quot;"></a></h2>
+<p>Kubernetes的Top功能提供了对集群中资源使用情况的实时监控。它可以帮助用户了解各个节点和容器的资源消耗情况，包括CPU、内存、存储等方面的指标。通过使用Top命令，用户可以获得集群的整体性能概览，并深入了解资源的分配和利用情况。</p>
+<h3 id="资源监控" tabindex="-1">资源监控 <a class="header-anchor" href="#资源监控" aria-label="Permalink to &quot;资源监控&quot;"></a></h3>
+<p>Top功能通过收集和展示节点和容器的资源使用指标，帮助用户了解系统的健康状况。用户可以查看各个节点的负载情况，以及容器的资源消耗情况，从而及时识别出资源瓶颈和性能问题。</p>
+<h3 id="资源调优" tabindex="-1">资源调优 <a class="header-anchor" href="#资源调优" aria-label="Permalink to &quot;资源调优&quot;"></a></h3>
+<p>Top功能提供了对资源使用情况的实时监控，用户可以根据监控数据进行资源调优。通过查看资源使用情况的变化趋势，用户可以调整容器的资源配额，优化资源分配，提高系统的整体性能和稳定性。</p>
+<h2 id="kubernetes的dashboard功能" tabindex="-1">Kubernetes的Dashboard功能 <a class="header-anchor" href="#kubernetes的dashboard功能" aria-label="Permalink to &quot;Kubernetes的Dashboard功能&quot;"></a></h2>
+<p>Kubernetes的Dashboard是一个基于Web的用户界面，提供了对Kubernetes集群的可视化管理和操作。它为用户提供了一个直观的界面，用于监控和管理集群中的各种资源，如节点、Pod、服务、存储等。</p>
+<h3 id="集群概览" tabindex="-1">集群概览 <a class="header-anchor" href="#集群概览" aria-label="Permalink to &quot;集群概览&quot;"></a></h3>
+<p>Dashboard功能提供了集群的整体概览，用户可以一目了然地查看集群中的节点数量、运行的Pod数量、服务数量等关键信息。通过Dashboard，用户可以快速了解集群的规模和状态，为后续的管理和操作提供参考。</p>
+<h3 id="资源管理" tabindex="-1">资源管理 <a class="header-anchor" href="#资源管理" aria-label="Permalink to &quot;资源管理&quot;"></a></h3>
+<p>Dashboard功能允许用户对集群中的各种资源进行管理和操作。用户可以创建、删除和编辑Pod、服务等对象，也可以扩展和收缩节点的数量。通过Dashboard，用户可以轻松管理集群中的资源，提高工作效率。</p>
+<h3 id="日志和事件查看" tabindex="-1">日志和事件查看 <a class="header-anchor" href="#日志和事件查看" aria-label="Permalink to &quot;日志和事件查看&quot;"></a></h3>
+<p>Dashboard功能还提供了查看Pod日志和事件的能力。用户可以方便地查看Pod的日志输出，以便快速定位和解决问题。同时，用户还可以查看集群中发生的事件，如Pod的创建、删除和调度等，帮助用户了解系统的运行情况。</p>
+<h2 id="实操开启top和dashboard" tabindex="-1">实操开启Top和Dashboard <a class="header-anchor" href="#实操开启top和dashboard" aria-label="Permalink to &quot;实操开启Top和Dashboard&quot;"></a></h2>
+<h3 id="top" tabindex="-1">Top <a class="header-anchor" href="#top" aria-label="Permalink to &quot;Top&quot;"></a></h3>
+<p>对于较新的Kubernetes版本，Metrics Server是默认的资源监控组件。如果执行<code>kubectl top node</code>出现<code>error: Metrics API not available</code>说明没有安装好metrics server, 我们需要先安装好metrics server。</p>
+<ol>
+<li>执行<code>kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml</code>安装，具体版本信息可以参考<a href="https://github.com/kubernetes-sigs/metrics-server" target="_blank" rel="noreferrer">metrics-server</a>。</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/lpdswing/oss@main/202309241045945.png" alt=""></p>
+<ol start="2">
+<li>执行<code>kubectl get pods -n kube-system</code>查看metris-server是否已经启动。如下图所示说明已经启动成功。</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/lpdswing/oss@main/202309241049444.png" alt=""></p>
+<ol start="3">
+<li>执行<code>kubectl top node</code>查看node状态, 😁😁 搞定收工。</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/lpdswing/oss@main/202309241051783.png" alt=""></p>
+<ol start="4">
+<li>
+<p>Trouble shooting</p>
+<p>如果网络环境不好，镜像下不下来可以使用阿里云镜像，我们把components.yaml下载下来。</p>
+<div class="language-yaml vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">yaml</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">apiVersion</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">v1</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">kind</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">ServiceAccount</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">metadata</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  labels</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">    k8s-app</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">metrics-server</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">metrics-server</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  namespace</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">kube-system</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">---</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">apiVersion</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">rbac.authorization.k8s.io/v1</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">kind</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">ClusterRole</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">metadata</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  labels</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">    k8s-app</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">metrics-server</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">    rbac.authorization.k8s.io/aggregate-to-admin</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"true"</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">    rbac.authorization.k8s.io/aggregate-to-edit</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"true"</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">    rbac.authorization.k8s.io/aggregate-to-view</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"true"</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">system:aggregated-metrics-reader</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">rules</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">- </span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">apiGroups</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">metrics.k8s.io</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  resources</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">pods</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">nodes</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  verbs</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">get</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">list</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">watch</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">---</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">apiVersion</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">rbac.authorization.k8s.io/v1</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">kind</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">ClusterRole</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">metadata</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  labels</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">    k8s-app</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">metrics-server</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">system:metrics-server</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">rules</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">- </span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">apiGroups</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">""</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  resources</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">nodes/metrics</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  verbs</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">get</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">- </span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">apiGroups</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">""</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  resources</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">pods</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">nodes</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  verbs</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">get</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">list</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">watch</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">---</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">apiVersion</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">rbac.authorization.k8s.io/v1</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">kind</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">RoleBinding</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">metadata</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  labels</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">    k8s-app</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">metrics-server</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">metrics-server-auth-reader</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  namespace</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">kube-system</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">roleRef</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  apiGroup</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">rbac.authorization.k8s.io</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  kind</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">Role</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">extension-apiserver-authentication-reader</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">subjects</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">- </span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">kind</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">ServiceAccount</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">metrics-server</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  namespace</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">kube-system</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">---</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">apiVersion</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">rbac.authorization.k8s.io/v1</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">kind</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">ClusterRoleBinding</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">metadata</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  labels</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">    k8s-app</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">metrics-server</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">metrics-server:system:auth-delegator</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">roleRef</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  apiGroup</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">rbac.authorization.k8s.io</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  kind</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">ClusterRole</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">system:auth-delegator</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">subjects</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">- </span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">kind</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">ServiceAccount</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">metrics-server</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  namespace</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">kube-system</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">---</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">apiVersion</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">rbac.authorization.k8s.io/v1</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">kind</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">ClusterRoleBinding</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">metadata</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  labels</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">    k8s-app</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">metrics-server</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">system:metrics-server</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">roleRef</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  apiGroup</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">rbac.authorization.k8s.io</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  kind</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">ClusterRole</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">system:metrics-server</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">subjects</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">- </span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">kind</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">ServiceAccount</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">metrics-server</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  namespace</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">kube-system</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">---</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">apiVersion</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">v1</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">kind</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">Service</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">metadata</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  labels</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">    k8s-app</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">metrics-server</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">metrics-server</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  namespace</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">kube-system</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">spec</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  ports</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  - </span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">https</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">    port</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">443</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">    protocol</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">TCP</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">    targetPort</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">https</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  selector</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">    k8s-app</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">metrics-server</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">---</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">apiVersion</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">apps/v1</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">kind</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">Deployment</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">metadata</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  labels</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">    k8s-app</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">metrics-server</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">metrics-server</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  namespace</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">kube-system</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">spec</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  selector</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">    matchLabels</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">      k8s-app</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">metrics-server</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  strategy</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">    rollingUpdate</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">      maxUnavailable</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">0</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  template</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">    metadata</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">      labels</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">        k8s-app</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">metrics-server</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">    spec</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">      containers</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      - </span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">args</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">        - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">--cert-dir=/tmp</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">        - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">--secure-port=4443</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">        - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">--kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">        - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">--kubelet-use-node-status-port</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">        - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">--metric-resolution=15s</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">        # 如果没权限访问，增加下面这一行</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">        - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">--kubelet-insecure-tls</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">        # 镜像替换为阿里云镜像</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">        image</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">registry.cn-hangzhou.aliyuncs.com/google_containers/metrics-server:v0.6.4</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">        imagePullPolicy</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">IfNotPresent</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">        livenessProbe</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">          failureThreshold</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">3</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">          httpGet</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">            path</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">/livez</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">            port</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">https</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">            scheme</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">HTTPS</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">          periodSeconds</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">10</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">        name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">metrics-server</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">        ports</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">        - </span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">containerPort</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">4443</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">          name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">https</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">          protocol</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">TCP</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">        readinessProbe</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">          failureThreshold</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">3</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">          httpGet</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">            path</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">/readyz</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">            port</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">https</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">            scheme</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">HTTPS</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">          initialDelaySeconds</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">20</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">          periodSeconds</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">10</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">        resources</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">          requests</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">            cpu</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">100m</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">            memory</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">200Mi</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">        securityContext</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">          allowPrivilegeEscalation</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">false</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">          readOnlyRootFilesystem</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">true</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">          runAsNonRoot</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">true</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">          runAsUser</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">1000</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">        volumeMounts</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">        - </span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">mountPath</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">/tmp</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">          name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">tmp-dir</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">      nodeSelector</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">        kubernetes.io/os</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">linux</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">      priorityClassName</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">system-cluster-critical</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">      serviceAccountName</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">metrics-server</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">      volumes</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      - </span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">emptyDir</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: {}</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">        name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">tmp-dir</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">---</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">apiVersion</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">apiregistration.k8s.io/v1</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">kind</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">APIService</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">metadata</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  labels</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">    k8s-app</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">metrics-server</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">v1beta1.metrics.k8s.io</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">spec</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  group</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">metrics.k8s.io</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  groupPriorityMinimum</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">100</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  insecureSkipTLSVerify</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">true</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  service</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">    name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">metrics-server</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">    namespace</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">kube-system</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  version</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">v1beta1</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  versionPriority</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">100</span></span></code></pre>
+</div></li>
+</ol>
+<h3 id="dashboard" tabindex="-1">Dashboard <a class="header-anchor" href="#dashboard" aria-label="Permalink to &quot;Dashboard&quot;"></a></h3>
+<p>参考<a href="https://kubernetes.io/zh-cn/docs/tasks/access-application-cluster/web-ui-dashboard/" target="_blank" rel="noreferrer">这里</a>我们很轻松就可以搞定k8s仪表盘（Dashboard），Follow me。</p>
+<ol>
+<li>
+<p>部署Dashboard UI</p>
+<p>执行<code>kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml</code></p>
+</li>
+<li>
+<p>创建管理用户</p>
+<p>为了保护你的集群数据，默认情况下，Dashboard 会使用最少的 RBAC 配置进行部署。 当前，Dashboard 仅支持使用 Bearer 令牌登录。</p>
+<p>来，参考<a href="https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/creating-sample-user.md" target="_blank" rel="noreferrer">这里</a>。</p>
+<ul>
+<li>
+<p>创建dashboard-adminuser.yaml 内容如下：</p>
+<div class="language-yaml vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">yaml</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">apiVersion</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">v1</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">kind</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">ServiceAccount</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">metadata</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">admin-user</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  namespace</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">kubernetes-dashboard</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">---</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">apiVersion</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">rbac.authorization.k8s.io/v1</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">kind</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">ClusterRoleBinding</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">metadata</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">admin-user</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">roleRef</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  apiGroup</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">rbac.authorization.k8s.io</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  kind</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">ClusterRole</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">cluster-admin</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">subjects</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">- </span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">kind</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">ServiceAccount</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">admin-user</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  namespace</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">kubernetes-dashboard</span></span></code></pre>
+</div></li>
+<li>
+<p>执行<code>kubectl apply -f dashboard-adminuser.yaml</code>,到这里admin-user就创建好了。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/lpdswing/oss@main/202309241104410.png" alt=""></p>
+</li>
+</ul>
+</li>
+<li>
+<p>获取Bearer Token</p>
+<ol>
+<li>
+<p>直接通过命令创建Token</p>
+<p>执行下面的命令：</p>
+<div class="language-shell vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">shell</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">kubectl</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> -n</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> kubernetes-dashboard</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> create</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> token</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> admin-user</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"># 会生成下面一串Token</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">eyJhbGciOiJSUzI1NiIsImtpZCI6IjNpNTB6b2NBSHpFRHFiNUhTVDRyTURpV1g0OTB2aHBnNEVka1Npcy01RHMifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiLCJrM3MiXSwiZXhwIjoxNjk1NTI4NTAwLCJpYXQiOjE2OTU1MjQ5MDAsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJrdWJlcm5ldGVzLWRhc2hib2FyZCIsInNlcnZpY2VhY2NvdW50Ijp7Im5hbWUiOiJhZG1pbi11c2VyIiwidWlkIjoiMjdhYjI2YmEtMDNlNy00YTkxLWI5YWUtYjIwNDQ5ZjI5NDk4In19LCJuYmYiOjE2OTU1MjQ5MDAsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlcm5ldGVzLWRhc2hib2FyZDphZG1pbi11c2VyIn0.owFzEipgjfkARdM8OSR3UK_eI23ZNj3gBX1Q7a6nxzRgP8lwd2vMdQM7c7uCpHT1w5KbzoZ70lOsxzqqcSWHOhXVUezYBZqRIIVX8VOHxrCUp0hL8rS71B_QO3WALuil_Q3cIJbuyzNt6Zku-rax7AZoFaxpIdHhoYFdjEmKLA3dv4M2dMYUxM5f0RfBvYRp_fO-6fOyv1Y5iFXaHsdGg5a3zdXkOM-1T7VftR0jq1Q2dD_VsnrvFWO5jQmIt3iywSG20CO2W9YlAtaVOcIHbqionttlHUyUrhOfvPaikR30rzGpkZDeD7l234XryWcQr3rtRgO-s3QkfNjdUSeHew</span></span></code></pre>
+</div></li>
+<li>
+<p>通过secret获取长期持有的Token</p>
+<p>创建dashboard-secret.yaml.</p>
+<div class="language-yaml vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">yaml</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">apiVersion</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">v1</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">kind</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">Secret</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">metadata</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">admin-user</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  namespace</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">kubernetes-dashboard</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  annotations</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">    kubernetes.io/service-account.name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"admin-user"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">   </span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">type</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">kubernetes.io/service-account-token</span></span></code></pre>
+</div><p>执行<code>kubectl apply -f dashboard-secret.yaml</code></p>
+<p>执行下面的命令获取Token：</p>
+<div class="language-shell vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">shell</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">kubectl</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> get</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> secret</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> admin-user</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> -n</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> kubernetes-dashboard</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> -o</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> jsonpath={".data.token"}</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> |</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> base64</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> -d</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">eyJhbGciOiJSUzI1NiIsImtpZCI6IjNpNTB6b2NBSHpFRHFiNUhTVDRyTURpV1g0OTB2aHBnNEVka1Npcy01RHMifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlcm5ldGVzLWRhc2hib2FyZCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJhZG1pbi11c2VyIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQubmFtZSI6ImFkbWluLXVzZXIiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC51aWQiOiIyN2FiMjZiYS0wM2U3LTRhOTEtYjlhZS1iMjA0NDlmMjk0OTgiLCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6a3ViZXJuZXRlcy1kYXNoYm9hcmQ6YWRtaW4tdXNlciJ9.LJTDXBU9P5rWOj1ATTgJxk-tKKMvYI43dkkBAePMek01ixCc0Z62xfMcTVUaGdQTO-N6dYeiI1YHkkFHjiSYwNltdZEfY7xWY7cqQzKhI50jNObIX1grKxcw9jhanzWFfpeMdbMHtuzSnHDLYow8DlZnvuUuXaKEEryiIT4jUTilbOqtrA01Nayqmq_d88_izrUptCB1hAxfdwcbBBu1OmTc48PabU5POF-H8xPRqJ7act4Q1TH_u5H2gAnQcpsHC2UYrTB0ag6kUMFrwSN_u_-LooDdmqRKGbuFf2AM1DBw_H43N-keeLrir21ojOrb-JLc4icabnpEXM5jQHys9Q</span></span></code></pre>
+</div></li>
+<li>
+<p>命令行代理</p>
+<p><code>kubectl proxy</code>来启动dashboard的访问。现在就可以通过<code>http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/</code>来访问Dashboard了， UI只能通过执行这条命令的机器访问，如果是远程服务器，可以通过端口转发的方式来在本机电脑进行访问。</p>
+</li>
+<li>
+<p>访问UI</p>
+<p><img src="https://github.com/kubernetes/dashboard/raw/master/docs/images/signin.png" alt=""></p>
+<p>把第二步得到的Token贴进来登录就可以了。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/lpdswing/oss@main/202309241117935.png" alt=""></p>
+<p>恭喜你已经完成Dashboard的部署访问。</p>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="总结" tabindex="-1">总结 <a class="header-anchor" href="#总结" aria-label="Permalink to &quot;总结&quot;"></a></h2>
+<p>Kubernetes的Top和Dashboard功能为用户提供了实时监控和可视化管理容器集群的能力。Top功能帮助用户了解资源的使用情况，进行资源调优，提高系统性能和稳定性。Dashboard功能提供了集群的概览和资源管理功能，方便用户对集群进行可视化操作和管理。通过充分利用Kubernetes的Top和Dashboard功能，用户可以更好地理解和管理自己的容器集群，提高工作效率和生产力。</p>
+]]></content:encoded>
+            <enclosure url="https://cdn.jsdelivr.net/gh/lpdswing/oss@main/202309241117935.png" length="0" type="image/png"/>
+        </item>
         <item>
             <title><![CDATA[NginxProxyManager非标准端口http自动跳转https配置方法]]></title>
             <link>https://www.lpdswing.top/nas/note/nginx-proxy-manager.html</link>
@@ -772,7 +1153,7 @@ nodeRegistration:
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">    return</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> slow </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">+</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> 1</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">}</span></span></code></pre>
 </div><p>滑动窗口框架：</p>
-<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-0xSfD" id="tab-tCRephU" checked><label for="tab-tCRephU">go</label><input type="radio" name="group-0xSfD" id="tab-OG8XnsL" ><label for="tab-OG8XnsL">python</label></div><div class="blocks">
+<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-rlRuP" id="tab-eNWWZ1f" checked><label for="tab-eNWWZ1f">go</label><input type="radio" name="group-rlRuP" id="tab-Af837rh" ><label for="tab-Af837rh">python</label></div><div class="blocks">
 <div class="language-go vp-adaptive-theme active"><button title="Copy Code" class="copy"></button><span class="lang">go</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">// 滑动窗口算法框架</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">func</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> slidingWindow</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70">s</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> string</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70">t</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> string</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">) {</span></span>
 <span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">    // 初始化need 和 window</span></span>
@@ -1002,7 +1383,7 @@ nodeRegistration:
 <p>二叉树中用遍历思路解题时函数签名一般是 <code>void traverse(...)</code>，没有返回值，靠更新外部变量来计算结果，而用分解问题思路解题时函数名根据该函数具体功能而定，而且一般会有返回值，返回值是子问题的计算结果。</p>
 </blockquote>
 <h3 id="两种方案解决二叉树的最大深度" tabindex="-1">两种方案解决二叉树的最大深度 <a class="header-anchor" href="#两种方案解决二叉树的最大深度" aria-label="Permalink to &quot;两种方案解决二叉树的最大深度&quot;"></a></h3>
-<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-0LIQa" id="tab-lWe9tAK" checked><label for="tab-lWe9tAK">go</label><input type="radio" name="group-0LIQa" id="tab-9sxl8GS" ><label for="tab-9sxl8GS">go</label></div><div class="blocks">
+<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-ZExk0" id="tab-GVjhtoD" checked><label for="tab-GVjhtoD">go</label><input type="radio" name="group-ZExk0" id="tab-IQQnzTD" ><label for="tab-IQQnzTD">go</label></div><div class="blocks">
 <div class="language-go vp-adaptive-theme active"><button title="Copy Code" class="copy"></button><span class="lang">go</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">// 记录最大深度</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">var</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> res </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">int</span></span>
 <span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">// 记录遍历到的节点的深度</span></span>
@@ -1063,7 +1444,7 @@ nodeRegistration:
 <li>
 <p>前序遍历</p>
 <p><strong>一棵二叉树的前序遍历结果 = 根节点 + 左子树的前序遍历结果 + 右子树的前序遍历结果</strong></p>
-<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-XxbcU" id="tab-UPgTdwR" checked><label for="tab-UPgTdwR">go</label><input type="radio" name="group-XxbcU" id="tab-SJiM3w3" ><label for="tab-SJiM3w3">go</label></div><div class="blocks">
+<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-5QVjX" id="tab-g5M5ySX" checked><label for="tab-g5M5ySX">go</label><input type="radio" name="group-5QVjX" id="tab-wvD0Vr1" ><label for="tab-wvD0Vr1">go</label></div><div class="blocks">
 <div class="language-go vp-adaptive-theme active"><button title="Copy Code" class="copy"></button><span class="lang">go</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">func</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> preorderTraversal</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70">root</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> *</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">TreeNode</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">) []</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    res </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">:=</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> make</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">([]</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">)</span></span>
 <span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">    traverse</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(root, </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">&#x26;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">res)</span></span>
@@ -1098,7 +1479,7 @@ nodeRegistration:
 </li>
 <li>
 <p>中序遍历</p>
-<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-2krd7" id="tab-0KoO0QQ" checked><label for="tab-0KoO0QQ">go</label><input type="radio" name="group-2krd7" id="tab-e-mEEn_" ><label for="tab-e-mEEn_">go</label></div><div class="blocks">
+<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-cl-M2" id="tab-zPorknd" checked><label for="tab-zPorknd">go</label><input type="radio" name="group-cl-M2" id="tab-ghyGg5q" ><label for="tab-ghyGg5q">go</label></div><div class="blocks">
 <div class="language-go vp-adaptive-theme active"><button title="Copy Code" class="copy"></button><span class="lang">go</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">func</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> inorderTraversal</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70">root</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> *</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">TreeNode</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">) []</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    result </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">:=</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> make</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">([]</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">)</span></span>
 <span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">    traverse</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(root, </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">&#x26;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">result)</span></span>
@@ -1132,7 +1513,7 @@ nodeRegistration:
 </li>
 <li>
 <p>后序遍历</p>
-<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-MKmfp" id="tab-gU2pw85" checked><label for="tab-gU2pw85">go</label><input type="radio" name="group-MKmfp" id="tab-LX_gov5" ><label for="tab-LX_gov5">go</label></div><div class="blocks">
+<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-vthXf" id="tab-H6Sv7T-" checked><label for="tab-H6Sv7T-">go</label><input type="radio" name="group-vthXf" id="tab-l1QWe7u" ><label for="tab-l1QWe7u">go</label></div><div class="blocks">
 <div class="language-go vp-adaptive-theme active"><button title="Copy Code" class="copy"></button><span class="lang">go</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">func</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> postorderTraversal</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70">root</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> *</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">TreeNode</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">) []</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    result </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">:=</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> make</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">([]</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">)</span></span>
 <span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">    traverse</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(root, </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">&#x26;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">result)</span></span>
@@ -1166,7 +1547,7 @@ nodeRegistration:
 </li>
 <li>
 <p>层序遍历</p>
-<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-ZMnD7" id="tab-mU0mAIU" checked><label for="tab-mU0mAIU">go</label><input type="radio" name="group-ZMnD7" id="tab-ILb3abI" ><label for="tab-ILb3abI">go</label></div><div class="blocks">
+<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-WYQ6e" id="tab-kt4AYCV" checked><label for="tab-kt4AYCV">go</label><input type="radio" name="group-WYQ6e" id="tab-_FEpumY" ><label for="tab-_FEpumY">go</label></div><div class="blocks">
 <div class="language-go vp-adaptive-theme active"><button title="Copy Code" class="copy"></button><span class="lang">go</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">func</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> levelOrder</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70">root</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> *</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">TreeNode</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">) [][]</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    res </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">:=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> [][]</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">{}</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">    if</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> root </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">==</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> nil</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span>
@@ -1357,7 +1738,7 @@ func removeElements(head *ListNode, va]]></description>
 <li>创建哑结点方便操作， 避免链表头判断</li>
 </ul>
 <h2 id="代码" tabindex="-1">代码 <a class="header-anchor" href="#代码" aria-label="Permalink to &quot;代码&quot;"></a></h2>
-<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-aF9oc" id="tab-uo5glm2" checked><label for="tab-uo5glm2">go迭代</label><input type="radio" name="group-aF9oc" id="tab-MnKe9iS" ><label for="tab-MnKe9iS">python递归</label><input type="radio" name="group-aF9oc" id="tab-ucmtMx8" ><label for="tab-ucmtMx8">python迭代</label></div><div class="blocks">
+<div class="vp-code-group vp-adaptive-theme"><div class="tabs"><input type="radio" name="group-TX6XA" id="tab-PUKUrXz" checked><label for="tab-PUKUrXz">go迭代</label><input type="radio" name="group-TX6XA" id="tab-4s5H9AV" ><label for="tab-4s5H9AV">python递归</label><input type="radio" name="group-TX6XA" id="tab-ngib_Qi" ><label for="tab-ngib_Qi">python迭代</label></div><div class="blocks">
 <div class="language-go vp-adaptive-theme active"><button title="Copy Code" class="copy"></button><span class="lang">go</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">func</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> removeElements</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70">head</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> *</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">ListNode</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70">val</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">*</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">ListNode</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">    if</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> head </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">==</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> nil</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">        return</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> head</span></span>
@@ -2014,387 +2395,6 @@ Nas & 软路由 & 影音库相关]]></description>
             <enclosure url="https://cdn.jsdelivr.net/gh/lpdswing/oss@main/202312212044424.png" length="0" type="image/png"/>
         </item>
         <item>
-            <title><![CDATA[深入了解Kubernetes的Top和Dashboard功能]]></title>
-            <link>https://www.lpdswing.top/technology/learn/k8s_dashboard.html</link>
-            <guid>https://www.lpdswing.top/technology/learn/k8s_dashboard.html</guid>
-            <pubDate>Sun, 24 Sep 2023 04:48:56 GMT</pubDate>
-            <description><![CDATA[
-
-Kubernetes（通常简称为K8s）已成为容器编排和管理的事实标准，为开发人员和运维团队提供了强大的工具和功能集。在Kubernetes生态系统中，"Top"和"Dashboard"是两个非常有用的组件，它们为用户提供了实时监控和可视化管理容器集群的能力。本文将深入探讨Kubernetes的Top和Dashboard功能，介绍它们的特点和用法，以及如何在日常工作中充分利用它们。
-
-## Kubernetes的Top功能
-Kubernetes的Top功能提供了对集群中资源使用情况的实时监控。它可以帮助用户了解各个节点和容器的资源消耗情况，包括CPU、内存、存储等方面的指标。通过使用Top命令，用户可以获得集群的整体性能概览，并深入了解资源的分配和利用情况。
-
-### 资源监控
-Top功能通过收集和展示节点和容器的资源使用指标，帮助用户了解系统的健康状况。用户可以查看各个节点的负载情况，以及容器的资源消耗情况，从而及时识别出资源瓶颈和性能问题。
-
-### 资源调优
-Top功能提供了对资源使用情况的实时监控，用户可以根据监控数据进行资源调优。通过查看资源使用情况的变化趋势，用户可以调整容器的资源配额，优化资源分配，提高系统的整体性能和稳定性。
-
-## Kubernetes的Dashboard功能
-Kubernetes的Dashboard是一个基于Web的用户界面，提供了对Kubernetes集群的可视化管理和操作。它为用户提供了一个直观的界面，用于监控和管理集群中的各种资源，如节点、Pod、服务、存储等。
-
-### 集群概览
-Dashboard功能提供了集群的整体概览，用户可以一目了然地查看集群中的节点数量、运行的Pod数量、服务数量等关键信息。通过Dashboard，用户可以快速了解集群的规模和状态，为后续的管理和操作提供参考。
-
-### 资源管理
-Dashboard功能允许用户对集群中的各种资源进行管理和操作。用户可以创建、删除和编辑Pod、服务等对象，也可以扩展和收缩节点的数量。通过Dashboard，用户可以轻松管理集群中的资源，提高工作效率。
-
-### 日志和事件查看
-Dashboard功能还提供了查看Pod日志和事件的能力。用户可以方便地查看Pod的日志输出，以便快速定位和解决问题。同时，用户还可以查看集群中发生的事件，如Pod的创建、删除和调度等，帮助用户了解系统的运行情况。
-
-## 实操开启Top和Dashboard
-
-### Top
-
-对于较新的Kubernetes版本，Metrics Server是默认的资源监控组件。如果执行`kubectl top node`出现`error: Metrics API not available`说明没有安装好metrics server, 我们需要先安装好metrics server。
-
-1. 执行`kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml`安装，具体版本信息可以参考[metrics-server](https://github.com/kubernetes-sigs/metrics-server)。
-
-![](https://cdn.jsdelivr.net/gh/lpdswing/oss@main/202309241045945.png)
-
-2. 执行`kubectl get pods -n kube-system`查看metris-server是否已经启动。如下图所示说明已经启动成功。
-
-![](https://cdn.jsdelivr.net/gh/lpdswing/oss@main/202309241049444.png)
-
-3. 执行`kubectl top node`查看node状态, :grin::grin: 搞定收工。
-
-![](https://cdn.jsdelivr.net/gh/lpdswing/oss@main/202309241051783.png)
-
-4. Trouble shooting
-
-   如果网络环境不好，镜像下不下来可以使用阿里云镜像，我们把components.yaml下载下来。
-
-   ```yaml
-   apiVersion: v1
-   kind: ServiceAccount
-   metadata:
-     labels:
-       k8s-app: metrics-server
-     name: metrics-server
-     namespace: kube-system
-   ]]></description>
-            <content:encoded><![CDATA[<p>Kubernetes（通常简称为K8s）已成为容器编排和管理的事实标准，为开发人员和运维团队提供了强大的工具和功能集。在Kubernetes生态系统中，&quot;Top&quot;和&quot;Dashboard&quot;是两个非常有用的组件，它们为用户提供了实时监控和可视化管理容器集群的能力。本文将深入探讨Kubernetes的Top和Dashboard功能，介绍它们的特点和用法，以及如何在日常工作中充分利用它们。</p>
-<h2 id="kubernetes的top功能" tabindex="-1">Kubernetes的Top功能 <a class="header-anchor" href="#kubernetes的top功能" aria-label="Permalink to &quot;Kubernetes的Top功能&quot;"></a></h2>
-<p>Kubernetes的Top功能提供了对集群中资源使用情况的实时监控。它可以帮助用户了解各个节点和容器的资源消耗情况，包括CPU、内存、存储等方面的指标。通过使用Top命令，用户可以获得集群的整体性能概览，并深入了解资源的分配和利用情况。</p>
-<h3 id="资源监控" tabindex="-1">资源监控 <a class="header-anchor" href="#资源监控" aria-label="Permalink to &quot;资源监控&quot;"></a></h3>
-<p>Top功能通过收集和展示节点和容器的资源使用指标，帮助用户了解系统的健康状况。用户可以查看各个节点的负载情况，以及容器的资源消耗情况，从而及时识别出资源瓶颈和性能问题。</p>
-<h3 id="资源调优" tabindex="-1">资源调优 <a class="header-anchor" href="#资源调优" aria-label="Permalink to &quot;资源调优&quot;"></a></h3>
-<p>Top功能提供了对资源使用情况的实时监控，用户可以根据监控数据进行资源调优。通过查看资源使用情况的变化趋势，用户可以调整容器的资源配额，优化资源分配，提高系统的整体性能和稳定性。</p>
-<h2 id="kubernetes的dashboard功能" tabindex="-1">Kubernetes的Dashboard功能 <a class="header-anchor" href="#kubernetes的dashboard功能" aria-label="Permalink to &quot;Kubernetes的Dashboard功能&quot;"></a></h2>
-<p>Kubernetes的Dashboard是一个基于Web的用户界面，提供了对Kubernetes集群的可视化管理和操作。它为用户提供了一个直观的界面，用于监控和管理集群中的各种资源，如节点、Pod、服务、存储等。</p>
-<h3 id="集群概览" tabindex="-1">集群概览 <a class="header-anchor" href="#集群概览" aria-label="Permalink to &quot;集群概览&quot;"></a></h3>
-<p>Dashboard功能提供了集群的整体概览，用户可以一目了然地查看集群中的节点数量、运行的Pod数量、服务数量等关键信息。通过Dashboard，用户可以快速了解集群的规模和状态，为后续的管理和操作提供参考。</p>
-<h3 id="资源管理" tabindex="-1">资源管理 <a class="header-anchor" href="#资源管理" aria-label="Permalink to &quot;资源管理&quot;"></a></h3>
-<p>Dashboard功能允许用户对集群中的各种资源进行管理和操作。用户可以创建、删除和编辑Pod、服务等对象，也可以扩展和收缩节点的数量。通过Dashboard，用户可以轻松管理集群中的资源，提高工作效率。</p>
-<h3 id="日志和事件查看" tabindex="-1">日志和事件查看 <a class="header-anchor" href="#日志和事件查看" aria-label="Permalink to &quot;日志和事件查看&quot;"></a></h3>
-<p>Dashboard功能还提供了查看Pod日志和事件的能力。用户可以方便地查看Pod的日志输出，以便快速定位和解决问题。同时，用户还可以查看集群中发生的事件，如Pod的创建、删除和调度等，帮助用户了解系统的运行情况。</p>
-<h2 id="实操开启top和dashboard" tabindex="-1">实操开启Top和Dashboard <a class="header-anchor" href="#实操开启top和dashboard" aria-label="Permalink to &quot;实操开启Top和Dashboard&quot;"></a></h2>
-<h3 id="top" tabindex="-1">Top <a class="header-anchor" href="#top" aria-label="Permalink to &quot;Top&quot;"></a></h3>
-<p>对于较新的Kubernetes版本，Metrics Server是默认的资源监控组件。如果执行<code>kubectl top node</code>出现<code>error: Metrics API not available</code>说明没有安装好metrics server, 我们需要先安装好metrics server。</p>
-<ol>
-<li>执行<code>kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml</code>安装，具体版本信息可以参考<a href="https://github.com/kubernetes-sigs/metrics-server" target="_blank" rel="noreferrer">metrics-server</a>。</li>
-</ol>
-<p><img src="https://cdn.jsdelivr.net/gh/lpdswing/oss@main/202309241045945.png" alt=""></p>
-<ol start="2">
-<li>执行<code>kubectl get pods -n kube-system</code>查看metris-server是否已经启动。如下图所示说明已经启动成功。</li>
-</ol>
-<p><img src="https://cdn.jsdelivr.net/gh/lpdswing/oss@main/202309241049444.png" alt=""></p>
-<ol start="3">
-<li>执行<code>kubectl top node</code>查看node状态, 😁😁 搞定收工。</li>
-</ol>
-<p><img src="https://cdn.jsdelivr.net/gh/lpdswing/oss@main/202309241051783.png" alt=""></p>
-<ol start="4">
-<li>
-<p>Trouble shooting</p>
-<p>如果网络环境不好，镜像下不下来可以使用阿里云镜像，我们把components.yaml下载下来。</p>
-<div class="language-yaml vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">yaml</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">apiVersion</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">v1</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">kind</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">ServiceAccount</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">metadata</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  labels</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">    k8s-app</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">metrics-server</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">metrics-server</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  namespace</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">kube-system</span></span>
-<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">---</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">apiVersion</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">rbac.authorization.k8s.io/v1</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">kind</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">ClusterRole</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">metadata</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  labels</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">    k8s-app</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">metrics-server</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">    rbac.authorization.k8s.io/aggregate-to-admin</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"true"</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">    rbac.authorization.k8s.io/aggregate-to-edit</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"true"</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">    rbac.authorization.k8s.io/aggregate-to-view</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"true"</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">system:aggregated-metrics-reader</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">rules</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">- </span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">apiGroups</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">metrics.k8s.io</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  resources</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">pods</span></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">nodes</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  verbs</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">get</span></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">list</span></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">watch</span></span>
-<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">---</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">apiVersion</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">rbac.authorization.k8s.io/v1</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">kind</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">ClusterRole</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">metadata</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  labels</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">    k8s-app</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">metrics-server</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">system:metrics-server</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">rules</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">- </span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">apiGroups</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">""</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  resources</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">nodes/metrics</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  verbs</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">get</span></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">- </span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">apiGroups</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">""</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  resources</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">pods</span></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">nodes</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  verbs</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">get</span></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">list</span></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">watch</span></span>
-<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">---</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">apiVersion</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">rbac.authorization.k8s.io/v1</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">kind</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">RoleBinding</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">metadata</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  labels</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">    k8s-app</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">metrics-server</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">metrics-server-auth-reader</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  namespace</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">kube-system</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">roleRef</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  apiGroup</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">rbac.authorization.k8s.io</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  kind</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">Role</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">extension-apiserver-authentication-reader</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">subjects</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">- </span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">kind</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">ServiceAccount</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">metrics-server</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  namespace</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">kube-system</span></span>
-<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">---</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">apiVersion</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">rbac.authorization.k8s.io/v1</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">kind</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">ClusterRoleBinding</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">metadata</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  labels</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">    k8s-app</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">metrics-server</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">metrics-server:system:auth-delegator</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">roleRef</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  apiGroup</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">rbac.authorization.k8s.io</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  kind</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">ClusterRole</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">system:auth-delegator</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">subjects</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">- </span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">kind</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">ServiceAccount</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">metrics-server</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  namespace</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">kube-system</span></span>
-<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">---</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">apiVersion</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">rbac.authorization.k8s.io/v1</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">kind</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">ClusterRoleBinding</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">metadata</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  labels</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">    k8s-app</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">metrics-server</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">system:metrics-server</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">roleRef</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  apiGroup</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">rbac.authorization.k8s.io</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  kind</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">ClusterRole</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">system:metrics-server</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">subjects</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">- </span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">kind</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">ServiceAccount</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">metrics-server</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  namespace</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">kube-system</span></span>
-<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">---</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">apiVersion</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">v1</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">kind</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">Service</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">metadata</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  labels</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">    k8s-app</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">metrics-server</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">metrics-server</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  namespace</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">kube-system</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">spec</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  ports</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  - </span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">https</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">    port</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">443</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">    protocol</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">TCP</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">    targetPort</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">https</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  selector</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">    k8s-app</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">metrics-server</span></span>
-<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">---</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">apiVersion</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">apps/v1</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">kind</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">Deployment</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">metadata</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  labels</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">    k8s-app</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">metrics-server</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">metrics-server</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  namespace</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">kube-system</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">spec</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  selector</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">    matchLabels</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">      k8s-app</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">metrics-server</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  strategy</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">    rollingUpdate</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">      maxUnavailable</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">0</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  template</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">    metadata</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">      labels</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">        k8s-app</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">metrics-server</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">    spec</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">      containers</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      - </span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">args</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">        - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">--cert-dir=/tmp</span></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">        - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">--secure-port=4443</span></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">        - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">--kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname</span></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">        - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">--kubelet-use-node-status-port</span></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">        - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">--metric-resolution=15s</span></span>
-<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">        # 如果没权限访问，增加下面这一行</span></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">        - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">--kubelet-insecure-tls</span></span>
-<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">        # 镜像替换为阿里云镜像</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">        image</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">registry.cn-hangzhou.aliyuncs.com/google_containers/metrics-server:v0.6.4</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">        imagePullPolicy</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">IfNotPresent</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">        livenessProbe</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">          failureThreshold</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">3</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">          httpGet</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">            path</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">/livez</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">            port</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">https</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">            scheme</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">HTTPS</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">          periodSeconds</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">10</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">        name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">metrics-server</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">        ports</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">        - </span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">containerPort</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">4443</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">          name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">https</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">          protocol</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">TCP</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">        readinessProbe</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">          failureThreshold</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">3</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">          httpGet</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">            path</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">/readyz</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">            port</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">https</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">            scheme</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">HTTPS</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">          initialDelaySeconds</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">20</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">          periodSeconds</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">10</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">        resources</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">          requests</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">            cpu</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">100m</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">            memory</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">200Mi</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">        securityContext</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">          allowPrivilegeEscalation</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">false</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">          readOnlyRootFilesystem</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">true</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">          runAsNonRoot</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">true</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">          runAsUser</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">1000</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">        volumeMounts</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">        - </span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">mountPath</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">/tmp</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">          name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">tmp-dir</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">      nodeSelector</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">        kubernetes.io/os</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">linux</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">      priorityClassName</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">system-cluster-critical</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">      serviceAccountName</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">metrics-server</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">      volumes</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      - </span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">emptyDir</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: {}</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">        name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">tmp-dir</span></span>
-<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">---</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">apiVersion</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">apiregistration.k8s.io/v1</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">kind</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">APIService</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">metadata</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  labels</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">    k8s-app</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">metrics-server</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">v1beta1.metrics.k8s.io</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">spec</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  group</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">metrics.k8s.io</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  groupPriorityMinimum</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">100</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  insecureSkipTLSVerify</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">true</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  service</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">    name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">metrics-server</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">    namespace</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">kube-system</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  version</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">v1beta1</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  versionPriority</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">100</span></span></code></pre>
-</div></li>
-</ol>
-<h3 id="dashboard" tabindex="-1">Dashboard <a class="header-anchor" href="#dashboard" aria-label="Permalink to &quot;Dashboard&quot;"></a></h3>
-<p>参考<a href="https://kubernetes.io/zh-cn/docs/tasks/access-application-cluster/web-ui-dashboard/" target="_blank" rel="noreferrer">这里</a>我们很轻松就可以搞定k8s仪表盘（Dashboard），Follow me。</p>
-<ol>
-<li>
-<p>部署Dashboard UI</p>
-<p>执行<code>kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml</code></p>
-</li>
-<li>
-<p>创建管理用户</p>
-<p>为了保护你的集群数据，默认情况下，Dashboard 会使用最少的 RBAC 配置进行部署。 当前，Dashboard 仅支持使用 Bearer 令牌登录。</p>
-<p>来，参考<a href="https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/creating-sample-user.md" target="_blank" rel="noreferrer">这里</a>。</p>
-<ul>
-<li>
-<p>创建dashboard-adminuser.yaml 内容如下：</p>
-<div class="language-yaml vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">yaml</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">apiVersion</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">v1</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">kind</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">ServiceAccount</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">metadata</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">admin-user</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  namespace</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">kubernetes-dashboard</span></span>
-<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">---</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">apiVersion</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">rbac.authorization.k8s.io/v1</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">kind</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">ClusterRoleBinding</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">metadata</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">admin-user</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">roleRef</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  apiGroup</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">rbac.authorization.k8s.io</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  kind</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">ClusterRole</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">cluster-admin</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">subjects</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">- </span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">kind</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">ServiceAccount</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">admin-user</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  namespace</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">kubernetes-dashboard</span></span></code></pre>
-</div></li>
-<li>
-<p>执行<code>kubectl apply -f dashboard-adminuser.yaml</code>,到这里admin-user就创建好了。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/lpdswing/oss@main/202309241104410.png" alt=""></p>
-</li>
-</ul>
-</li>
-<li>
-<p>获取Bearer Token</p>
-<ol>
-<li>
-<p>直接通过命令创建Token</p>
-<p>执行下面的命令：</p>
-<div class="language-shell vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">shell</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">kubectl</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> -n</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> kubernetes-dashboard</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> create</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> token</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> admin-user</span></span>
-<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"># 会生成下面一串Token</span></span>
-<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">eyJhbGciOiJSUzI1NiIsImtpZCI6IjNpNTB6b2NBSHpFRHFiNUhTVDRyTURpV1g0OTB2aHBnNEVka1Npcy01RHMifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiLCJrM3MiXSwiZXhwIjoxNjk1NTI4NTAwLCJpYXQiOjE2OTU1MjQ5MDAsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJrdWJlcm5ldGVzLWRhc2hib2FyZCIsInNlcnZpY2VhY2NvdW50Ijp7Im5hbWUiOiJhZG1pbi11c2VyIiwidWlkIjoiMjdhYjI2YmEtMDNlNy00YTkxLWI5YWUtYjIwNDQ5ZjI5NDk4In19LCJuYmYiOjE2OTU1MjQ5MDAsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlcm5ldGVzLWRhc2hib2FyZDphZG1pbi11c2VyIn0.owFzEipgjfkARdM8OSR3UK_eI23ZNj3gBX1Q7a6nxzRgP8lwd2vMdQM7c7uCpHT1w5KbzoZ70lOsxzqqcSWHOhXVUezYBZqRIIVX8VOHxrCUp0hL8rS71B_QO3WALuil_Q3cIJbuyzNt6Zku-rax7AZoFaxpIdHhoYFdjEmKLA3dv4M2dMYUxM5f0RfBvYRp_fO-6fOyv1Y5iFXaHsdGg5a3zdXkOM-1T7VftR0jq1Q2dD_VsnrvFWO5jQmIt3iywSG20CO2W9YlAtaVOcIHbqionttlHUyUrhOfvPaikR30rzGpkZDeD7l234XryWcQr3rtRgO-s3QkfNjdUSeHew</span></span></code></pre>
-</div></li>
-<li>
-<p>通过secret获取长期持有的Token</p>
-<p>创建dashboard-secret.yaml.</p>
-<div class="language-yaml vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">yaml</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">apiVersion</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">v1</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">kind</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">Secret</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">metadata</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">admin-user</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  namespace</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">kubernetes-dashboard</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">  annotations</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">    kubernetes.io/service-account.name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"admin-user"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">   </span></span>
-<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">type</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">kubernetes.io/service-account-token</span></span></code></pre>
-</div><p>执行<code>kubectl apply -f dashboard-secret.yaml</code></p>
-<p>执行下面的命令获取Token：</p>
-<div class="language-shell vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">shell</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">kubectl</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> get</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> secret</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> admin-user</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> -n</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> kubernetes-dashboard</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> -o</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> jsonpath={".data.token"}</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> |</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> base64</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> -d</span></span>
-<span class="line"></span>
-<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">eyJhbGciOiJSUzI1NiIsImtpZCI6IjNpNTB6b2NBSHpFRHFiNUhTVDRyTURpV1g0OTB2aHBnNEVka1Npcy01RHMifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlcm5ldGVzLWRhc2hib2FyZCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJhZG1pbi11c2VyIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQubmFtZSI6ImFkbWluLXVzZXIiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC51aWQiOiIyN2FiMjZiYS0wM2U3LTRhOTEtYjlhZS1iMjA0NDlmMjk0OTgiLCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6a3ViZXJuZXRlcy1kYXNoYm9hcmQ6YWRtaW4tdXNlciJ9.LJTDXBU9P5rWOj1ATTgJxk-tKKMvYI43dkkBAePMek01ixCc0Z62xfMcTVUaGdQTO-N6dYeiI1YHkkFHjiSYwNltdZEfY7xWY7cqQzKhI50jNObIX1grKxcw9jhanzWFfpeMdbMHtuzSnHDLYow8DlZnvuUuXaKEEryiIT4jUTilbOqtrA01Nayqmq_d88_izrUptCB1hAxfdwcbBBu1OmTc48PabU5POF-H8xPRqJ7act4Q1TH_u5H2gAnQcpsHC2UYrTB0ag6kUMFrwSN_u_-LooDdmqRKGbuFf2AM1DBw_H43N-keeLrir21ojOrb-JLc4icabnpEXM5jQHys9Q</span></span></code></pre>
-</div></li>
-<li>
-<p>命令行代理</p>
-<p><code>kubectl proxy</code>来启动dashboard的访问。现在就可以通过<code>http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/</code>来访问Dashboard了， UI只能通过执行这条命令的机器访问，如果是远程服务器，可以通过端口转发的方式来在本机电脑进行访问。</p>
-</li>
-<li>
-<p>访问UI</p>
-<p><img src="https://github.com/kubernetes/dashboard/raw/master/docs/images/signin.png" alt=""></p>
-<p>把第二步得到的Token贴进来登录就可以了。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/lpdswing/oss@main/202309241117935.png" alt=""></p>
-<p>恭喜你已经完成Dashboard的部署访问。</p>
-</li>
-</ol>
-</li>
-</ol>
-<h2 id="总结" tabindex="-1">总结 <a class="header-anchor" href="#总结" aria-label="Permalink to &quot;总结&quot;"></a></h2>
-<p>Kubernetes的Top和Dashboard功能为用户提供了实时监控和可视化管理容器集群的能力。Top功能帮助用户了解资源的使用情况，进行资源调优，提高系统性能和稳定性。Dashboard功能提供了集群的概览和资源管理功能，方便用户对集群进行可视化操作和管理。通过充分利用Kubernetes的Top和Dashboard功能，用户可以更好地理解和管理自己的容器集群，提高工作效率和生产力。</p>
-]]></content:encoded>
-            <enclosure url="https://cdn.jsdelivr.net/gh/lpdswing/oss@main/202309241117935.png" length="0" type="image/png"/>
-        </item>
-        <item>
             <title><![CDATA[etcd]]></title>
             <link>https://www.lpdswing.top/booklet/k8s/etcd.html</link>
             <guid>https://www.lpdswing.top/booklet/k8s/etcd.html</guid>
@@ -2645,26 +2645,6 @@ leetcode刷题
 </div>]]></content:encoded>
         </item>
         <item>
-            <title><![CDATA[About me 👋]]></title>
-            <link>https://www.lpdswing.top/about.html</link>
-            <guid>https://www.lpdswing.top/about.html</guid>
-            <pubDate>Thu, 18 May 2023 07:26:49 GMT</pubDate>
-            <description><![CDATA[Here are some ideas to get you started:
-- 🔭 I’m currently working on Beijing
-- ⚡ Python/Golang/Java]]></description>
-            <content:encoded><![CDATA[<h3 id="about-me-👋" tabindex="-1">About me 👋 <a class="header-anchor" href="#about-me-👋" aria-label="Permalink to &quot;About me 👋&quot;"></a></h3>
-<p>Here are some ideas to get you started:</p>
-<ul>
-<li>🔭 I’m currently working on Beijing</li>
-<li>⚡ Python/Golang/JavaScript/vue.</li>
-</ul>
-<h3 id="plan" tabindex="-1">Plan <a class="header-anchor" href="#plan" aria-label="Permalink to &quot;Plan&quot;"></a></h3>
-<ul>
-<li>逐步完善列出来的blog列表。</li>
-</ul>
-]]></content:encoded>
-        </item>
-        <item>
             <title><![CDATA[::: tip About]]></title>
             <link>https://www.lpdswing.top/booklet/design/</link>
             <guid>https://www.lpdswing.top/booklet/design/</guid>
@@ -2835,8 +2815,8 @@ ts
         </item>
         <item>
             <title><![CDATA[windows使用tornado启动django应用]]></title>
-            <link>https://www.lpdswing.top/technology/other/windows-uses-tornado-to-start-django-application.html</link>
-            <guid>https://www.lpdswing.top/technology/other/windows-uses-tornado-to-start-django-application.html</guid>
+            <link>https://www.lpdswing.top/technology/other/windows-tornado-start-django.html</link>
+            <guid>https://www.lpdswing.top/technology/other/windows-tornado-start-django.html</guid>
             <pubDate>Sun, 10 May 2020 19:42:05 GMT</pubDate>
             <description><![CDATA[由于 windows 不支持 gunicorn,uwsgi 等高性能的 server,使用 Apache + mod_uwsgi 我觉得有点麻烦,就想用 tornado 来作为 django 的 ht]]></description>
             <content:encoded><![CDATA[<p>由于 windows 不支持 gunicorn,uwsgi 等高性能的 server,使用 Apache + mod_uwsgi 我觉得有点麻烦,就想用 tornado 来作为 django 的 http server..</p>
@@ -3149,8 +3129,8 @@ ts
         </item>
         <item>
             <title><![CDATA[Hexo：语雀云端写作 Coding 持续集成实现自动部署]]></title>
-            <link>https://www.lpdswing.top/technology/other/Hexo:-Yuque-Cloud-Writing-Coding-Continuous-Integration-Achieves-Automatic-Deployment.html</link>
-            <guid>https://www.lpdswing.top/technology/other/Hexo:-Yuque-Cloud-Writing-Coding-Continuous-Integration-Achieves-Automatic-Deployment.html</guid>
+            <link>https://www.lpdswing.top/technology/other/Hexo:-Yuque-Cloud.html</link>
+            <guid>https://www.lpdswing.top/technology/other/Hexo:-Yuque-Cloud.html</guid>
             <pubDate>Sun, 10 May 2020 19:28:00 GMT</pubDate>
             <description><![CDATA[Hexo：语雀云端写作 Coding 持续集成实现自动部署
 ps：参考文章：https://www.yuque.com/u46795/blog/dlloc7
@@ -3428,7 +3408,7 @@ list 就类似一个栈
 <span class="line"></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">def</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> get_brackets</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(s):</span></span>
 <span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">    '''获取括号'''</span></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    result </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> ''</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">.join(re.findall(</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">r</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">[</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;--shiki-light-font-weight:bold;--shiki-dark-font-weight:bold">\(\)\[\]\{\}</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">]</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,s))</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    result </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> ''</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">.join(re.findall(</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">r</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">[</span><span style="--shiki-light:#22863A;--shiki-light-font-weight:bold;--shiki-dark:#85E89D;--shiki-dark-font-weight:bold">\(\)\[\]\{\}</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">]</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,s))</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">    return</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> result</span></span>
 <span class="line"></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">def</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> match</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(expr):</span></span>
@@ -3539,15 +3519,15 @@ Q：如何修改侧边栏背景颜色？
 A：修改主题的配置文件即可。例如：使用流风清音汉化版，其默认主题为“Nil-Theme”，那么配置文件的相应路径是“Data\Packages\Nil-Theme\Nil.sublime-theme”。</p>
 <div class="language-json vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">json</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">/** Sidebar tree (bg) **/</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">{</span></span>
-<span class="line"><span style="--shiki-light:#B31D28;--shiki-dark:#FDAEB7;--shiki-light-font-style:italic;--shiki-dark-font-style:italic">“class”</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#B31D28;--shiki-dark:#FDAEB7;--shiki-light-font-style:italic;--shiki-dark-font-style:italic">“sidebar_tree”</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span>
-<span class="line"><span style="--shiki-light:#B31D28;--shiki-dark:#FDAEB7;--shiki-light-font-style:italic;--shiki-dark-font-style:italic">“dark_content”</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">true</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span>
-<span class="line"><span style="--shiki-light:#B31D28;--shiki-dark:#FDAEB7;--shiki-light-font-style:italic;--shiki-dark-font-style:italic">“row_padding”</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: [</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">12</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">4</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">],</span></span>
-<span class="line"><span style="--shiki-light:#B31D28;--shiki-dark:#FDAEB7;--shiki-light-font-style:italic;--shiki-dark-font-style:italic">“indent”</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">13</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span>
-<span class="line"><span style="--shiki-light:#B31D28;--shiki-dark:#FDAEB7;--shiki-light-font-style:italic;--shiki-dark-font-style:italic">“indent_offset”</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">15</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span>
-<span class="line"><span style="--shiki-light:#B31D28;--shiki-dark:#FDAEB7;--shiki-light-font-style:italic;--shiki-dark-font-style:italic">“indent_top_level”</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">false</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span>
-<span class="line"><span style="--shiki-light:#B31D28;--shiki-dark:#FDAEB7;--shiki-light-font-style:italic;--shiki-dark-font-style:italic">“layer0.tint”</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: [</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">32</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">32</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">32</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">], </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">/* darker gray */</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> /* 输入喜欢的颜色的对应RGB值即可 */</span></span>
-<span class="line"><span style="--shiki-light:#B31D28;--shiki-dark:#FDAEB7;--shiki-light-font-style:italic;--shiki-dark-font-style:italic">“layer0.opacity”</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">1.0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span>
-<span class="line"><span style="--shiki-light:#B31D28;--shiki-dark:#FDAEB7;--shiki-light-font-style:italic;--shiki-dark-font-style:italic">“dark_content”</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">true</span></span>
+<span class="line"><span style="--shiki-light:#B31D28;--shiki-light-font-style:italic;--shiki-dark:#FDAEB7;--shiki-dark-font-style:italic">“class”</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#B31D28;--shiki-light-font-style:italic;--shiki-dark:#FDAEB7;--shiki-dark-font-style:italic">“sidebar_tree”</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span>
+<span class="line"><span style="--shiki-light:#B31D28;--shiki-light-font-style:italic;--shiki-dark:#FDAEB7;--shiki-dark-font-style:italic">“dark_content”</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">true</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span>
+<span class="line"><span style="--shiki-light:#B31D28;--shiki-light-font-style:italic;--shiki-dark:#FDAEB7;--shiki-dark-font-style:italic">“row_padding”</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: [</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">12</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">4</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">],</span></span>
+<span class="line"><span style="--shiki-light:#B31D28;--shiki-light-font-style:italic;--shiki-dark:#FDAEB7;--shiki-dark-font-style:italic">“indent”</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">13</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span>
+<span class="line"><span style="--shiki-light:#B31D28;--shiki-light-font-style:italic;--shiki-dark:#FDAEB7;--shiki-dark-font-style:italic">“indent_offset”</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">15</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span>
+<span class="line"><span style="--shiki-light:#B31D28;--shiki-light-font-style:italic;--shiki-dark:#FDAEB7;--shiki-dark-font-style:italic">“indent_top_level”</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">false</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span>
+<span class="line"><span style="--shiki-light:#B31D28;--shiki-light-font-style:italic;--shiki-dark:#FDAEB7;--shiki-dark-font-style:italic">“layer0.tint”</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: [</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">32</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">32</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">32</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">], </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">/* darker gray */</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> /* 输入喜欢的颜色的对应RGB值即可 */</span></span>
+<span class="line"><span style="--shiki-light:#B31D28;--shiki-light-font-style:italic;--shiki-dark:#FDAEB7;--shiki-dark-font-style:italic">“layer0.opacity”</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">1.0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span>
+<span class="line"><span style="--shiki-light:#B31D28;--shiki-light-font-style:italic;--shiki-dark:#FDAEB7;--shiki-dark-font-style:italic">“dark_content”</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">true</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">},</span></span></code></pre>
 </div><p>Q：为什么在Win8系统出现中文乱码？
 A：这是Win8权限问题，一种方法是卸载后重装到系统之外的分区，另一种方法则是以管理员身份运行。
@@ -3561,25 +3541,25 @@ Q：为什么侧边栏出现双文件夹图标？
 A：在主题模板规则中添加如下配置即可。</p>
 <div class="language-json vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">json</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">{</span></span>
 <span class="line"></span>
-<span class="line"><span style="--shiki-light:#B31D28;--shiki-dark:#FDAEB7;--shiki-light-font-style:italic;--shiki-dark-font-style:italic">“class”</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#B31D28;--shiki-dark:#FDAEB7;--shiki-light-font-style:italic;--shiki-dark-font-style:italic">“icon_folder”</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span>
+<span class="line"><span style="--shiki-light:#B31D28;--shiki-light-font-style:italic;--shiki-dark:#FDAEB7;--shiki-dark-font-style:italic">“class”</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#B31D28;--shiki-light-font-style:italic;--shiki-dark:#FDAEB7;--shiki-dark-font-style:italic">“icon_folder”</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span>
 <span class="line"></span>
-<span class="line"><span style="--shiki-light:#B31D28;--shiki-dark:#FDAEB7;--shiki-light-font-style:italic;--shiki-dark-font-style:italic">“content_margin”</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: [</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">]</span></span>
-<span class="line"></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">},</span></span>
-<span class="line"></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">{</span></span>
-<span class="line"></span>
-<span class="line"><span style="--shiki-light:#B31D28;--shiki-dark:#FDAEB7;--shiki-light-font-style:italic;--shiki-dark-font-style:italic">“class”</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#B31D28;--shiki-dark:#FDAEB7;--shiki-light-font-style:italic;--shiki-dark-font-style:italic">“icon_file_type”</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span>
-<span class="line"></span>
-<span class="line"><span style="--shiki-light:#B31D28;--shiki-dark:#FDAEB7;--shiki-light-font-style:italic;--shiki-dark-font-style:italic">“content_margin”</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: [</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">]</span></span>
+<span class="line"><span style="--shiki-light:#B31D28;--shiki-light-font-style:italic;--shiki-dark:#FDAEB7;--shiki-dark-font-style:italic">“content_margin”</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: [</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">]</span></span>
 <span class="line"></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">},</span></span>
 <span class="line"></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">{</span></span>
 <span class="line"></span>
-<span class="line"><span style="--shiki-light:#B31D28;--shiki-dark:#FDAEB7;--shiki-light-font-style:italic;--shiki-dark-font-style:italic">“class”</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#B31D28;--shiki-dark:#FDAEB7;--shiki-light-font-style:italic;--shiki-dark-font-style:italic">“icon_folder_loading”</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span>
+<span class="line"><span style="--shiki-light:#B31D28;--shiki-light-font-style:italic;--shiki-dark:#FDAEB7;--shiki-dark-font-style:italic">“class”</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#B31D28;--shiki-light-font-style:italic;--shiki-dark:#FDAEB7;--shiki-dark-font-style:italic">“icon_file_type”</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span>
 <span class="line"></span>
-<span class="line"><span style="--shiki-light:#B31D28;--shiki-dark:#FDAEB7;--shiki-light-font-style:italic;--shiki-dark-font-style:italic">“content_margin”</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: [</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">]</span></span>
+<span class="line"><span style="--shiki-light:#B31D28;--shiki-light-font-style:italic;--shiki-dark:#FDAEB7;--shiki-dark-font-style:italic">“content_margin”</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: [</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">]</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">},</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">{</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#B31D28;--shiki-light-font-style:italic;--shiki-dark:#FDAEB7;--shiki-dark-font-style:italic">“class”</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#B31D28;--shiki-light-font-style:italic;--shiki-dark:#FDAEB7;--shiki-dark-font-style:italic">“icon_folder_loading”</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#B31D28;--shiki-light-font-style:italic;--shiki-dark:#FDAEB7;--shiki-dark-font-style:italic">“content_margin”</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: [</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">]</span></span>
 <span class="line"></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">}</span></span></code></pre>
 </div><p>Q：为什么侧边栏和标签栏上中文的文件名显示“口口”，而英文的文件名显示正常？
@@ -3589,8 +3569,8 @@ A：这里以Win7来说明，桌面 – 鼠标右键 – 个性化 – 显示 �
         </item>
         <item>
             <title><![CDATA[U盘量产修复金士顿PS2251-07(PS2307)]]></title>
-            <link>https://www.lpdswing.top/technology/other/U-disk-mass-production-repair-Kingston-PS2251-07-PS2307.html</link>
-            <guid>https://www.lpdswing.top/technology/other/U-disk-mass-production-repair-Kingston-PS2251-07-PS2307.html</guid>
+            <link>https://www.lpdswing.top/technology/other/U-disk-mass.html</link>
+            <guid>https://www.lpdswing.top/technology/other/U-disk-mass.html</guid>
             <pubDate>Mon, 16 Apr 2018 21:49:32 GMT</pubDate>
             <description><![CDATA[群联MPALL(Rel)-7F-V5.03.0A-DL07量产PS2251-07(PS2307)步骤
 教程截取自量产吧
@@ -3831,16 +3811,16 @@ class MyMiddleware:
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">        return</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> response</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">    def</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> process_view</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(self,request,view_func,view_args,view_kwargs):</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">        pass</span></span>
-<span class="line"><span style="--shiki-light:#B31D28;--shiki-dark:#FDAEB7;--shiki-light-font-style:italic;--shiki-dark-font-style:italic">----------------</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">-</span></span>
+<span class="line"><span style="--shiki-light:#B31D28;--shiki-light-font-style:italic;--shiki-dark:#FDAEB7;--shiki-dark-font-style:italic">----------------</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">-</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">def</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> foo</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">():</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">    pass</span></span>
 <span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"># 执行foo()实际上执行的是foo.__call__()</span></span>
-<span class="line"><span style="--shiki-light:#B31D28;--shiki-dark:#FDAEB7;--shiki-light-font-style:italic;--shiki-dark-font-style:italic">------------------</span></span>
+<span class="line"><span style="--shiki-light:#B31D28;--shiki-light-font-style:italic;--shiki-dark:#FDAEB7;--shiki-dark-font-style:italic">------------------</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">class</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> A</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">    pass</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">a </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> A()</span></span>
 <span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">#a()没有call方法,但是A是有的A.__call__()->A的实例</span></span>
-<span class="line"><span style="--shiki-light:#B31D28;--shiki-dark:#FDAEB7;--shiki-light-font-style:italic;--shiki-dark-font-style:italic">------------------</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">-</span></span>
+<span class="line"><span style="--shiki-light:#B31D28;--shiki-light-font-style:italic;--shiki-dark:#FDAEB7;--shiki-dark-font-style:italic">------------------</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">-</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">class</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> A</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">    def</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> __call__</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(self,n):</span></span>
 <span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">        print</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(n)</span></span>
