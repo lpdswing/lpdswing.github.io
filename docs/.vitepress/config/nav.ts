@@ -42,13 +42,8 @@ export const nav: DefaultTheme.Config['nav'] = [
         ]
     },
     {
-        text: '个人项目',
-        items: [
-            {
-                text: 'GPTFusion',
-                link: 'https://github.com/lpdswing/GPTFusion'
-            }
-        ]
+        text: '个人作品',
+        link: '/works'
     },
     {
         text: '关于我',

@@ -2,9 +2,11 @@ import { getThemeConfig, defineConfig, footerHTML } from "@sugarat/theme/node";
 import { RssPlugin, RSSOptions } from "vitepress-plugin-rss";
 import { nav } from "./config/nav";
 import { head } from "./config/head";
+import workConfig from './works'
 
 
 const blogTheme = getThemeConfig({
+  works: workConfig,
   alert: {
     type: 'success',
     title: '教程有实效性, 如果不成功请先质疑教程',
@@ -23,9 +25,9 @@ const blogTheme = getThemeConfig({
     // },
   },
   themeColor: 'vp-green',
+  mermaid: true,
   // 文章默认作者
   author: "lpdswing",
-  tabs: true,
   // 友链
   friend: [
     {
@@ -34,13 +36,6 @@ const blogTheme = getThemeConfig({
       avatar:
         "https://img.cdn.sugarat.top/mdImg/MTY3NDk5NTE2NzAzMA==674995167030",
       url: "https://sugarat.top",
-    },
-    {
-      nickname: "Vitepress",
-      des: "Vite & Vue Powered Static Site Generator",
-      avatar:
-        "https://img.cdn.sugarat.top/mdImg/MTY3NDk5NTI2NzY1Ng==674995267656",
-      url: "https://vitepress.vuejs.org/",
     },
   ],
   recommend: {
